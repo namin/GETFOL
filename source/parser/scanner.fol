@@ -181,14 +181,14 @@
 ; DEL_TOK scanner routine.
 ;
 (DEFLAM DEL-SCAN (CHAR)
- (tk_info-mk (intnam (SYM-INTERN (ASCII CHAR))) 'DELTOKEN))
+ (tk_info-mk (intnam (SYM-INTERN (SYM-ASCII CHAR))) 'DELTOKEN))
 
 ; IDDEL_TOK scanner routine.
 ; note that IDCHAR is returned because such delimiters are to be considered as
 ; identifier tokens.
 ;
 (DEFLAM IDDEL-SCAN (CHAR)
- (tk_info-mk (intnam (SYM-INTERN (ASCII CHAR))) 'IDTOKEN))
+ (tk_info-mk (intnam (SYM-INTERN (SYM-ASCII CHAR))) 'IDTOKEN))
 
 (DEFLAM ESC-SCAN () (ID-SCAN (CH-GET-NEXT) TRUE))
 

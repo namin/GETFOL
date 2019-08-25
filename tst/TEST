@@ -3,93 +3,93 @@ probe all;
 
 comment ! DECIDERS !
 	comment !
-	  fetch decide/agatha.tst;
+	  fetch ../tst/decide/agatha.tst;
 	  reset;
 	!
 	comment !
-	  fetch decide/andrews.tst;
+	  fetch ../tst/decide/andrews.tst;
 	  reset;
 	!
-	fetch decide/decide.tst;
+	fetch ../tst/decide/decide.tst;
 	reset;
-	fetch decide/monad.tst;
+	fetch ../tst/decide/monad.tst;
 	reset;
-	fetch decide/monadeq.tst;
+	fetch ../tst/decide/monadeq.tst;
 	reset;
-	fetch decide/pltier.tst;
+	fetch ../tst/decide/pltier.tst;
 	reset;
-	fetch decide/ptaut.tst;
+	fetch ../tst/decide/ptaut.tst;
 	reset;
 	comment !
-	  fetch decide/stroller.tst;
+	  fetch ../tst/decide/stroller.tst;
 	  reset;
-	  fetch decide/strols.tst;
+	  fetch ../tst/decide/strols.tst;
 	  reset;
-	  fetch decide/strols2.tst;
+	  fetch ../tst/decide/strols2.tst;
 	  reset;
 	!
-	fetch decide/taut.tst;
+	fetch ../tst/decide/taut.tst;
 	reset;
-	fetch decide/tauteq.tst;
+	fetch ../tst/decide/tauteq.tst;
 	reset;
 comment ! EVAL !
-	fetch eval/attach.tst;
+	fetch ../tst/eval/attach.tst;
 	reset;
-	fetch eval/eval.tst;
+	fetch ../tst/eval/eval.tst;
 	reset;
-	fetch eval/exteval.tst;
+	fetch ../tst/eval/exteval.tst;
 	reset;
-	fetch eval/extsimpl.tst;
+	fetch ../tst/eval/extsimpl.tst;
 	reset;
-	fetch eval/grid.tst;
+	fetch ../tst/eval/grid.tst;
 	reset;
-	fetch eval/gridrev.tst;
+	fetch ../tst/eval/gridrev.tst;
 	reset;
-	fetch eval/rewrite1.tst;
+	fetch ../tst/eval/rewrite1.tst;
 	reset;
-	fetch eval/rewrite2.tst;
+	fetch ../tst/eval/rewrite2.tst;
 	reset;
-	fetch eval/rewrite3.tst;
+	fetch ../tst/eval/rewrite3.tst;
 	reset;
-	fetch eval/simpl1.tst;
+	fetch ../tst/eval/simpl1.tst;
 	reset;
-	fetch eval/simpl2.tst;
+	fetch ../tst/eval/simpl2.tst;
 	reset;
-	fetch eval/sorts.tst;
+	fetch ../tst/eval/sorts.tst;
 	reset;
-	fetch eval/tarith.tst;
+	fetch ../tst/eval/tarith.tst;
 	reset;
 
 comment ! IO !
-	fetch io/scan.tst;
+	fetch ../tst/io/scan.tst;
 	reset;
 
 comment ! LANGUAGE !
-	fetch lang/copylex.tst;
+	fetch ../tst/lang/copylex.tst;
 	reset;
-	fetch lang/declare.tst;
+	fetch ../tst/lang/declare.tst;
 	reset;
-	fetch lang/exp1.tst;
+	fetch ../tst/lang/exp1.tst;
 	reset;
-	fetch lang/exp2.tst;
+	fetch ../tst/lang/exp2.tst;
 	reset;
 
 comment ! META !
-	fetch meta/mattach.tst;
+	fetch ../tst/meta/mattach.tst;
 	reset;
-	fetch meta/min.tst;
+	fetch ../tst/meta/min.tst;
 	reset;
 
 comment ! ND !
-	fetch nd/if.tst;
+	fetch ../tst/nd/if.tst;
 	reset;
-	fetch nd/str.tst;
+	fetch ../tst/nd/str.tst;
 	reset;
 
 comment ! PROOF !
-	fetch proof/axiom.tst;
+	fetch ../tst/proof/axiom.tst;
 	reset;
-	fetch proof/reason.tst;
+	fetch ../tst/proof/reason.tst;
 	reset;
-	fetch proof/thm.tst;
+	fetch ../tst/proof/thm.tst;
 	reset;

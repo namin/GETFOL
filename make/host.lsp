@@ -82,7 +82,7 @@
 ; !!!!!!                      ON YOUR SYSTEM                        !!!!!!
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-(SETQ %HOME-DIR% "/home/tarski/staff/getfol/getfol-sep94")
+(SETQ %HOME-DIR% "/Users/namin/code/fol/GETFOL")
 (SETQ %PATHNAME-SEPARATOR% "/")
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -117,7 +117,7 @@
 ; LISP DEPENDENT FILE FORMAT SPECIFICATION                                ;
 ;                                                                         ;
 ;*************************************************************************;
-
+(SETQ %OBJFILE-SUFFIX% ".o")
 #+IBCL  (SETQ %OBJFILE-SUFFIX% ".o")
 #+KCL   (SETQ %OBJFILE-SUFFIX% ".o")
 #+LUCID (SETQ %OBJFILE-SUFFIX% ".sbin")

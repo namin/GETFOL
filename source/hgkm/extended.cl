@@ -94,14 +94,14 @@
 ;;;;<characters>
 ; ************************************************************************
 ; *                                                                      *
-; *  (ASCII ...)                                                         *
+; *  (SYM-ASCII ...)                                                     *
 ; *  (SYM-INTERN ...)                                                    *
 ; *  (MAKE-UNINTERNED ...)                                               *
 ; *  (SYM-GETCHRFIRST ...)                                               *
 ; *                                                                      *
 ; ************************************************************************
 ;
-(HGKM-DEF-FUN ASCII (X) (SYM-INTERN (CHR2SYM (LIST X))))
+(HGKM-DEF-FUN SYM-ASCII (X) (SYM-INTERN (CHR2SYM (LIST X))))
 (HGKM-DEF-FUN SYM-INTERN (X) (INTERN (PRINC-TO-STRING X)))
 (HGKM-DEF-FUN MAKE-UNINTERNED (X) (MAKE-SYMBOL (CHR2STR (SYM2CHR X))))
 (HGKM-DEF-MAC SYM-GETCHRFIRST (L) (LIST 'CAR (LIST 'EXPLODEN L)))

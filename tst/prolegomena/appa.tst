@@ -26,5 +26,3 @@ attach prd to prd;
 attach + to +;
 attach * to *;
 attach < to <;
-
-simplify zro < prd(suc(suc(zro)));

@@ -5,4 +5,8 @@ Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dt
 # TOC
 
 - [sec2.tst](sec2.tst): syllogism.
-- [sec4.tst](sec4.tst): peano numbers.
+- [appa.tst](appa.tst): an axiomatization of natural numbers.
+- [appb.tst](appb.tst): an axiomatization of s-expressions.
+- [appd.tst](appd.tst): semantic evaluations.
+- [adde.tst](appe.tst): syntactic simplification.
+

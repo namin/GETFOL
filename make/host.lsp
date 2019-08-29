@@ -117,7 +117,7 @@
 ; LISP DEPENDENT FILE FORMAT SPECIFICATION                                ;
 ;                                                                         ;
 ;*************************************************************************;
-(SETQ %OBJFILE-SUFFIX% ".o")
+#+ALLEGRO (SETQ %OBJFILE-SUFFIX% ".o")
 #+IBCL  (SETQ %OBJFILE-SUFFIX% ".o")
 #+KCL   (SETQ %OBJFILE-SUFFIX% ".o")
 #+LUCID (SETQ %OBJFILE-SUFFIX% ".sbin")
@@ -225,8 +225,10 @@
 
 (DEFUN SYSTEM-SAVE (STR)
  (PROGN
+  #+ALLEGRO (GC T)               ;ALLEGRO dependent global garbage collect
   #+IBCL (GBC T)                 ;IBCL dependent total garbage collect
   #+KCL  (GBC T)                 ;KCL  dependent total garbage collect
+  #+ALLEGRO (DUMPLISP :name STR) ;saving
   #+IBCL (SAVE STR)              ;saving
   #+KCL  (SAVE STR)              ;saving
   #+LUCID (DISKSAVE STR :gc T)   ;saving

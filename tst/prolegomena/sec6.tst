@@ -33,10 +33,6 @@ setbasicsimp EQSYM at facts {EQSYM};
 rewrite forall n.(suc(n)=zro iff FALSE) by PEANO uni EQSYM uni LOGICTREE;
 setbasicsimp NS at facts {9};
 
-declare indvar X Y;
-axiom IFY: forall X Y.((trmif FALSE then X else Y) = Y);
-setbasicsimp IFY at facts {IFY};
+rewrite (fact(suc(suc(suc(zro))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
 
-rewrite (fact(suc(suc(suc(zro))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni IFY uni LOGICTREE;
-
-rewrite (fact(suc(suc(suc(suc(zro)))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni IFY uni LOGICTREE;
+rewrite (fact(suc(suc(suc(suc(zro)))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;

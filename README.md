@@ -6,7 +6,7 @@ In addition, it strives to reproduce the results of the [Prolegomena](tst/proleg
 
 ## How to run
 
-- `mkdir o` from project directory
+- `mkdir -p o` from project directory
 - open `alisp` from [make](make) directory
 - `(load "install.lsp")`
 - `(MAKE-GETFOL)`

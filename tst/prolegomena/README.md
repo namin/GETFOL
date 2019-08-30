@@ -6,6 +6,7 @@ Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dt
 
 - [sec2.tst](sec2.tst): syllogism.
 - [sec6.tst](sec6.tst): factorial.
+- [sec9.tst](sec9.tst): reflection principle. _"Change theorem proving in the theory into evaluation in the metatheory."_
 - [appa.tst](appa.tst): an axiomatization of natural numbers.
 - [appb.tst](appb.tst): an axiomatization of s-expressions.
 - [appd.tst](appd.tst): semantic evaluations.

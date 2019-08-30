@@ -1,0 +1,8 @@
+probe all;
+reset; fetch ../tst/prolegomena/sec2.tst;
+reset; fetch ../tst/prolegomena/sec6.tst;
+reset; fetch ../tst/prolegomena/appa.tst;
+reset; fetch ../tst/prolegomena/appb.tst;
+reset; fetch ../tst/prolegomena/appd.tst;
+reset; fetch ../tst/prolegomena/appe.tst;
+reset;

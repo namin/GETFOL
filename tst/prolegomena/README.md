@@ -1,8 +1,8 @@
 # Prolegomena
 
-Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dtic/tr/fulltext/u2/a065698.pdf)).
+Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dtic/tr/fulltext/u2/a065698.pdf), [alt. PDF](https://pdfs.semanticscholar.org/07b8/2b58e1fd76540cf2217ed4537136855685d5.pdf)).
 
-# TOC
+# ToC
 
 - [sec2.tst](sec2.tst): syllogism.
 - [sec6.tst](sec6.tst): factorial.

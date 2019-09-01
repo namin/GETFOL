@@ -812,7 +812,10 @@ LINEAREQ has been declared to be a Predconst
 SUMEQ has been declared to be a Predconst
 DIFFEQ has been declared to be a Predconst
 
-GETFOL:: AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (SUMEQ(w,x) or DIFFEQ(w,x)));
+GETFOL:: AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
+  (SUMEQ(w,x) or DIFFEQ(w,x)) and
+  larg(lhs(w))=x
+));
 
 AX_LINEAREQ : forall w x. (LINEAREQ(w, x) iff (SUMEQ(w, x) or DIFFEQ(w, x)))
 

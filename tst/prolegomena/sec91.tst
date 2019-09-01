@@ -100,9 +100,6 @@ AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
 SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
-AXIOM SOLVE_MINUS: forall w x.(THEOREM(pred2apply(Equal,x,fun2apply(+,rarg(lhs(w)),rhs(w)))));
-AXIOM SOLVE_PLUS: forall w x.(THEOREM(mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), pred2apply(Equal,x,fun2apply(-,rhs(w),rarg(lhs(w)))))));
-
 AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x)))));
 
 SWITCHCONTEXT OBJ;

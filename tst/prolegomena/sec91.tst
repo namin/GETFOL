@@ -1,6 +1,6 @@
 fetch ../tst/prolegomena/appa.tst;
 
-declare indconst x [NATNUM];
+declare indconst x y z [NATNUM];
 axiom E: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
 
 declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
@@ -39,25 +39,33 @@ REPRESENT {TERM} AS TERM;
 REPRESENT {PREDCONST} AS PREDCONST;
 REPRESENT {FUNCONST} AS FUNCONST;
 
+DECLARE FUNCONST mkimp (WFF WFF)=WFF;
+ATTACH mkimp TO [WFF,WFF=WFF] mkimp;
+
 DECLARE FUNCONST pred2apply (PREDCONST TERM TERM)=WFF;
-DECLARE INDCONST Equal  [PREDCONST];
+DECLARE INDCONST Equal < [PREDCONST];
 MATTACH Equal     dar [PREDCONST] OBJ::PREDCONST:=;
+MATTACH <     dar [PREDCONST] OBJ::PREDCONST:<;
 ATTACH pred2apply  TO  [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
 
-DECLARE FUNCONST lhs rhs  (WFF)=TERM;
-
-ATTACH lhs	TO [WFF=TERM] lhs;
-ATTACH rhs	TO [WFF=TERM] rhs;
-
+DECLARE FUNCONST fun1apply (FUNCONST TERM)=TERM;
 DECLARE FUNCONST fun2apply (FUNCONST TERM TERM)=TERM;
-DECLARE INDCONST + [INDCONST];
+DECLARE INDCONST suc + - [INDCONST];
+MATTACH suc dar [FUNCONST] OBJ::FUNCONST:suc;
 MATTACH + dar [FUNCONST] OBJ::FUNCONST:+;
+MATTACH - dar [FUNCONST] OBJ::FUNCONST:-;
+DEFLAM fun1apply (FUNSYM TERM1) (appl\-mak FUNSYM (LIST TERM1));
 DEFLAM fun2apply (FUNSYM TERM1 TERM2) (appl\-mak FUNSYM (LIST TERM1 TERM2));
 ATTACH fun2apply TO [FUNCONST,TERM,TERM=TERM] fun2apply;
 
 DECLARE indvar x y z [TERM];
 
 AXIOM SOLVE_MINUS: forall x y z.(THEOREM(pred2apply(Equal,x,fun2apply(+,y,z))));
+AXIOM SOLVE_PLUS: forall x y z.(THEOREM(mkimp(pred2apply(<,y,z), pred2apply(Equal,x,fun2apply(-,z,y)))));
 
 SWITCHCONTEXT OBJ;
-REFLECT SOLVE_MINUS x suc(suc(zro)) zro;
+
+reflect SOLVE_MINUS x suc(suc(zro)) zro;
+rewrite 6 by PEANO;
+reflect SOLVE_PLUS y suc(suc(zro)) suc(suc(suc(zro)));
+rewrite 8 by TMINUS;

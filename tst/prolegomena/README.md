@@ -15,4 +15,4 @@ Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dt
 
 ## See also
 
-- [axioms](../../axioms)
+- [axiom](../../axiom)

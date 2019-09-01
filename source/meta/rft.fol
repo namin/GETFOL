@@ -115,7 +115,7 @@
 ; *    SCAN&MNGLIST is the input structure built by scan&mnglist-get
 ; *    MNGLIST is the completed output structure
 ; *     (any argument is associated its MEANING)
-; *    DEPLIST if the list od dependencies (if any)
+; *    DEPLIST if the list of dependencies (if any)
 ; *     associated to those MNG's which are WFF's
 ; *
 ; *  DESCRIPTION

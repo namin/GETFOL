@@ -63,7 +63,7 @@
 ; *     It REFLECTS the fact (in the METATHEORY) of   *
 ; *     name SYM1 in the context where REFLECTION is  *
 ; *     performed.                                    *
-; *     <list of arguments> must corrispond to those  *
+; *     <list of arguments> must correspond to those  *
 ; *     requested by FACTOFMETA.                      *
 ; *                                                   *
 ; *   NOTE                                            *

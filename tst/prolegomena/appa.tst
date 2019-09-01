@@ -15,9 +15,9 @@ axiom PLUS: forall n m. n+suc(m)=suc(n+m);
 axiom TIMES0: forall n. n * zro = zro;
 axiom TIMES: forall n m. n*suc(m)=(n*m)+n;
 
-setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
-
 axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
+
+setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
 
 decrep NATNUMREP;
 represent {NATNUM} as NATNUMREP;

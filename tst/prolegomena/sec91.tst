@@ -80,8 +80,9 @@ ATTACH fun2apply TO [FUNCONST,TERM,TERM=TERM] fun2apply;
 DECLARE indvar x y z [TERM];
 DECLARE indvar w r [WFF];
 DECLARE indvar vl [FACT];
+DECLARE indvar op [FUNCONST];
 
-DECLARE PREDCONST EQU 1;
+DECLARE PREDCONST EQU NUMERAL 1;
 DECLARE PREDCONST LINEAREQ SUMEQ DIFFEQ 2;
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (EQU(w) and (SUMEQ(w,x) or DIFFEQ(w,x))));
 AXIOM AX_EQU: forall w.(EQU(w) iff pred2apply(Equal,lhs(w),rhs(w))=w);
@@ -97,10 +98,16 @@ AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
   trmif SUMEQ(w, x)
   then mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), r)
   else r);
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
-SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x)))));
+
+AXIOM AX_NUMERAL0: NUMERAL(zro);
+AXIOM AX_NUMERALS: forall x.(NUMERAL(x) imp NUMERAL(fun1apply(suc,x)));
+
+AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.(THEOREM(pred2apply(Equal,x,fun2apply(+,z,y))));
+
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,AX_NUMERAL0,AX_NUMERALS};
+SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
 
@@ -109,4 +116,6 @@ rewrite 6 by PEANO;
 reflect SOLVE (y+suc(suc(zro))=suc(suc(suc(zro)))) y;
 rewrite 8 by TMINUS;
 reflect SOLVE (y-suc(suc(zro))=suc(suc(suc(zro)))) y;
+rewrite 10 by PEANO;
+reflect SOLVE_MINUS_LINEAREQ y zro suc(zro);
 rewrite 10 by PEANO;

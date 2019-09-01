@@ -77,15 +77,14 @@ DEFLAM fun1apply (FUNSYM TERM1) (appl\-mak FUNSYM (LIST TERM1));
 DEFLAM fun2apply (FUNSYM TERM1 TERM2) (appl\-mak FUNSYM (LIST TERM1 TERM2));
 ATTACH fun2apply TO [FUNCONST,TERM,TERM=TERM] fun2apply;
 
-
-DECLARE PREDCONST EQU 1;
-
 DECLARE indvar x y z [TERM];
 DECLARE indvar w r [WFF];
 DECLARE indvar vl [FACT];
 
+DECLARE PREDCONST EQU 1;
 DECLARE PREDCONST LINEAREQ SUMEQ DIFFEQ 2;
-AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (SUMEQ(w,x) or DIFFEQ(w,x)));
+AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (EQU(w) and (SUMEQ(w,x) or DIFFEQ(w,x))));
+AXIOM AX_EQU: forall w.(EQU(w) iff pred2apply(Equal,lhs(w),rhs(w))=w);
 AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff fun2apply(+,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
 AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff fun2apply(-,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
 DECLARE FUNCONST solve (WFF TERM)=TERM;
@@ -98,7 +97,7 @@ AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
   trmif SUMEQ(w, x)
   then mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), r)
   else r);
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 AXIOM SOLVE_MINUS: forall w x.(THEOREM(pred2apply(Equal,x,fun2apply(+,rarg(lhs(w)),rhs(w)))));

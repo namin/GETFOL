@@ -437,6 +437,772 @@ GETFOL:: I am finished fetching ../tst/prolegomena/sec9.tst
 GETFOL:: reset;
 Resetting the whole GETFOL-system
 
+GETFOL::  fetch ../tst/prolegomena/sec91.tst;
+I am starting to fetch ../tst/prolegomena/sec91.tst
+
+GETFOL:: fetch ../tst/prolegomena/appa.tst;
+I am starting to fetch ../tst/prolegomena/appa.tst
+
+GETFOL:: declare sort NATNUM;
+NATNUM has been declared to be a sort
+
+GETFOL:: declare indvar n m p q [NATNUM];
+NATNUM is a sort
+n has been declared to be an Indvar
+m has been declared to be an Indvar
+p has been declared to be an Indvar
+q has been declared to be an Indvar
+
+GETFOL:: declare indconst zro [NATNUM];
+NATNUM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: declare funconst suc prd (NATNUM) = NATNUM;
+NATNUM is a sort
+NATNUM is a sort
+suc has been declared to be a Funconst
+prd has been declared to be a Funconst
+
+GETFOL:: declare funconst +(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
++ has been declared to be a Funconst
+
+GETFOL:: declare funconst *(NATNUM,NATNUM) = NATNUM [inf = 550 555];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+* has been declared to be a Funconst
+
+GETFOL:: declare predconst < 2 [inf];
+< has been declared to be a Predconst
+
+GETFOL:: declare predpar P 1;
+P has been declared to be a Predpar
+
+GETFOL:: axiom ONEONE: forall n m.(suc(n)=suc(m) imp n=m);
+
+ONEONE : forall n m. ((suc(n) = suc(m)) imp (n = m))
+
+GETFOL:: axiom SUCC1: forall n.not(zro=suc(n));
+
+SUCC1 : forall n. (not (zro = suc(n)))
+
+GETFOL:: axiom SUCC2: forall n.not(zro=n) imp exists m.n=suc(m);
+
+SUCC2 : forall n. (not (zro = n)) imp exists m. (n = suc(m))
+
+GETFOL:: axiom PLUS0: forall n. n + zro = n;
+
+PLUS0 : forall n. ((n + zro) = n)
+
+GETFOL:: axiom PLUS: forall n m. n+suc(m)=suc(n+m);
+
+PLUS : forall n m. ((n + suc(m)) = suc(n + m))
+
+GETFOL:: axiom TIMES0: forall n. n * zro = zro;
+
+TIMES0 : forall n. ((n * zro) = zro)
+
+GETFOL:: axiom TIMES: forall n m. n*suc(m)=(n*m)+n;
+
+TIMES : forall n m. ((n * suc(m)) = ((n * m) + n))
+
+GETFOL:: setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
+
+GETFOL:: axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
+
+INDUCT : (P(zro) and forall n. (P(n) imp P(suc(n)))) imp forall n. P(n)
+
+GETFOL:: decrep NATNUMREP;
+
+GETFOL:: represent {NATNUM} as NATNUMREP;
+
+GETFOL:: attach zro to 0;
+zro attached to '0
+
+GETFOL:: attach suc to ADD1;
+suc attached to ADD1
+
+GETFOL:: deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
+
+GETFOL:: attach prd to prd;
+prd attached to prd
+
+GETFOL:: attach + to +;
++ attached to +
+
+GETFOL:: attach * to *;
+* attached to *
+
+GETFOL:: attach < to <;
+< attached to <
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appa.tst
+
+GETFOL:: declare indconst x y z [NATNUM];
+NATNUM is a sort
+x has been declared to be an Indconst
+y has been declared to be an Indconst
+z has been declared to be an Indconst
+
+GETFOL:: axiom E: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
+
+E : (x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))
+
+GETFOL:: declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+- has been declared to be a Funconst
+
+GETFOL:: attach - to -;
+- attached to -
+
+GETFOL:: axiom MINUS0R: forall n. n - zro = n;
+
+MINUS0R : forall n. ((n - zro) = n)
+
+GETFOL:: axiom MINUS0L: forall n. zro - n = zro;
+
+MINUS0L : forall n. ((zro - n) = zro)
+
+GETFOL:: axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
+
+MINUS : forall n m. ((suc(n) - suc(m)) = (n - m))
+
+GETFOL:: setbasicsimp TMINUS at facts {MINUS0R,MINUS0L,MINUS};
+
+GETFOL:: axiom THM1: forall p q m.(p=q imp p-m=q-m);
+
+THM1 : forall p q m. ((p = q) imp ((p - m) = (q - m)))
+
+GETFOL:: axiom THM2: forall p q m.(p+q)-m=p+(q-m);
+
+THM2 : forall p q m. (((p + q) - m) = (p + (q - m)))
+
+GETFOL:: theorem THM3 PLUS0;
+
+THM3 : forall n. ((n + zro) = n)
+
+GETFOL:: setbasicsimp THM1 at facts {THM1};
+
+GETFOL:: setbasicsimp THM2 at facts {THM2};
+
+GETFOL:: setbasicsimp THM3 at facts {THM3};
+
+GETFOL:: alle THM1 x+suc(suc(zro)),suc(suc(suc(suc(suc(zro))))),suc(suc(zro));
+
+1   ((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (suc(suc(suc(suc(suc(zro))))) - suc(suc(zro))))     
+
+GETFOL:: theorem A 1;
+
+A : ((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (suc(suc(suc(suc(suc(zro))))) - suc(suc(zro))))
+
+GETFOL:: rewrite A  by TMINUS uni THM2 uni THM3 uni LOGICTREE;
+
+2   (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (suc(suc(suc(suc(suc(zro))))) - suc(suc(zro))))) iff (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (x = suc(suc(suc(zro)))))     
+
+GETFOL:: iffe 2 1;
+
+3   (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (suc(suc(suc(suc(suc(zro))))) - suc(suc(zro))))) imp (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (x = suc(suc(suc(zro)))))     
+
+GETFOL:: impe 3 A;
+
+4   ((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (x = suc(suc(suc(zro))))     
+
+GETFOL:: impe 4 E;
+
+5   x = suc(suc(suc(zro)))     
+
+GETFOL:: namecontext OBJ;
+You have named the current context: OBJ
+
+GETFOL:: MAKECONTEXT META;
+You have created the empty context: META
+
+GETFOL:: SWITCHCONTEXT META;
+You are now using context: META
+You are switching to a proof with no name.
+
+GETFOL:: DECLARE PREDCONST THEOREM 1;
+THEOREM has been declared to be a Predconst
+
+GETFOL:: DECLARE SORT TERM WFF FACT PREDCONST FUNCONST INDCONST;
+TERM has been declared to be a sort
+WFF has been declared to be a sort
+FACT has been declared to be a sort
+PREDCONST has been declared to be a sort
+FUNCONST has been declared to be a sort
+INDCONST has been declared to be a sort
+
+GETFOL:: DECREP TERM WFF FACT PREDCONST FUNCONST INDCONST;
+
+GETFOL:: REPRESENT {TERM} AS TERM;
+
+GETFOL:: REPRESENT {WFF} AS WFF;
+
+GETFOL:: REPRESENT {FACT} AS FACT;
+
+GETFOL:: REPRESENT {PREDCONST} AS PREDCONST;
+
+GETFOL:: REPRESENT {FUNCONST} AS FUNCONST;
+
+GETFOL:: REPRESENT {INDCONST} AS INDCONST;
+
+GETFOL:: MOREGENERAL TERM <INDCONST>;
+
+GETFOL:: DECLARE FUNCONST wffof (FACT)=WFF;
+WFF is a sort
+FACT is a sort
+wffof has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST lhs rhs (WFF)=TERM;
+TERM is a sort
+WFF is a sort
+lhs has been declared to be a Funconst
+rhs has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST larg rarg (TERM)=TERM;
+TERM is a sort
+TERM is a sort
+larg has been declared to be a Funconst
+rarg has been declared to be a Funconst
+
+GETFOL:: ATTACH wffof TO [FACT=WFF] fact\-get\-wff;
+wffof attached to fact-get-wff
+
+GETFOL:: ATTACH lhs TO [WFF=TERM] lhs;
+lhs attached to lhs
+
+GETFOL:: ATTACH rhs TO [WFF=TERM] rhs;
+rhs attached to rhs
+
+GETFOL:: DEFLAM larg (t) (CAR (appl\-get\-args t));
+
+GETFOL:: ATTACH larg TO [TERM=TERM] larg;
+larg attached to larg
+
+GETFOL:: DEFLAM rarg (t) (CADR (appl\-get\-args t));
+
+GETFOL:: ATTACH rarg TO [TERM=TERM] rarg;
+rarg attached to rarg
+
+GETFOL:: DECLARE FUNCONST mkimp (WFF WFF)=WFF;
+WFF is a sort
+WFF is a sort
+WFF is a sort
+mkimp has been declared to be a Funconst
+
+GETFOL:: ATTACH mkimp TO [WFF,WFF=WFF] mkimp;
+mkimp attached to mkimp
+
+GETFOL:: DECLARE FUNCONST mktrmif (WFF TERM TERM)=TERM;
+TERM is a sort
+WFF is a sort
+TERM is a sort
+TERM is a sort
+mktrmif has been declared to be a Funconst
+
+GETFOL:: ATTACH mktrmif TO [WFF,TERM,TERM=TERM] mktrmif;
+mktrmif attached to mktrmif
+
+GETFOL:: DECLARE FUNCONST pred2apply (PREDCONST TERM TERM)=WFF;
+WFF is a sort
+PREDCONST is a sort
+TERM is a sort
+TERM is a sort
+pred2apply has been declared to be a Funconst
+
+GETFOL:: DECLARE INDCONST Equal < [PREDCONST];
+PREDCONST is a sort
+Equal has been declared to be an Indconst
+< has been declared to be an Indconst
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH Equal dar [PREDCONST] OBJ::PREDCONST:=;
+Equal attached to '=
+Equal is the preferred name of =
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH < dar [PREDCONST] OBJ::PREDCONST:<;
+< attached to '<
+< is the preferred name of <
+
+GETFOL:: ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
+pred2apply attached to predappl2-mak
+
+GETFOL:: DECLARE INDCONST zro [TERM];
+TERM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH zro dar [INDCONST] OBJ::INDCONST:zro;
+zro attached to 'zro
+zro is the preferred name of zro
+
+GETFOL:: DECLARE FUNCONST fun1apply (FUNCONST TERM)=TERM;
+TERM is a sort
+FUNCONST is a sort
+TERM is a sort
+fun1apply has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST fun2apply (FUNCONST TERM TERM)=TERM;
+TERM is a sort
+FUNCONST is a sort
+TERM is a sort
+TERM is a sort
+fun2apply has been declared to be a Funconst
+
+GETFOL:: DECLARE INDCONST suc + - [INDCONST];
+INDCONST is a sort
+suc has been declared to be an Indconst
++ has been declared to be an Indconst
+- has been declared to be an Indconst
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH suc dar [FUNCONST] OBJ::FUNCONST:suc;
+suc attached to 'suc
+suc is the preferred name of suc
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH + dar [FUNCONST] OBJ::FUNCONST:+;
++ attached to '+
++ is the preferred name of +
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH - dar [FUNCONST] OBJ::FUNCONST:-;
+- attached to '-
+- is the preferred name of -
+
+GETFOL:: DEFLAM fun1apply (FUNSYM TERM1) (appl\-mak FUNSYM (LIST TERM1));
+
+GETFOL:: DEFLAM fun2apply (FUNSYM TERM1 TERM2) (appl\-mak FUNSYM (LIST TERM1 TERM2));
+
+GETFOL:: ATTACH fun2apply TO [FUNCONST,TERM,TERM=TERM] fun2apply;
+fun2apply attached to fun2apply
+
+GETFOL:: DECLARE PREDCONST EQU 1;
+EQU has been declared to be a Predconst
+
+GETFOL:: DECLARE indvar x y z [TERM];
+TERM is a sort
+x has been declared to be an Indvar
+y has been declared to be an Indvar
+z has been declared to be an Indvar
+
+GETFOL:: DECLARE indvar w r [WFF];
+WFF is a sort
+w has been declared to be an Indvar
+r has been declared to be an Indvar
+
+GETFOL:: DECLARE indvar vl [FACT];
+FACT is a sort
+vl has been declared to be an Indvar
+
+GETFOL:: DECLARE PREDCONST LINEAREQ SUMEQ DIFFEQ 2;
+LINEAREQ has been declared to be a Predconst
+SUMEQ has been declared to be a Predconst
+DIFFEQ has been declared to be a Predconst
+
+GETFOL:: AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (SUMEQ(w,x) or DIFFEQ(w,x)));
+
+AX_LINEAREQ : forall w x. (LINEAREQ(w, x) iff (SUMEQ(w, x) or DIFFEQ(w, x)))
+
+GETFOL:: AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff fun2apply(+,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
+
+AX_SUMEQ : forall w x. (SUMEQ(w, x) iff (fun2apply(+, larg(lhs(w)), rarg(lhs(w))) = lhs(w)))
+
+GETFOL:: AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff fun2apply(-,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
+
+AX_DIFFEQ : forall w x. (DIFFEQ(w, x) iff (fun2apply(-, larg(lhs(w)), rarg(lhs(w))) = lhs(w)))
+
+GETFOL:: DECLARE FUNCONST solve (WFF TERM)=TERM;
+TERM is a sort
+WFF is a sort
+TERM is a sort
+solve has been declared to be a Funconst
+
+GETFOL:: AXIOM AX_SOLVE: forall w x.(solve(w, x)=
+  trmif SUMEQ(w, x)
+  then fun2apply(-,rhs(w),rarg(lhs(w)))
+  else fun2apply(+,rhs(w),rarg(lhs(w))));
+
+AX_SOLVE : forall w x. (solve(w, x) = (trmif SUMEQ(w, x) then fun2apply(-, rhs(w), rarg(lhs(w))) else fun2apply(+, rhs(w), rarg(lhs(w)))))
+
+GETFOL:: DECLARE FUNCONST ifSolvable (WFF TERM WFF)=WFF;
+WFF is a sort
+WFF is a sort
+TERM is a sort
+WFF is a sort
+ifSolvable has been declared to be a Funconst
+
+GETFOL:: AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
+  trmif SUMEQ(w, x)
+  then mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), r)
+  else r);
+
+AX_SOLVABLE : forall w x r. (ifSolvable(w, x, r) = (trmif SUMEQ(w, x) then mkimp(pred2apply(<, rarg(lhs(w)), rhs(w)), r) else r))
+
+GETFOL:: SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
+
+GETFOL:: SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
+Attention! EVALSS is already the label of a simpset.
+
+GETFOL:: AXIOM SOLVE_MINUS: forall w x.(THEOREM(pred2apply(Equal,x,fun2apply(+,rarg(lhs(w)),rhs(w)))));
+
+SOLVE_MINUS : forall w x. THEOREM(pred2apply(Equal, x, fun2apply(+, rarg(lhs(w)), rhs(w))))
+
+GETFOL:: AXIOM SOLVE_PLUS: forall w x.(THEOREM(mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), pred2apply(Equal,x,fun2apply(-,rhs(w),rarg(lhs(w)))))));
+
+SOLVE_PLUS : forall w x. THEOREM(mkimp(pred2apply(<, rarg(lhs(w)), rhs(w)), pred2apply(Equal, x, fun2apply(-, rhs(w), rarg(lhs(w))))))
+
+GETFOL:: AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x)))));
+
+SOLVE : forall w x. (LINEAREQ(w, x) imp THEOREM(ifSolvable(w, x, pred2apply(Equal, x, solve(w, x)))))
+
+GETFOL:: SWITCHCONTEXT OBJ;
+You are now using context: OBJ
+You are switching to a proof with no name.
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect SOLVE (x-suc(suc(zro))=zro) x;
+I am switching from the current context to: META
+LINEAREQ(WFF314, TERM315) imp THEOREM(ifSolvable(WFF314, TERM315, pred2apply(Equal, TERM315, solve(WFF314, TERM315)))): syntactic simplification fails.
+LINEAREQ has no interpretation.
+Syntactic simplification of LINEAREQ(WFF314, TERM315) gives SUMEQ(WFF314, TERM315) or DIFFEQ(WFF314, TERM315)
+SUMEQ(WFF314, TERM315) or DIFFEQ(WFF314, TERM315): syntactic simplification fails.
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF314, TERM315) gives fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314)
+Evaluating + gives +
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating larg(lhs(WFF314)) gives TERM315
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating rarg(lhs(WFF314)) gives rarg(lhs(WFF314))
+Evaluating fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) gives fun2apply(+, TERM315, rarg(lhs(WFF314)))
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314) gives FALSE
+Evaluating SUMEQ(WFF314, TERM315) gives FALSE
+DIFFEQ has no interpretation.
+Syntactic simplification of DIFFEQ(WFF314, TERM315) gives fun2apply(-, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314)
+Evaluating - gives -
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating larg(lhs(WFF314)) gives TERM315
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating rarg(lhs(WFF314)) gives rarg(lhs(WFF314))
+Evaluating fun2apply(-, larg(lhs(WFF314)), rarg(lhs(WFF314))) gives fun2apply(-, TERM315, rarg(lhs(WFF314)))
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating fun2apply(-, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314) gives TRUE
+Evaluating DIFFEQ(WFF314, TERM315) gives TRUE
+TRUE: syntactic simplification fails.
+Evaluating LINEAREQ(WFF314, TERM315) gives TRUE
+THEOREM has no interpretation.
+THEOREM(ifSolvable(WFF314, TERM315, pred2apply(Equal, TERM315, solve(WFF314, TERM315)))): syntactic simplification fails.
+ifSolvable has no interpretation.
+Syntactic simplification of ifSolvable(WFF314, TERM315, pred2apply(Equal, TERM315, solve(WFF314, TERM315))) gives trmif SUMEQ(WFF314, TERM315) then mkimp(pred2apply(<, rarg(lhs(WFF314)), rhs(WFF314)), pred2apply(Equal, TERM315, solve(WFF314, TERM315))) else pred2apply(Equal, TERM315, solve(WFF314, TERM315))
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF314, TERM315) gives fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314)
+Evaluating + gives +
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating larg(lhs(WFF314)) gives TERM315
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating rarg(lhs(WFF314)) gives rarg(lhs(WFF314))
+Evaluating fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) gives fun2apply(+, TERM315, rarg(lhs(WFF314)))
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314) gives FALSE
+Evaluating SUMEQ(WFF314, TERM315) gives FALSE
+Evaluating Equal gives Equal
+Evaluating TERM315 gives TERM315
+solve has no interpretation.
+Syntactic simplification of solve(WFF314, TERM315) gives trmif SUMEQ(WFF314, TERM315) then fun2apply(-, rhs(WFF314), rarg(lhs(WFF314))) else fun2apply(+, rhs(WFF314), rarg(lhs(WFF314)))
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF314, TERM315) gives fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314)
+Evaluating + gives +
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating larg(lhs(WFF314)) gives TERM315
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating rarg(lhs(WFF314)) gives rarg(lhs(WFF314))
+Evaluating fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) gives fun2apply(+, TERM315, rarg(lhs(WFF314)))
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating fun2apply(+, larg(lhs(WFF314)), rarg(lhs(WFF314))) = lhs(WFF314) gives FALSE
+Evaluating SUMEQ(WFF314, TERM315) gives FALSE
+Evaluating + gives +
+Evaluating WFF314 gives WFF314
+Evaluating rhs(WFF314) gives rhs(WFF314)
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating rarg(lhs(WFF314)) gives rarg(lhs(WFF314))
+Evaluating fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))) gives fun2apply(+, rhs(WFF314), rarg(lhs(WFF314)))
+Evaluating trmif SUMEQ(WFF314, TERM315) then fun2apply(-, rhs(WFF314), rarg(lhs(WFF314))) else fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))) gives fun2apply(+, rhs(WFF314), rarg(lhs(WFF314)))
+Evaluating solve(WFF314, TERM315) gives fun2apply(+, rhs(WFF314), rarg(lhs(WFF314)))
+Evaluating pred2apply(Equal, TERM315, solve(WFF314, TERM315)) gives pred2apply(Equal, TERM315, fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))))
+Evaluating trmif SUMEQ(WFF314, TERM315) then mkimp(pred2apply(<, rarg(lhs(WFF314)), rhs(WFF314)), pred2apply(Equal, TERM315, solve(WFF314, TERM315))) else pred2apply(Equal, TERM315, solve(WFF314, TERM315)) gives pred2apply(Equal, TERM315, fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))))
+Evaluating ifSolvable(WFF314, TERM315, pred2apply(Equal, TERM315, solve(WFF314, TERM315))) gives pred2apply(Equal, TERM315, fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))))
+Evaluating THEOREM(ifSolvable(WFF314, TERM315, pred2apply(Equal, TERM315, solve(WFF314, TERM315)))) doesn' t work
+THEOREM(pred2apply(Equal, TERM315, fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))))): syntactic simplification fails.
+THEOREM(pred2apply(Equal, TERM315, fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))))): syntactic simplification fails.
+Evaluating Equal gives Equal
+Evaluating TERM315 gives TERM315
+Evaluating + gives +
+Evaluating WFF314 gives WFF314
+Evaluating rhs(WFF314) gives rhs(WFF314)
+Evaluating WFF314 gives WFF314
+Evaluating lhs(WFF314) gives lhs(WFF314)
+Evaluating rarg(lhs(WFF314)) gives rarg(lhs(WFF314))
+Evaluating fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))) gives fun2apply(+, rhs(WFF314), rarg(lhs(WFF314)))
+Evaluating pred2apply(Equal, TERM315, fun2apply(+, rhs(WFF314), rarg(lhs(WFF314)))) gives pred2apply(Equal, TERM315, fun2apply(+, rhs(WFF314), rarg(lhs(WFF314))))
+I am switching from the current context to: OBJ
+
+6   x = (zro + suc(suc(zro)))     
+Ok!! I am finished doing reflection
+
+GETFOL:: rewrite 6 by PEANO;
+
+7   (x = (zro + suc(suc(zro)))) iff (x = suc(suc(zro)))     
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect SOLVE (y+suc(suc(zro))=suc(suc(suc(zro)))) y;
+I am switching from the current context to: META
+LINEAREQ(WFF336, TERM337) imp THEOREM(ifSolvable(WFF336, TERM337, pred2apply(Equal, TERM337, solve(WFF336, TERM337)))): syntactic simplification fails.
+LINEAREQ has no interpretation.
+Syntactic simplification of LINEAREQ(WFF336, TERM337) gives SUMEQ(WFF336, TERM337) or DIFFEQ(WFF336, TERM337)
+SUMEQ(WFF336, TERM337) or DIFFEQ(WFF336, TERM337): syntactic simplification fails.
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF336, TERM337) gives fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) = lhs(WFF336)
+Evaluating + gives +
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating larg(lhs(WFF336)) gives TERM337
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating rarg(lhs(WFF336)) gives rarg(lhs(WFF336))
+Evaluating fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) gives fun2apply(+, TERM337, rarg(lhs(WFF336)))
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) = lhs(WFF336) gives TRUE
+Evaluating SUMEQ(WFF336, TERM337) gives TRUE
+TRUE: syntactic simplification fails.
+Evaluating LINEAREQ(WFF336, TERM337) gives TRUE
+THEOREM has no interpretation.
+THEOREM(ifSolvable(WFF336, TERM337, pred2apply(Equal, TERM337, solve(WFF336, TERM337)))): syntactic simplification fails.
+ifSolvable has no interpretation.
+Syntactic simplification of ifSolvable(WFF336, TERM337, pred2apply(Equal, TERM337, solve(WFF336, TERM337))) gives trmif SUMEQ(WFF336, TERM337) then mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, solve(WFF336, TERM337))) else pred2apply(Equal, TERM337, solve(WFF336, TERM337))
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF336, TERM337) gives fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) = lhs(WFF336)
+Evaluating + gives +
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating larg(lhs(WFF336)) gives TERM337
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating rarg(lhs(WFF336)) gives rarg(lhs(WFF336))
+Evaluating fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) gives fun2apply(+, TERM337, rarg(lhs(WFF336)))
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) = lhs(WFF336) gives TRUE
+Evaluating SUMEQ(WFF336, TERM337) gives TRUE
+Evaluating < gives <
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating rarg(lhs(WFF336)) gives rarg(lhs(WFF336))
+Evaluating WFF336 gives WFF336
+Evaluating rhs(WFF336) gives rhs(WFF336)
+Evaluating pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)) gives pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336))
+Evaluating Equal gives Equal
+Evaluating TERM337 gives TERM337
+solve has no interpretation.
+Syntactic simplification of solve(WFF336, TERM337) gives trmif SUMEQ(WFF336, TERM337) then fun2apply(-, rhs(WFF336), rarg(lhs(WFF336))) else fun2apply(+, rhs(WFF336), rarg(lhs(WFF336)))
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF336, TERM337) gives fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) = lhs(WFF336)
+Evaluating + gives +
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating larg(lhs(WFF336)) gives TERM337
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating rarg(lhs(WFF336)) gives rarg(lhs(WFF336))
+Evaluating fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) gives fun2apply(+, TERM337, rarg(lhs(WFF336)))
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating fun2apply(+, larg(lhs(WFF336)), rarg(lhs(WFF336))) = lhs(WFF336) gives TRUE
+Evaluating SUMEQ(WFF336, TERM337) gives TRUE
+Evaluating - gives -
+Evaluating WFF336 gives WFF336
+Evaluating rhs(WFF336) gives rhs(WFF336)
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating rarg(lhs(WFF336)) gives rarg(lhs(WFF336))
+Evaluating fun2apply(-, rhs(WFF336), rarg(lhs(WFF336))) gives fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))
+Evaluating trmif SUMEQ(WFF336, TERM337) then fun2apply(-, rhs(WFF336), rarg(lhs(WFF336))) else fun2apply(+, rhs(WFF336), rarg(lhs(WFF336))) gives fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))
+Evaluating solve(WFF336, TERM337) gives fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))
+Evaluating pred2apply(Equal, TERM337, solve(WFF336, TERM337)) gives pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336))))
+Evaluating mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, solve(WFF336, TERM337))) gives mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))))
+Evaluating trmif SUMEQ(WFF336, TERM337) then mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, solve(WFF336, TERM337))) else pred2apply(Equal, TERM337, solve(WFF336, TERM337)) gives mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))))
+Evaluating ifSolvable(WFF336, TERM337, pred2apply(Equal, TERM337, solve(WFF336, TERM337))) gives mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))))
+Evaluating THEOREM(ifSolvable(WFF336, TERM337, pred2apply(Equal, TERM337, solve(WFF336, TERM337)))) doesn' t work
+THEOREM(mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))))): syntactic simplification fails.
+THEOREM(mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))))): syntactic simplification fails.
+Evaluating < gives <
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating rarg(lhs(WFF336)) gives rarg(lhs(WFF336))
+Evaluating WFF336 gives WFF336
+Evaluating rhs(WFF336) gives rhs(WFF336)
+Evaluating pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)) gives pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336))
+Evaluating Equal gives Equal
+Evaluating TERM337 gives TERM337
+Evaluating - gives -
+Evaluating WFF336 gives WFF336
+Evaluating rhs(WFF336) gives rhs(WFF336)
+Evaluating WFF336 gives WFF336
+Evaluating lhs(WFF336) gives lhs(WFF336)
+Evaluating rarg(lhs(WFF336)) gives rarg(lhs(WFF336))
+Evaluating fun2apply(-, rhs(WFF336), rarg(lhs(WFF336))) gives fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))
+Evaluating pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))) gives pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336))))
+Evaluating mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336))))) gives mkimp(pred2apply(<, rarg(lhs(WFF336)), rhs(WFF336)), pred2apply(Equal, TERM337, fun2apply(-, rhs(WFF336), rarg(lhs(WFF336)))))
+I am switching from the current context to: OBJ
+
+8   (suc(suc(zro)) < suc(suc(suc(zro)))) imp (y = (suc(suc(suc(zro))) - suc(suc(zro))))     
+Ok!! I am finished doing reflection
+
+GETFOL:: rewrite 8 by TMINUS;
+
+9   ((suc(suc(zro)) < suc(suc(suc(zro)))) imp (y = (suc(suc(suc(zro))) - suc(suc(zro))))) iff ((suc(suc(zro)) < suc(suc(suc(zro)))) imp (y = suc(zro)))     
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect SOLVE (y-suc(suc(zro))=suc(suc(suc(zro)))) y;
+I am switching from the current context to: META
+LINEAREQ(WFF357, TERM358) imp THEOREM(ifSolvable(WFF357, TERM358, pred2apply(Equal, TERM358, solve(WFF357, TERM358)))): syntactic simplification fails.
+LINEAREQ has no interpretation.
+Syntactic simplification of LINEAREQ(WFF357, TERM358) gives SUMEQ(WFF357, TERM358) or DIFFEQ(WFF357, TERM358)
+SUMEQ(WFF357, TERM358) or DIFFEQ(WFF357, TERM358): syntactic simplification fails.
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF357, TERM358) gives fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357)
+Evaluating + gives +
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating larg(lhs(WFF357)) gives TERM358
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating rarg(lhs(WFF357)) gives rarg(lhs(WFF357))
+Evaluating fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) gives fun2apply(+, TERM358, rarg(lhs(WFF357)))
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357) gives FALSE
+Evaluating SUMEQ(WFF357, TERM358) gives FALSE
+DIFFEQ has no interpretation.
+Syntactic simplification of DIFFEQ(WFF357, TERM358) gives fun2apply(-, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357)
+Evaluating - gives -
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating larg(lhs(WFF357)) gives TERM358
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating rarg(lhs(WFF357)) gives rarg(lhs(WFF357))
+Evaluating fun2apply(-, larg(lhs(WFF357)), rarg(lhs(WFF357))) gives fun2apply(-, TERM358, rarg(lhs(WFF357)))
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating fun2apply(-, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357) gives TRUE
+Evaluating DIFFEQ(WFF357, TERM358) gives TRUE
+TRUE: syntactic simplification fails.
+Evaluating LINEAREQ(WFF357, TERM358) gives TRUE
+THEOREM has no interpretation.
+THEOREM(ifSolvable(WFF357, TERM358, pred2apply(Equal, TERM358, solve(WFF357, TERM358)))): syntactic simplification fails.
+ifSolvable has no interpretation.
+Syntactic simplification of ifSolvable(WFF357, TERM358, pred2apply(Equal, TERM358, solve(WFF357, TERM358))) gives trmif SUMEQ(WFF357, TERM358) then mkimp(pred2apply(<, rarg(lhs(WFF357)), rhs(WFF357)), pred2apply(Equal, TERM358, solve(WFF357, TERM358))) else pred2apply(Equal, TERM358, solve(WFF357, TERM358))
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF357, TERM358) gives fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357)
+Evaluating + gives +
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating larg(lhs(WFF357)) gives TERM358
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating rarg(lhs(WFF357)) gives rarg(lhs(WFF357))
+Evaluating fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) gives fun2apply(+, TERM358, rarg(lhs(WFF357)))
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357) gives FALSE
+Evaluating SUMEQ(WFF357, TERM358) gives FALSE
+Evaluating Equal gives Equal
+Evaluating TERM358 gives TERM358
+solve has no interpretation.
+Syntactic simplification of solve(WFF357, TERM358) gives trmif SUMEQ(WFF357, TERM358) then fun2apply(-, rhs(WFF357), rarg(lhs(WFF357))) else fun2apply(+, rhs(WFF357), rarg(lhs(WFF357)))
+SUMEQ has no interpretation.
+Syntactic simplification of SUMEQ(WFF357, TERM358) gives fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357)
+Evaluating + gives +
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating larg(lhs(WFF357)) gives TERM358
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating rarg(lhs(WFF357)) gives rarg(lhs(WFF357))
+Evaluating fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) gives fun2apply(+, TERM358, rarg(lhs(WFF357)))
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating fun2apply(+, larg(lhs(WFF357)), rarg(lhs(WFF357))) = lhs(WFF357) gives FALSE
+Evaluating SUMEQ(WFF357, TERM358) gives FALSE
+Evaluating + gives +
+Evaluating WFF357 gives WFF357
+Evaluating rhs(WFF357) gives rhs(WFF357)
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating rarg(lhs(WFF357)) gives rarg(lhs(WFF357))
+Evaluating fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))) gives fun2apply(+, rhs(WFF357), rarg(lhs(WFF357)))
+Evaluating trmif SUMEQ(WFF357, TERM358) then fun2apply(-, rhs(WFF357), rarg(lhs(WFF357))) else fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))) gives fun2apply(+, rhs(WFF357), rarg(lhs(WFF357)))
+Evaluating solve(WFF357, TERM358) gives fun2apply(+, rhs(WFF357), rarg(lhs(WFF357)))
+Evaluating pred2apply(Equal, TERM358, solve(WFF357, TERM358)) gives pred2apply(Equal, TERM358, fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))))
+Evaluating trmif SUMEQ(WFF357, TERM358) then mkimp(pred2apply(<, rarg(lhs(WFF357)), rhs(WFF357)), pred2apply(Equal, TERM358, solve(WFF357, TERM358))) else pred2apply(Equal, TERM358, solve(WFF357, TERM358)) gives pred2apply(Equal, TERM358, fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))))
+Evaluating ifSolvable(WFF357, TERM358, pred2apply(Equal, TERM358, solve(WFF357, TERM358))) gives pred2apply(Equal, TERM358, fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))))
+Evaluating THEOREM(ifSolvable(WFF357, TERM358, pred2apply(Equal, TERM358, solve(WFF357, TERM358)))) doesn' t work
+THEOREM(pred2apply(Equal, TERM358, fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))))): syntactic simplification fails.
+THEOREM(pred2apply(Equal, TERM358, fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))))): syntactic simplification fails.
+Evaluating Equal gives Equal
+Evaluating TERM358 gives TERM358
+Evaluating + gives +
+Evaluating WFF357 gives WFF357
+Evaluating rhs(WFF357) gives rhs(WFF357)
+Evaluating WFF357 gives WFF357
+Evaluating lhs(WFF357) gives lhs(WFF357)
+Evaluating rarg(lhs(WFF357)) gives rarg(lhs(WFF357))
+Evaluating fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))) gives fun2apply(+, rhs(WFF357), rarg(lhs(WFF357)))
+Evaluating pred2apply(Equal, TERM358, fun2apply(+, rhs(WFF357), rarg(lhs(WFF357)))) gives pred2apply(Equal, TERM358, fun2apply(+, rhs(WFF357), rarg(lhs(WFF357))))
+I am switching from the current context to: OBJ
+
+10   y = (suc(suc(suc(zro))) + suc(suc(zro)))     
+Ok!! I am finished doing reflection
+
+GETFOL:: rewrite 10 by PEANO;
+
+11   (y = (suc(suc(suc(zro))) + suc(suc(zro)))) iff (y = suc(suc(suc(suc(suc(zro))))))     
+
+GETFOL:: I am finished fetching ../tst/prolegomena/sec91.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
 GETFOL::  fetch ../tst/prolegomena/appa.tst;
 I am starting to fetch ../tst/prolegomena/appa.tst
 

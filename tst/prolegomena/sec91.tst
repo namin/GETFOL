@@ -150,4 +150,3 @@ theorem THMz 3;
 switchproof PROOFobj;
 
 show axiom;
-|

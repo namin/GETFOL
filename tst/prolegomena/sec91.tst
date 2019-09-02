@@ -4,7 +4,8 @@ declare indconst x y z [NATNUM];
 axiom E: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
 
 declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
-attach - to -;
+deflam minus (N M) (LET ((R (- N M))) (COND ((> R 0) R) (T 0)));
+attach - to [NATNUM,NATNUM=NATNUM] minus;
 axiom MINUS0R: forall n. n - zro = n;
 axiom MINUS0L: forall n. zro - n = zro;
 axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
@@ -24,6 +25,8 @@ rewrite A  by TMINUS uni THM2 uni THM3 uni LOGICTREE;
 iffe 2 1;
 impe 3 A;
 impe 4 E;
+
+theorem THMx 5;
 
 namecontext OBJ;
 MAKECONTEXT META;
@@ -113,11 +116,31 @@ SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
 
-reflect SOLVE (x-suc(suc(zro))=zro) x;
-rewrite 6 by PEANO;
-reflect SOLVE (y+suc(suc(zro))=suc(suc(suc(zro)))) y;
-rewrite 8 by TMINUS;
-reflect SOLVE (y-suc(suc(zro))=suc(suc(suc(zro)))) y;
-rewrite 10 by PEANO;
-reflect SOLVE_MINUS_LINEAREQ y zro suc(zro);
-rewrite 10 by PEANO;
+reflect SOLVE (y-suc(suc(zro))=zro) y;
+eval 6;
+iffe 7 1;
+impe 6 8;
+rewrite 9 by PEANO;
+iffe 10 1;
+impe 11 9;
+theorem THMy 12;
+
+reflect SOLVE (x+suc(suc(zro))=suc(suc(suc(suc(suc(zro)))))) x;
+eval 13;
+iffe 14 1;
+impe 13 15;
+rewrite 16 by TMINUS;
+iffe 17 1;
+impe 16 18;
+theorem THMx2 19;
+
+reflect SOLVE_MINUS_LINEAREQ z suc(suc(zro)) suc(suc(suc(zro)));
+eval 20;
+iffe 21 1;
+impe 20 22;
+rewrite 23 by PEANO;
+iffe 24 1;
+impe 23 25;
+theorem THMz 26;
+
+show axiom;

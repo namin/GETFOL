@@ -11,6 +11,11 @@ axiom MINUS0L: forall n. zro - n = zro;
 axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
 setbasicsimp TMINUS at facts {MINUS0R,MINUS0L,MINUS};
 
+declare predconst NUMERAL 1;
+axiom NUMERAL0: NUMERAL(zro);
+axiom NUMERALS: forall n.(NUMERAL(suc(n)) iff NUMERAL(n));
+setbasicsimp TNUMERAL at facts {NUMERAL0,NUMERALS};
+
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
 axiom THM2: forall p q m.(p+q)-m=p+(q-m);
 theorem THM3 PLUS0;
@@ -72,11 +77,11 @@ MATTACH < dar [PREDCONST] OBJ::PREDCONST:<;
 ATTACH pred1apply TO [PREDCONST,TERM=WFF] predappl1\-mak;
 ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
 
-DECLARE INDCONST Natnum [PREDCONST];
+DECLARE INDCONST Numeral [PREDCONST];
 DECLARE FUNCONST fun1apply (FUNCONST TERM)=TERM;
 DECLARE FUNCONST fun2apply (FUNCONST TERM TERM)=TERM;
 DECLARE INDCONST zro suc + - [INDCONST];
-MATTACH Natnum dar [PREDCONST] OBJ::PREDCONST:NATNUM;
+MATTACH Numeral dar [PREDCONST] OBJ::PREDCONST:NUMERAL;
 MATTACH zro dar [INDCONST] OBJ::INDCONST:zro;
 MATTACH suc dar [FUNCONST] OBJ::FUNCONST:suc;
 MATTACH + dar [FUNCONST] OBJ::FUNCONST:+;
@@ -102,45 +107,47 @@ AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   else fun2apply(+,rhs(w),rarg(lhs(w))));
 DECLARE FUNCONST ifSolvable (WFF TERM WFF)=WFF;
 AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
-  mkimp(mkand(pred1apply(Natnum,rarg(lhs(w))),pred1apply(Natnum,rhs(w))),
+  mkimp(mkand(pred1apply(Numeral,rarg(lhs(w))),pred1apply(Numeral,rhs(w))),
   trmif SUMEQ(w, x)
   then mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), r)
   else r));
 
 AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x)))));
 
-AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.(THEOREM(mkimp(mkand(pred1apply(Natnum,y),pred1apply(Natnum,z)), pred2apply(Equal,x,fun2apply(+,z,y)))));
+AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.(THEOREM(mkimp(mkand(pred1apply(Numeral,y),pred1apply(Numeral,z)), pred2apply(Equal,x,fun2apply(+,z,y)))));
 
 SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
 
+nameproof PROOFobj;
+makeproof PROOFy;
+switchproof PROOFy;
 reflect SOLVE (y-suc(suc(zro))=zro) y;
-eval 6;
-iffe 7 1;
-impe 6 8;
-rewrite 9 by PEANO;
-iffe 10 1;
-impe 11 9;
-theorem THMy 12;
+rewrite 1 by LOGICTREE uni TNUMERAL uni PEANO;
+decide y = suc(suc(zro)) by 1 2 using ptaut;
+theorem THMy 3;
 
+makeproof PROOFx;
+switchproof PROOFx;
 reflect SOLVE (x+suc(suc(zro))=suc(suc(suc(suc(suc(zro)))))) x;
-eval 13;
-iffe 14 1;
-impe 13 15;
-rewrite 16 by TMINUS;
-iffe 17 1;
-impe 16 18;
-theorem THMx2 19;
+rewrite 1 by LOGICTREE uni TNUMERAL uni PEANO uni TMINUS;
+iffe 2 1;
+impe 1 3;
+eval 4;
+iffe 5 1;
+impe 4 6;
+theorem THMx2 7;
 
+makeproof PROOFz;
+switchproof PROOFz;
 reflect SOLVE_MINUS_LINEAREQ z suc(suc(zro)) suc(suc(suc(zro)));
-eval 20;
-iffe 21 1;
-impe 20 22;
-rewrite 23 by PEANO;
-iffe 24 1;
-impe 23 25;
-theorem THMz 26;
+rewrite 1 by LOGICTREE uni TNUMERAL uni PEANO;
+decide z = suc(suc(suc(suc(suc(zro))))) by 1 2 using ptaut;
+theorem THMz 3;
+
+switchproof PROOFobj;
 
 show axiom;
+|

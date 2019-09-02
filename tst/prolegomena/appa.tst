@@ -19,10 +19,10 @@ axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
 
 setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
 
-decrep NATNUMREP;
-represent {NATNUM} as NATNUMREP;
-attach zro to 0;
-attach suc to ADD1;
+decrep NATNUM;
+represent {NATNUM} as NATNUM;
+attach zro to [NATNUM] 0;
+attach suc to [NATNUM=NATNUM] ADD1;
 deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
 attach prd to prd;
 attach + to +;

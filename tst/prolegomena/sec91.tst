@@ -86,7 +86,7 @@ DECLARE indvar w r [WFF];
 DECLARE indvar vl [FACT];
 DECLARE indvar op [FUNCONST];
 
-DECLARE PREDCONST EQU NUMERAL 1;
+DECLARE PREDCONST EQU 1;
 DECLARE PREDCONST LINEAREQ SUMEQ DIFFEQ 2;
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (EQU(w) and (SUMEQ(w,x) or DIFFEQ(w,x))));
 AXIOM AX_EQU: forall w.(EQU(w) iff pred2apply(Equal,lhs(w),rhs(w))=w);
@@ -105,12 +105,9 @@ AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
 
 AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x)))));
 
-AXIOM AX_NUMERAL0: NUMERAL(zro);
-AXIOM AX_NUMERALS: forall x.(NUMERAL(x) imp NUMERAL(fun1apply(suc,x)));
-
 AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.(THEOREM(mkimp(mkand(pred1apply(Natnum,y),pred1apply(Natnum,z)), pred2apply(Equal,x,fun2apply(+,z,y)))));
 
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,AX_NUMERAL0,AX_NUMERALS};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;

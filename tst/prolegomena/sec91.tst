@@ -99,9 +99,10 @@ AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   else fun2apply(+,rhs(w),rarg(lhs(w))));
 DECLARE FUNCONST ifSolvable (WFF TERM WFF)=WFF;
 AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
+  mkimp(mkand(pred1apply(Natnum,rarg(lhs(w))),pred1apply(Natnum,rhs(w))),
   trmif SUMEQ(w, x)
   then mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), r)
-  else r);
+  else r));
 
 AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x)))));
 

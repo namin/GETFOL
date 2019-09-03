@@ -94,9 +94,17 @@ DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (EQ (CAR X) suc) (numeral (CADR X
 ATTACH numeral TO [TERM,INDCONST,FUNCONST] numeral;
 AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
 
+DECLARE PREDCONST LT 2;
+DEFLAM lt (X Y) (COND ((AND (LISTP X) (LISTP Y)) (lt (CADR X) (CADR Y))) ((LISTP Y) T));
+ATTACH LT to [TERM,TERM] lt;
+
 DECLARE PREDCONST EQU 1;
 DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
-AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff ((EQU(w) and (SUMEQ(w,x) or DIFFEQ(w,x))) and (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w)))));
+AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
+  EQU(w) and
+  (SUMEQ(w,x) or DIFFEQ(w,x)) and
+  (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
+  (SUMEQ(w,x) imp LT(larg(lhs(w)),rhs(w)))));
 AXIOM AX_EQU: forall w.(EQU(w) iff pred2apply(Equal,lhs(w),rhs(w))=w);
 AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff fun2apply(+,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
 AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff fun2apply(-,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
@@ -105,19 +113,14 @@ AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   trmif SUMEQ(w, x)
   then fun2apply(-,rhs(w),rarg(lhs(w)))
   else fun2apply(+,rhs(w),rarg(lhs(w))));
-DECLARE FUNCONST ifSolvable (WFF TERM WFF)=WFF;
-AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
-  trmif SUMEQ(w, x)
-  then mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), r)
-  else r);
 
-AXIOM AX_SOLVE_THM: forall w x.(SOLVE_THM(w,x) iff (LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x))))));
+AXIOM AX_SOLVE_THM: forall w x.(SOLVE_THM(w,x) iff (LINEAREQ(w,x) imp THEOREM(pred2apply(Equal,x,solve(w,x)))));
 
 AXIOM SOLVE: forall w x.SOLVE_THM(w,x);
 
 AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.SOLVE_THM(pred2apply(Equal,fun2apply(-,x,y),z),x);
 
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,AX_SOLVE_THM,AX_NUMERAL};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVE_THM,AX_NUMERAL};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
@@ -134,13 +137,9 @@ theorem THMy 3;
 makeproof PROOFx2;
 switchproof PROOFx2;
 reflect SOLVE (x+suc(suc(zro))=suc(suc(suc(suc(suc(zro)))))) x;
-rewrite 1 by LOGICTREE uni PEANO uni TMINUS;
-iffe 2 1;
-impe 1 3;
-eval 4;
-iffe 5 1;
-impe 4 6;
-theorem THx2 7;
+rewrite 1 by LOGICTREE uni TMINUS;
+decide x = suc(suc(suc(zro))) by 1 2 using ptaut;
+theorem THx2 3;
 
 makeproof PROOFz;
 switchproof PROOFz;
@@ -152,3 +151,5 @@ theorem THMz 3;
 switchproof PROOFobj;
 
 show axiom;
+
+|

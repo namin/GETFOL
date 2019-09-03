@@ -95,6 +95,7 @@ DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   EQU(w) and
   (SUMEQ(w,x) or DIFFEQ(w,x)) and
+  larg(lhs(w))=x and
   (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
   (SUMEQ(w,x) imp LT(larg(lhs(w)),rhs(w)))));
 AXIOM AX_EQU: forall w.(EQU(w) iff mainpred(w)=Equal);

@@ -15,7 +15,7 @@ axiom Ex: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
 axiom Ey: y - suc(suc(zro)) = zro;
 axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
 
-comment | Assuming the following theorem, we can solve by hand. |
+comment | Assuming the following theorems, we can solve by hand. |
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
 axiom THM2: forall p q m.(p+q)-m=p+(q-m);
 theorem THM3 PLUS0;

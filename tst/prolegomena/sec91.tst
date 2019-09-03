@@ -59,9 +59,10 @@ DECLARE FUNCONST mainpred (WFF)=PREDCONST;
 DECLARE FUNCONST pred2apply (PREDCONST TERM TERM)=WFF;
 DECLARE INDCONST Equal [PREDCONST];
 MATTACH Equal dar [PREDCONST] OBJ::PREDCONST:=;
-ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
 ATTACH mainpred to [WFF=PREDCONST] predappl\-get\-pred;
+ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
 
+DECLARE FUNCONST mainfun (TERM)=FUNCONST;
 DECLARE FUNCONST fun2apply (FUNCONST TERM TERM)=TERM;
 DECLARE INDCONST zro [INDCONST];
 DECLARE INDCONST suc + - [FUNCONST];
@@ -69,7 +70,9 @@ MATTACH zro dar [INDCONST] OBJ::INDCONST:zro;
 MATTACH suc dar [FUNCONST] OBJ::FUNCONST:suc;
 MATTACH + dar [FUNCONST] OBJ::FUNCONST:+;
 MATTACH - dar [FUNCONST] OBJ::FUNCONST:-;
+ATTACH mainfun to [TERM=FUNCONST] funappl\-get\-fun;
 ATTACH fun2apply TO [FUNCONST,TERM,TERM=TERM] funappl2\-mak;
+
 
 DECLARE indvar x y z [TERM];
 DECLARE indvar w [WFF];
@@ -93,8 +96,8 @@ AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
   (SUMEQ(w,x) imp LT(larg(lhs(w)),rhs(w)))));
 AXIOM AX_EQU: forall w.(EQU(w) iff mainpred(w)=Equal);
-AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff fun2apply(+,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
-AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff fun2apply(-,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
+AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff mainfun(lhs(w))=+);
+AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff mainfun(lhs(w))=-);
 DECLARE FUNCONST solve (WFF TERM)=TERM;
 AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   trmif SUMEQ(w, x)

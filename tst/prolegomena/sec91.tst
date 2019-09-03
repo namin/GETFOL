@@ -89,10 +89,10 @@ AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
 
 KNOW natnums;
 DECLARE FUNCONST mknum (TERM)=NATNUMSORT;
-DEFLAM mknum (X) (IF (LISTP X) (ADD1 (mknum (CADR X))) 0);
+DEFLAM mknum (X) (IF (FUNAPPL X) (ADD1 (mknum (funappl1\-get\-arg X))) 0);
 ATTACH mknum TO [TERM=NATNUMREP] mknum;
 DECLARE FUNCONST mknumeral (NATNUMSORT,TERM,FUNCONST)=TERM;
-DEFLAM mknumeral (X zro suc) (IF (= X 0) zro (LIST suc (mknumeral (SUB1 X) zro suc)));
+DEFLAM mknumeral (X zro suc) (IF (= X 0) zro (funappl1\-mak suc (mknumeral (SUB1 X) zro suc)));
 ATTACH mknumeral TO [NATNUMREP,TERM,FUNCONST=TERM] mknumeral;
 
 DECLARE PREDCONST LEQ 2;

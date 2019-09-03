@@ -95,9 +95,15 @@ DECLARE indvar w r [WFF];
 DECLARE indvar vl [FACT];
 DECLARE indvar op [FUNCONST];
 
+DECLARE PREDCONST NUMERAL 1;
+DECLARE PREDCONST numeral 3;
+DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (EQ (CAR X) suc) (numeral (CADR X) zro suc)));
+ATTACH numeral TO [TERM,INDCONST,FUNCONST] numeral;
+AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
+
 DECLARE PREDCONST EQU 1;
 DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
-AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (EQU(w) and (SUMEQ(w,x) or DIFFEQ(w,x))));
+AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff ((EQU(w) and (SUMEQ(w,x) or DIFFEQ(w,x))) and (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w)))));
 AXIOM AX_EQU: forall w.(EQU(w) iff pred2apply(Equal,lhs(w),rhs(w))=w);
 AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff fun2apply(+,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
 AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff fun2apply(-,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
@@ -121,12 +127,13 @@ AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.(THEOREM(mkimp(mkand(pred1apply(Numeral
 
 AXIOM SOLVE_MINUS_LINEAREQ_ALT: forall x y z.SOLVE_THM(pred2apply(Equal,fun2apply(-,x,y),z),x);
 
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,AX_SOLVE_THM};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,AX_SOLVE_THM,AX_NUMERAL};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
 
 nameproof PROOFobj;
+
 makeproof PROOFy;
 switchproof PROOFy;
 reflect SOLVE (y-suc(suc(zro))=zro) y;

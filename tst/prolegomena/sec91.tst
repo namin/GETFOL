@@ -55,10 +55,12 @@ ATTACH larg TO [TERM=TERM] larg;
 DEFLAM rarg (t) (CADR (appl\-get\-args t));
 ATTACH rarg TO [TERM=TERM] rarg;
 
+DECLARE FUNCONST mainpred (WFF)=PREDCONST;
 DECLARE FUNCONST pred2apply (PREDCONST TERM TERM)=WFF;
 DECLARE INDCONST Equal [PREDCONST];
 MATTACH Equal dar [PREDCONST] OBJ::PREDCONST:=;
 ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
+ATTACH mainpred to [WFF=PREDCONST] predappl\-get\-pred;
 
 DECLARE FUNCONST fun2apply (FUNCONST TERM TERM)=TERM;
 DECLARE INDCONST zro [INDCONST];
@@ -90,7 +92,7 @@ AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   (SUMEQ(w,x) or DIFFEQ(w,x)) and
   (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
   (SUMEQ(w,x) imp LT(larg(lhs(w)),rhs(w)))));
-AXIOM AX_EQU: forall w.(EQU(w) iff pred2apply(Equal,lhs(w),rhs(w))=w);
+AXIOM AX_EQU: forall w.(EQU(w) iff mainpred(w)=Equal);
 AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff fun2apply(+,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
 AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff fun2apply(-,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
 DECLARE FUNCONST solve (WFF TERM)=TERM;

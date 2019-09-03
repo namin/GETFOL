@@ -4,6 +4,7 @@ Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dt
 
 # ToC
 
+## Paper
 - [sec2.tst](sec2.tst): syllogism.
 - [sec6.tst](sec6.tst): factorial.
 - [sec9.tst](sec9.tst): reflection principle. _"Change theorem proving in the theory into evaluation in the metatheory."_
@@ -12,6 +13,9 @@ Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dt
 - [appb.tst](appb.tst): an axiomatization of s-expressions.
 - [appd.tst](appd.tst): semantic evaluations.
 - [appe.tst](appe.tst): syntactic simplification.
+
+## Hacking
+- [underlying.tst](underlying.tst): alternative evaluator that prints underlying representation when evaluation is successful, and still applies rewrites when evaluation is successful. Not needed for examples, but convenient.
 
 ## See also
 

@@ -1,5 +1,6 @@
 fetch ../tst/prolegomena/appa.tst;
 
+comment | We add a theory of minus -. |
 declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
 deflam minus (N M) (LET ((R (- N M))) (COND ((> R 0) R) (T 0)));
 attach - to [NATNUM,NATNUM=NATNUM] minus;
@@ -8,11 +9,13 @@ axiom MINUS0L: forall n. zro - n = zro;
 axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
 setbasicsimp TMINUS at facts {MINUS0R,MINUS0L,MINUS};
 
+comment | We have some linear equations. |
 declare indconst x y z [NATNUM];
 axiom Ex: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
 axiom Ey: y - suc(suc(zro)) = zro;
 axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
 
+comment | Assuming the following theorem, we can solve by hand. |
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
 axiom THM2: forall p q m.(p+q)-m=p+(q-m);
 theorem THM3 PLUS0;
@@ -30,6 +33,17 @@ impe 4 Ex;
 
 theorem THMx 5;
 
+comment | Let us switch to the meta level, and do some algebra. |
+comment | We will say (not prove) that                          |
+comment |     x + n = m is x=m-n (if still non-negative)        |
+comment | and x - n = m is x=m+n (always valid).                |
+comment | We will require that                                  |
+comment | 1. the equation has one of the shapes above,          |
+comment | 2. including n and m are literal numbers,             |
+comment | 3. for x=m-n we ensure that n<=m.                     |
+comment | We will give a solved answer of the form x=n.         |
+comment | That is, we do all the checking and computation       |
+comment | at the meta level.                                    |
 namecontext OBJ;
 MAKECONTEXT META;
 SWITCHCONTEXT META;
@@ -108,22 +122,29 @@ DECLARE FUNCONST plus minus (NATNUMSORT NATNUMSORT)=NATNUMSORT;
 ATTACH plus TO [NATNUMREP,NATNUMREP=NATNUMREP] +;
 ATTACH minus TO [NATNUMREP,NATNUMREP=NATNUMREP] -;
 
+DECLARE FUNCONST mkequal (TERM TERM)=WFF;
+AXIOM AX_MKEQUAL: forall x y.mkequal(x,y)=pred2apply(Equal,x,y);
+
 DECLARE PREDCONST LINEAREQ 2;
 DECLARE FUNCONST solve (WFF TERM)=TERM;
+
+comment | The 3 next axioms are close to the formulation in the paper. |
+
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   mainpred(w)=Equal and
   (mainfun(lhs(w))=+ or mainfun(lhs(w))=-) and
   larg(lhs(w))=x and
   (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
   (mainfun(lhs(w))=+ imp LEQ(mknum(larg(lhs(w))),mknum(rhs(w))))));
+
 AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   trmif mainfun(lhs(w))=+
   then mknumeral(minus(mknum(rhs(w)),mknum(rarg(lhs(w)))))
   else mknumeral(plus(mknum(rhs(w)),mknum(rarg(lhs(w))))));
 
-AXIOM SOLVE: forall vl x.(LINEAREQ(wffof(vl),x) imp THEOREM(pred2apply(Equal,x,solve(wffof(vl),x))));
+AXIOM SOLVE: forall vl x.(LINEAREQ(wffof(vl),x) imp THEOREM(mkequal(x,solve(wffof(vl),x))));
 
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SOLVE,AX_NUMERAL,AX_MKNUMERAL};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SOLVE,AX_NUMERAL,AX_MKNUMERAL,AX_MKEQUAL};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;

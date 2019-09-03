@@ -86,9 +86,9 @@ DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (FUNAPPL X) (EQ (funappl\-get\-fu
 ATTACH numeral TO [TERM,INDCONST,FUNCONST] numeral;
 AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
 
-DECLARE PREDCONST LT 2;
-DEFLAM lt (X Y) (COND ((AND (FUNAPPL X) (FUNAPPL Y)) (lt (CADR X) (CADR Y))) ((FUNAPPL Y) T));
-ATTACH LT to [TERM,TERM] lt;
+DECLARE PREDCONST LEQ 2;
+DEFLAM leq (X Y) (COND ((AND (FUNAPPL X) (FUNAPPL Y)) (lt (CADR X) (CADR Y))) ((FUNAPPL Y) T) ((FUNAPPL X) F) (T T));
+ATTACH LEQ to [TERM,TERM] leq;
 
 DECLARE PREDCONST EQU 1;
 DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
@@ -97,7 +97,7 @@ AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   (SUMEQ(w,x) or DIFFEQ(w,x)) and
   larg(lhs(w))=x and
   (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
-  (SUMEQ(w,x) imp LT(larg(lhs(w)),rhs(w)))));
+  (SUMEQ(w,x) imp LEQ(larg(lhs(w)),rhs(w)))));
 AXIOM AX_EQU: forall w.(EQU(w) iff mainpred(w)=Equal);
 AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff mainfun(lhs(w))=+);
 AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff mainfun(lhs(w))=-);

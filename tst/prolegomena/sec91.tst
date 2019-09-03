@@ -44,6 +44,8 @@ REPRESENT {PREDCONST} AS PREDCONST;
 REPRESENT {FUNCONST} AS FUNCONST;
 REPRESENT {INDCONST} AS INDCONST;
 
+MOREGENERAL TERM <INDCONST>;
+
 DECLARE FUNCONST wffof (FACT)=WFF;
 DECLARE FUNCONST lhs rhs (WFF)=TERM;
 DECLARE FUNCONST larg rarg (TERM)=TERM;
@@ -64,6 +66,7 @@ ATTACH mainpred to [WFF=PREDCONST] mainpred;
 ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
 
 DECLARE FUNCONST mainfun (TERM)=FUNCONST;
+DECLARE FUNCONST fun1apply (FUNCONST TERM)=TERM;
 DECLARE FUNCONST fun2apply (FUNCONST TERM TERM)=TERM;
 DECLARE INDCONST zro [INDCONST];
 DECLARE INDCONST suc + - [FUNCONST];
@@ -73,6 +76,7 @@ MATTACH + dar [FUNCONST] OBJ::FUNCONST:+;
 MATTACH - dar [FUNCONST] OBJ::FUNCONST:-;
 DEFLAM mainfun (X) (AND (FUNAPPL X) (funappl\-get\-fun X));
 ATTACH mainfun to [TERM=FUNCONST] mainfun;
+ATTACH fun1apply TO [FUNCONST,TERM=TERM] funappl1\-mak;
 ATTACH fun2apply TO [FUNCONST,TERM,TERM=TERM] funappl2\-mak;
 
 
@@ -90,6 +94,12 @@ DECLARE PREDCONST LEQ 2;
 DEFLAM leq (X Y) (COND ((AND (FUNAPPL X) (FUNAPPL Y)) (lt (CADR X) (CADR Y))) ((FUNAPPL Y) T) ((FUNAPPL X) F) (T T));
 ATTACH LEQ to [TERM,TERM] leq;
 
+DECLARE FUNCONST PLUS MINUS (TERM TERM)=TERM;
+DEFLAM plus  (X Y) (IF (FUNAPPL Y) (LIST (CAR Y) (plus X (CADR Y))) X);
+DEFLAM minus (X Y) (IF (FUNAPPL X) (IF (FUNAPPL Y) (minus (CADR X) (CADR Y)) X) X);
+ATTACH PLUS TO [TERM,TERM=TERM] plus;
+ATTACH MINUS TO [TERM,TERM=TERM] minus;
+
 DECLARE PREDCONST EQU 1;
 DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
@@ -104,8 +114,8 @@ AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff mainfun(lhs(w))=-);
 DECLARE FUNCONST solve (WFF TERM)=TERM;
 AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   trmif SUMEQ(w, x)
-  then fun2apply(-,rhs(w),rarg(lhs(w)))
-  else fun2apply(+,rhs(w),rarg(lhs(w))));
+  then MINUS(rhs(w),rarg(lhs(w)))
+  else PLUS(rhs(w),rarg(lhs(w))));
 
 AXIOM AX_SOLVE_THM: forall w x.(SOLVE_THM(w,x) iff (LINEAREQ(w,x) imp THEOREM(pred2apply(Equal,x,solve(w,x)))));
 
@@ -118,29 +128,10 @@ SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
 
-nameproof PROOFobj;
-
-makeproof PROOFy;
-switchproof PROOFy;
 reflect SOLVE (y-suc(suc(zro))=zro) y;
-rewrite 1 by LOGICTREE uni PEANO;
-decide y = suc(suc(zro)) by 1 2 using ptaut;
-theorem THMy 3;
 
-makeproof PROOFx2;
-switchproof PROOFx2;
 reflect SOLVE (x+suc(suc(zro))=suc(suc(suc(suc(suc(zro)))))) x;
-rewrite 1 by LOGICTREE uni TMINUS;
-decide x = suc(suc(suc(zro))) by 1 2 using ptaut;
-theorem THx2 3;
 
-makeproof PROOFz;
-switchproof PROOFz;
 reflect SOLVE_MINUS_LINEAREQ z suc(suc(zro)) suc(suc(suc(zro)));
-rewrite 1 by LOGICTREE uni PEANO;
-decide z = suc(suc(suc(suc(suc(zro))))) by 1 2 using ptaut;
-theorem THMz 3;
-
-switchproof PROOFobj;
 
 show axiom;

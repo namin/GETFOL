@@ -1,8 +1,5 @@
 fetch ../tst/prolegomena/appa.tst;
 
-declare indconst x y z [NATNUM];
-axiom E: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
-
 declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
 deflam minus (N M) (LET ((R (- N M))) (COND ((> R 0) R) (T 0)));
 attach - to [NATNUM,NATNUM=NATNUM] minus;
@@ -10,6 +7,11 @@ axiom MINUS0R: forall n. n - zro = n;
 axiom MINUS0L: forall n. zro - n = zro;
 axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
 setbasicsimp TMINUS at facts {MINUS0R,MINUS0L,MINUS};
+
+declare indconst x y z [NATNUM];
+axiom Ex: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
+axiom Ey: y - suc(suc(zro)) = zro;
+axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
 
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
 axiom THM2: forall p q m.(p+q)-m=p+(q-m);
@@ -24,7 +26,7 @@ theorem A 1;
 rewrite A  by TMINUS uni THM2 uni THM3 uni LOGICTREE;
 iffe 2 1;
 impe 3 A;
-impe 4 E;
+impe 4 Ex;
 
 theorem THMx 5;
 
@@ -34,13 +36,17 @@ SWITCHCONTEXT META;
 
 DECLARE PREDCONST THEOREM 1;
 
-DECLARE SORT TERM WFF PREDSYM FUNSYM;
+DECLARE SORT TERM WFF FACT PREDSYM FUNSYM;
 
-DECREP TERM WFF PREDSYM FUNSYM;
+DECREP TERM WFF FACT PREDSYM FUNSYM;
 REPRESENT {TERM} AS TERM;
 REPRESENT {WFF} AS WFF;
+REPRESENT {FACT} AS FACT;
 REPRESENT {PREDSYM} AS PREDSYM;
 REPRESENT {FUNSYM} AS FUNSYM;
+
+DECLARE FUNCONST wffof (FACT)=WFF;
+ATTACH wffof TO [FACT=WFF] fact\-get\-wff;
 
 DECLARE FUNCONST lhs rhs (WFF)=TERM;
 DECLARE FUNCONST larg rarg (TERM)=TERM;
@@ -73,10 +79,9 @@ ATTACH mainfun to [TERM=FUNSYM] mainfun;
 ATTACH fun1apply TO [FUNSYM,TERM=TERM] funappl1\-mak;
 ATTACH fun2apply TO [FUNSYM,TERM,TERM=TERM] funappl2\-mak;
 
-
 DECLARE indvar x y z [TERM];
 DECLARE indvar w [WFF];
-DECLARE indvar op [FUNSYM];
+DECLARE indvar vl [FACT];
 
 DECLARE PREDCONST NUMERAL 1;
 DECLARE PREDCONST numeral 3;
@@ -103,7 +108,7 @@ DECLARE FUNCONST plus minus (NATNUMSORT NATNUMSORT)=NATNUMSORT;
 ATTACH plus TO [NATNUMREP,NATNUMREP=NATNUMREP] +;
 ATTACH minus TO [NATNUMREP,NATNUMREP=NATNUMREP] -;
 
-DECLARE PREDCONST SOLVE_THM LINEAREQ 2;
+DECLARE PREDCONST LINEAREQ 2;
 DECLARE FUNCONST solve (WFF TERM)=TERM;
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   mainpred(w)=Equal and
@@ -116,24 +121,20 @@ AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   then mknumeral(minus(mknum(rhs(w)),mknum(rarg(lhs(w)))))
   else mknumeral(plus(mknum(rhs(w)),mknum(rarg(lhs(w))))));
 
-AXIOM AX_SOLVE_THM: forall w x.(SOLVE_THM(w,x) iff (LINEAREQ(w,x) imp THEOREM(pred2apply(Equal,x,solve(w,x)))));
+AXIOM SOLVE: forall vl x.(LINEAREQ(wffof(vl),x) imp THEOREM(pred2apply(Equal,x,solve(wffof(vl),x))));
 
-AXIOM SOLVE: forall w x.SOLVE_THM(w,x);
-
-AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.SOLVE_THM(pred2apply(Equal,fun2apply(-,x,y),z),x);
-
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SOLVE,AX_SOLVE_THM,AX_NUMERAL,AX_MKNUMERAL};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SOLVE,AX_NUMERAL,AX_MKNUMERAL};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
 
-reflect SOLVE (y-suc(suc(zro))=zro) y;
+reflect SOLVE Ey y;
 theorem THMy 6;
 
-reflect SOLVE (x+suc(suc(zro))=suc(suc(suc(suc(suc(zro)))))) x;
+reflect SOLVE Ex x;
 theorem THx2 7;
 
-reflect SOLVE_MINUS_LINEAREQ z suc(suc(zro)) suc(suc(suc(zro)));
+reflect SOLVE Ez z;
 theorem THMz 8;
 
 show axiom;

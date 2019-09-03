@@ -1,0 +1,18 @@
+(DEFSUB mng-merge (M1 M2)
+  (LET ((V1 (mng-get-value M1))
+        (V2 (mng-get-value M2)))
+    (COND
+      ((VALUE-UNDEF? V1) M2)
+      ((VALUE-UNDEF? V2) (mng-mak (mng-get-replabel M1) V1 (mng-get-exp M2) (mng-get-sort M1)))
+      (T M2))))
+  
+(DEFSUB EVAL-printexp3    (MSG1 EXP1 MSG2 EXP2 MSG3 VAL3)  
+ (IFN (PROBED? 'EVAL)(NOP)
+  (SEQ 
+   (HGKM-PRINC MSG1) 
+   (printexp EXP1) 
+   (HGKM-PRINC MSG2) 
+   (printexp EXP2)
+   (HGKM-PRINC MSG3)
+   (HGKM-PRINC VAL3)
+   (CRLF))))

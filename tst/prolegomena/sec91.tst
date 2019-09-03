@@ -95,7 +95,7 @@ DECLARE indvar vl [FACT];
 DECLARE indvar op [FUNCONST];
 
 DECLARE PREDCONST EQU 1;
-DECLARE PREDCONST LINEAREQ SUMEQ DIFFEQ 2;
+DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (EQU(w) and (SUMEQ(w,x) or DIFFEQ(w,x))));
 AXIOM AX_EQU: forall w.(EQU(w) iff pred2apply(Equal,lhs(w),rhs(w))=w);
 AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff fun2apply(+,larg(lhs(w)),rarg(lhs(w)))=lhs(w));
@@ -112,22 +112,15 @@ AXIOM AX_SOLVABLE: forall w x r.(ifSolvable(w, x, r)=
   then mkimp(pred2apply(<,rarg(lhs(w)),rhs(w)), r)
   else r));
 
-AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x)))));
+AXIOM AX_SOLVE_THM: forall w x.(SOLVE_THM(w,x) iff (LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equal,x,solve(w,x))))));
+
+AXIOM SOLVE: forall w x.SOLVE_THM(w,x);
 
 AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.(THEOREM(mkimp(mkand(pred1apply(Numeral,y),pred1apply(Numeral,z)), pred2apply(Equal,x,fun2apply(+,z,y)))));
 
-AXIOM SOLVE_MINUS_LINEAREQ_ALT: forall x y z.THEOREM(pred2apply(Equal,x,solve(pred2apply(Equal,fun2apply(-,x,y),z),x)));
+AXIOM SOLVE_MINUS_LINEAREQ_ALT: forall x y z.SOLVE_THM(pred2apply(Equal,fun2apply(-,x,y),z),x);
 
-simplify forall x.x=x;
-THEOREM TEQUAL_TERM 1;
-simplify forall w.w=w;
-THEOREM TEQUAL_WFF 2;
-AXIOM AX_LHS: forall x y z.lhs(pred2apply(Equal,x,y))=x;
-AXIOM AX_RHS: forall x y z.rhs(pred2apply(Equal,x,y))=y;
-AXIOM AX_LARG: forall op x y.larg(fun2apply(op,x,y))=x;
-AXIOM AX_RARG: forall op x y.rarg(fun2apply(op,x,y))=y;
-
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,TEQUAL_TERM,TEQUAL_WFF,AX_LHS,AX_RHS,AX_LARG,AX_RARG};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,AX_SOLVE_THM};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;

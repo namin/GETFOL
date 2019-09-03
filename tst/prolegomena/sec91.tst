@@ -59,7 +59,8 @@ DECLARE FUNCONST mainpred (WFF)=PREDCONST;
 DECLARE FUNCONST pred2apply (PREDCONST TERM TERM)=WFF;
 DECLARE INDCONST Equal [PREDCONST];
 MATTACH Equal dar [PREDCONST] OBJ::PREDCONST:=;
-ATTACH mainpred to [WFF=PREDCONST] predappl\-get\-pred;
+DEFLAM mainpred (X) (AND (PREDAPPL X) (predappl\-get\-pred X));
+ATTACH mainpred to [WFF=PREDCONST] mainpred;
 ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
 
 DECLARE FUNCONST mainfun (TERM)=FUNCONST;
@@ -70,7 +71,8 @@ MATTACH zro dar [INDCONST] OBJ::INDCONST:zro;
 MATTACH suc dar [FUNCONST] OBJ::FUNCONST:suc;
 MATTACH + dar [FUNCONST] OBJ::FUNCONST:+;
 MATTACH - dar [FUNCONST] OBJ::FUNCONST:-;
-ATTACH mainfun to [TERM=FUNCONST] funappl\-get\-fun;
+DEFLAM mainfun (X) (AND (FUNAPPL X) (funappl\-get\-fun X));
+ATTACH mainfun to [TERM=FUNCONST] mainfun;
 ATTACH fun2apply TO [FUNCONST,TERM,TERM=TERM] funappl2\-mak;
 
 
@@ -80,12 +82,12 @@ DECLARE indvar op [FUNCONST];
 
 DECLARE PREDCONST NUMERAL 1;
 DECLARE PREDCONST numeral 3;
-DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (EQ (funappl\-get\-fun X) suc) (numeral (funappl1\-get\-arg X) zro suc)));
+DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (FUNAPPL X) (EQ (funappl\-get\-fun X) suc) (numeral (funappl1\-get\-arg X) zro suc)));
 ATTACH numeral TO [TERM,INDCONST,FUNCONST] numeral;
 AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
 
 DECLARE PREDCONST LT 2;
-DEFLAM lt (X Y) (COND ((AND (LISTP X) (LISTP Y)) (lt (CADR X) (CADR Y))) ((LISTP Y) T));
+DEFLAM lt (X Y) (COND ((AND (FUNAPPL X) (FUNAPPL Y)) (lt (CADR X) (CADR Y))) ((FUNAPPL Y) T));
 ATTACH LT to [TERM,TERM] lt;
 
 DECLARE PREDCONST EQU 1;

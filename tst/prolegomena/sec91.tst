@@ -80,7 +80,7 @@ ATTACH pred2apply TO [PREDCONST,TERM,TERM=WFF] predappl2\-mak;
 DECLARE INDCONST Numeral [PREDCONST];
 DECLARE FUNCONST fun1apply (FUNCONST TERM)=TERM;
 DECLARE FUNCONST fun2apply (FUNCONST TERM TERM)=TERM;
-DECLARE INDCONST zro suc + - [INDCONST];
+DECLARE INDCONST zro suc + - [FUNCONST];
 MATTACH Numeral dar [PREDCONST] OBJ::PREDCONST:NUMERAL;
 MATTACH zro dar [INDCONST] OBJ::INDCONST:zro;
 MATTACH suc dar [FUNCONST] OBJ::FUNCONST:suc;
@@ -116,7 +116,18 @@ AXIOM SOLVE: forall w x.(LINEAREQ(w,x) imp THEOREM(ifSolvable(w,x,pred2apply(Equ
 
 AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.(THEOREM(mkimp(mkand(pred1apply(Numeral,y),pred1apply(Numeral,z)), pred2apply(Equal,x,fun2apply(+,z,y)))));
 
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE};
+AXIOM SOLVE_MINUS_LINEAREQ_ALT: forall x y z.THEOREM(pred2apply(Equal,x,solve(pred2apply(Equal,fun2apply(-,x,y),z),x)));
+
+simplify forall x.x=x;
+THEOREM TEQUAL_TERM 1;
+simplify forall w.w=w;
+THEOREM TEQUAL_WFF 2;
+AXIOM AX_LHS: forall x y z.lhs(pred2apply(Equal,x,y))=x;
+AXIOM AX_RHS: forall x y z.rhs(pred2apply(Equal,x,y))=y;
+AXIOM AX_LARG: forall op x y.larg(fun2apply(op,x,y))=x;
+AXIOM AX_RARG: forall op x y.rarg(fun2apply(op,x,y))=y;
+
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVABLE,TEQUAL_TERM,TEQUAL_WFF,AX_LHS,AX_RHS,AX_LARG,AX_RARG};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
@@ -129,8 +140,8 @@ rewrite 1 by LOGICTREE uni TNUMERAL uni PEANO;
 decide y = suc(suc(zro)) by 1 2 using ptaut;
 theorem THMy 3;
 
-makeproof PROOFx;
-switchproof PROOFx;
+makeproof PROOFx2;
+switchproof PROOFx2;
 reflect SOLVE (x+suc(suc(zro))=suc(suc(suc(suc(suc(zro)))))) x;
 rewrite 1 by LOGICTREE uni TNUMERAL uni PEANO uni TMINUS;
 iffe 2 1;
@@ -138,7 +149,7 @@ impe 1 3;
 eval 4;
 iffe 5 1;
 impe 4 6;
-theorem THMx2 7;
+theorem THx2 7;
 
 makeproof PROOFz;
 switchproof PROOFz;
@@ -146,6 +157,13 @@ reflect SOLVE_MINUS_LINEAREQ z suc(suc(zro)) suc(suc(suc(zro)));
 rewrite 1 by LOGICTREE uni TNUMERAL uni PEANO;
 decide z = suc(suc(suc(suc(suc(zro))))) by 1 2 using ptaut;
 theorem THMz 3;
+
+makeproof PROOFz2;
+switchproof PROOFz2;
+reflect SOLVE_MINUS_LINEAREQ_ALT z suc(suc(zro)) suc(suc(suc(zro)));
+rewrite 1 by LOGICTREE uni TNUMERAL uni PEANO;
+decide z = suc(suc(suc(suc(suc(zro))))) by 1 2 using ptaut;
+theorem THz2 3;
 
 switchproof PROOFobj;
 

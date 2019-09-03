@@ -89,36 +89,32 @@ declare indvar n [NATNUMSORT];
 DECLARE FUNCONST mknum (TERM)=NATNUMSORT;
 DEFLAM mknum (X) (IF (FUNAPPL X) (ADD1 (mknum (funappl1\-get\-arg X))) 0);
 ATTACH mknum TO [TERM=NATNUMREP] mknum;
-DECLARE FUNCONST mknumeral (NATNUMSORT,TERM,FUNSYM)=TERM;
-DECLARE FUNCONST MKNUMERAL (NATNUMSORT)=TERM;
-DEFLAM mknumeral (X zro suc) (IF (= X 0) zro (funappl1\-mak suc (mknumeral (SUB1 X) zro suc)));
-ATTACH mknumeral TO [NATNUMREP,TERM,FUNSYM=TERM] mknumeral;
-AXIOM AX_MKNUMERAL: forall n.(MKNUMERAL(n)=mknumeral(n,zro,suc));
+DECLARE FUNCONST mknumerali (NATNUMSORT,TERM,FUNSYM)=TERM;
+DECLARE FUNCONST mknumeral (NATNUMSORT)=TERM;
+DEFLAM mknumerali (X zro suc) (IF (= X 0) zro (funappl1\-mak suc (mknumerali (SUB1 X) zro suc)));
+ATTACH mknumerali TO [NATNUMREP,TERM,FUNSYM=TERM] mknumerali;
+AXIOM AX_MKNUMERAL: forall n.(mknumeral(n)=mknumerali(n,zro,suc));
 
 DECLARE PREDCONST LEQ 2;
 DEFLAM leq (X Y) (OR (< X Y) (= X Y));
 ATTACH LEQ TO [NATNUMREP,NATNUMREP] leq;
 
-DECLARE FUNCONST PLUS MINUS (NATNUMSORT NATNUMSORT)=NATNUMSORT;
-ATTACH PLUS TO [NATNUMREP,NATNUMREP=NATNUMREP] +;
-ATTACH MINUS TO [NATNUMREP,NATNUMREP=NATNUMREP] -;
+DECLARE FUNCONST plus minus (NATNUMSORT NATNUMSORT)=NATNUMSORT;
+ATTACH plus TO [NATNUMREP,NATNUMREP=NATNUMREP] +;
+ATTACH minus TO [NATNUMREP,NATNUMREP=NATNUMREP] -;
 
-DECLARE PREDCONST EQU 1;
-DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
+DECLARE PREDCONST SOLVE_THM LINEAREQ 2;
+DECLARE FUNCONST solve (WFF TERM)=TERM;
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
-  EQU(w) and
-  (SUMEQ(w,x) or DIFFEQ(w,x)) and
+  mainpred(w)=Equal and
+  (mainfun(lhs(w))=+ or mainfun(lhs(w))=-) and
   larg(lhs(w))=x and
   (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
-  (SUMEQ(w,x) imp LEQ(mknum(larg(lhs(w))),mknum(rhs(w))))));
-AXIOM AX_EQU: forall w.(EQU(w) iff mainpred(w)=Equal);
-AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff mainfun(lhs(w))=+);
-AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff mainfun(lhs(w))=-);
-DECLARE FUNCONST solve (WFF TERM)=TERM;
+  (mainfun(lhs(w))=+ imp LEQ(mknum(larg(lhs(w))),mknum(rhs(w))))));
 AXIOM AX_SOLVE: forall w x.(solve(w, x)=
-  trmif SUMEQ(w, x)
-  then MKNUMERAL(MINUS(mknum(rhs(w)),mknum(rarg(lhs(w)))))
-  else MKNUMERAL(PLUS(mknum(rhs(w)),mknum(rarg(lhs(w))))));
+  trmif mainfun(lhs(w))=+
+  then mknumeral(minus(mknum(rhs(w)),mknum(rarg(lhs(w)))))
+  else mknumeral(plus(mknum(rhs(w)),mknum(rarg(lhs(w))))));
 
 AXIOM AX_SOLVE_THM: forall w x.(SOLVE_THM(w,x) iff (LINEAREQ(w,x) imp THEOREM(pred2apply(Equal,x,solve(w,x)))));
 
@@ -126,7 +122,7 @@ AXIOM SOLVE: forall w x.SOLVE_THM(w,x);
 
 AXIOM SOLVE_MINUS_LINEAREQ: forall x y z.SOLVE_THM(pred2apply(Equal,fun2apply(-,x,y),z),x);
 
-SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_EQU,AX_SUMEQ,AX_DIFFEQ,AX_SOLVE,AX_SOLVE_THM,AX_NUMERAL,AX_MKNUMERAL};
+SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SOLVE,AX_SOLVE_THM,AX_NUMERAL,AX_MKNUMERAL};
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;

@@ -17,6 +17,7 @@ axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
 
 comment | Assuming the following theorems, we can solve by hand. |
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
+comment | NB: The next one is false, because of truncating -. |
 axiom THM2: forall p q m.(p+q)-m=p+(q-m);
 theorem THM3 PLUS0;
 

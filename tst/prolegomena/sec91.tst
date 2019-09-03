@@ -90,15 +90,21 @@ DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (FUNAPPL X) (EQ (funappl\-get\-fu
 ATTACH numeral TO [TERM,INDCONST,FUNCONST] numeral;
 AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
 
-DECLARE PREDCONST LEQ 2;
-DEFLAM leq (X Y) (COND ((AND (FUNAPPL X) (FUNAPPL Y)) (lt (CADR X) (CADR Y))) ((FUNAPPL Y) T) ((FUNAPPL X) F) (T T));
-ATTACH LEQ to [TERM,TERM] leq;
+KNOW natnums;
+DECLARE FUNCONST mknum (TERM)=NATNUMSORT;
+DEFLAM mknum (X) (IF (LISTP X) (ADD1 (mknum (CADR X))) 0);
+ATTACH mknum TO [TERM=NATNUMREP] mknum;
+DECLARE FUNCONST mknumeral (NATNUMSORT,INDCONST,FUNCONST)=TERM;
+DEFLAM mknumeral (X zro suc) (IF (= X 0) zro (LIST suc (mknumeral (SUB1 X) zro suc)));
+ATTACH mknumeral TO [NATNUMREP,INDCONST,FUNCONST=TERM] mknumeral;
 
-DECLARE FUNCONST PLUS MINUS (TERM TERM)=TERM;
-DEFLAM plus  (X Y) (IF (FUNAPPL Y) (LIST (CAR Y) (plus X (CADR Y))) X);
-DEFLAM minus (X Y) (IF (FUNAPPL X) (IF (FUNAPPL Y) (minus (CADR X) (CADR Y)) X) X);
-ATTACH PLUS TO [TERM,TERM=TERM] plus;
-ATTACH MINUS TO [TERM,TERM=TERM] minus;
+DECLARE PREDCONST LEQ 2;
+DEFLAM leq (X Y) (OR (< X Y) (= X Y));
+ATTACH LEQ TO [NATNUMREP,NATNUMREP] leq;
+
+DECLARE FUNCONST PLUS MINUS (NATNUMSORT NATNUMSORT)=NATNUMSORT;
+ATTACH PLUS TO [NATNUMREP,NATNUMREP=NATNUMREP] +;
+ATTACH MINUS TO [NATNUMREP,NATNUMREP=NATNUMREP] -;
 
 DECLARE PREDCONST EQU 1;
 DECLARE PREDCONST SOLVE_THM LINEAREQ SUMEQ DIFFEQ 2;
@@ -107,15 +113,15 @@ AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   (SUMEQ(w,x) or DIFFEQ(w,x)) and
   larg(lhs(w))=x and
   (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
-  (SUMEQ(w,x) imp LEQ(larg(lhs(w)),rhs(w)))));
+  (SUMEQ(w,x) imp LEQ(mknum(larg(lhs(w))),mknum(rhs(w))))));
 AXIOM AX_EQU: forall w.(EQU(w) iff mainpred(w)=Equal);
 AXIOM AX_SUMEQ: forall w x.(SUMEQ(w,x) iff mainfun(lhs(w))=+);
 AXIOM AX_DIFFEQ: forall w x.(DIFFEQ(w,x) iff mainfun(lhs(w))=-);
 DECLARE FUNCONST solve (WFF TERM)=TERM;
 AXIOM AX_SOLVE: forall w x.(solve(w, x)=
   trmif SUMEQ(w, x)
-  then MINUS(rhs(w),rarg(lhs(w)))
-  else PLUS(rhs(w),rarg(lhs(w))));
+  then mknumeral(MINUS(mknum(rhs(w)),mknum(rarg(lhs(w)))),zro,suc)
+  else mknumeral(PLUS(mknum(rhs(w)),mknum(rarg(lhs(w)))),zro,suc));
 
 AXIOM AX_SOLVE_THM: forall w x.(SOLVE_THM(w,x) iff (LINEAREQ(w,x) imp THEOREM(pred2apply(Equal,x,solve(w,x)))));
 
@@ -129,9 +135,12 @@ SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 SWITCHCONTEXT OBJ;
 
 reflect SOLVE (y-suc(suc(zro))=zro) y;
+theorem THMy 6;
 
 reflect SOLVE (x+suc(suc(zro))=suc(suc(suc(suc(suc(zro)))))) x;
+theorem THx2 7;
 
 reflect SOLVE_MINUS_LINEAREQ z suc(suc(zro)) suc(suc(suc(zro)));
+theorem THMz 8;
 
 show axiom;

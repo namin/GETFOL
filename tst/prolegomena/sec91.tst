@@ -17,22 +17,24 @@ axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
 
 comment | Assuming the following theorems, we can solve by hand. |
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
-comment | NB: The next one is false, because of truncating -. |
-axiom THM2: forall p q m.(p+q)-m=p+(q-m);
+axiom THM2: forall p q m.(m<suc(q) imp (p+q)-m=p+(q-m));
 theorem THM3 PLUS0;
 
 setbasicsimp THM1 at facts {THM1};
-setbasicsimp THM2 at facts {THM2};
 setbasicsimp THM3 at facts {THM3};
 
-alle THM1 x+suc(suc(zro)),suc(suc(suc(suc(suc(zro))))),suc(suc(zro));
-theorem A 1;
-rewrite A  by TMINUS uni THM2 uni THM3 uni LOGICTREE;
-iffe 2 1;
-impe 3 A;
-impe 4 Ex;
+alle THM2 x,suc(suc(zro)),suc(suc(zro));
+simplify suc(suc(zro))<suc(suc(suc(zro)));
+impe 2 1;
+theorem THM2instance 3;
+setbasicsimp THM2instance at facts {THM2instance};
 
-theorem THMx 5;
+alle THM1 x+suc(suc(zro)),suc(suc(suc(suc(suc(zro))))),suc(suc(zro));
+rewrite 4 by TMINUS uni THM2instance uni THM3 uni LOGICTREE;
+iffe 5 1;
+impe 6 4;
+impe 7 Ex;
+theorem THMx 8;
 
 comment | Let us switch to the meta level, and do some algebra. |
 comment | We will say (not prove) that                          |
@@ -151,12 +153,12 @@ SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 SWITCHCONTEXT OBJ;
 
 reflect SOLVE Ey y;
-theorem THMy 6;
+theorem THMy 9;
 
 reflect SOLVE Ex x;
-theorem THx2 7;
+theorem THx2 10;
 
 reflect SOLVE Ez z;
-theorem THMz 8;
+theorem THMz 11;
 
 show axiom;

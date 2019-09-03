@@ -80,7 +80,7 @@ DECLARE indvar op [FUNCONST];
 
 DECLARE PREDCONST NUMERAL 1;
 DECLARE PREDCONST numeral 3;
-DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (EQ (CAR X) suc) (numeral (CADR X) zro suc)));
+DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (EQ (funappl\-get\-fun X) suc) (numeral (funappl1\-get\-arg X) zro suc)));
 ATTACH numeral TO [TERM,INDCONST,FUNCONST] numeral;
 AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
 

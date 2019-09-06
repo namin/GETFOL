@@ -10,4 +10,6 @@ attach length to [Sexp=NATNUM] LENGTH;
 
 simplify length(cons(nil, cons(nil, nil)))=suc(suc(zro));
 
+simplify suc(zro)+zro=zro;
+
 simplify zro < prd(suc(suc(zro)));

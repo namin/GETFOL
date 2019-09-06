@@ -23,7 +23,7 @@
     (LET ((mng (trmeval exp amf)))
      (SEQ
        (IF (NOT (VALUE-UNDEF? (mng-get-value mng)))
-         (EVAL-printexp3 "Evaluating " exp " gives " (mng-get-exp mng) " underyling " (mng-get-value mng))
+         (EVAL-printexp3 "Evaluating " exp " gives " (mng-get-exp mng) " underlying " (mng-get-value mng))
          (EVAL-printexp1 "Evaluating " exp " doesn' t work"))
        (IF (OR (VALUE-UNDEF? (mng-get-value mng)) (EQUAL (mng-get-exp mng) exp))
          (LET ((trm1 (rewrite-call (mng-get-exp mng) amf)))

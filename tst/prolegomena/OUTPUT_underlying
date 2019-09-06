@@ -317,21 +317,21 @@ reflect ANDI A B;
 I am switching from the current context to: META
 THEOREM has no interpretation.
 THEOREM(mkand(WFF289, WFF290)): syntactic simplification fails.
-Evaluating WFF289 gives WFF289 underyling A
+Evaluating WFF289 gives WFF289 underlying A
 WFF289: syntactic simplification fails.
-Evaluating WFF290 gives WFF290 underyling B
+Evaluating WFF290 gives WFF290 underlying B
 WFF290: syntactic simplification fails.
-Evaluating mkand(WFF289, WFF290) gives mkand(WFF289, WFF290) underyling (and
+Evaluating mkand(WFF289, WFF290) gives mkand(WFF289, WFF290) underlying (and
                                                                          A
                                                                          B)
 mkand(WFF289, WFF290): syntactic simplification fails.
 Evaluating THEOREM(mkand(WFF289, WFF290)) doesn' t work
 THEOREM(mkand(WFF289, WFF290)): syntactic simplification fails.
-Evaluating WFF289 gives WFF289 underyling A
+Evaluating WFF289 gives WFF289 underlying A
 WFF289: syntactic simplification fails.
-Evaluating WFF290 gives WFF290 underyling B
+Evaluating WFF290 gives WFF290 underlying B
 WFF290: syntactic simplification fails.
-Evaluating mkand(WFF289, WFF290) gives mkand(WFF289, WFF290) underyling (and
+Evaluating mkand(WFF289, WFF290) gives mkand(WFF289, WFF290) underlying (and
                                                                          A
                                                                          B)
 mkand(WFF289, WFF290): syntactic simplification fails.
@@ -395,21 +395,21 @@ reflect ANDI A B;
 I am switching from the current context to: META
 THEOREM has no interpretation.
 THEOREM(mkand(WFF291, WFF292)): syntactic simplification fails.
-Evaluating WFF291 gives WFF291 underyling A
+Evaluating WFF291 gives WFF291 underlying A
 WFF291: syntactic simplification fails.
-Evaluating WFF292 gives WFF292 underyling B
+Evaluating WFF292 gives WFF292 underlying B
 WFF292: syntactic simplification fails.
-Evaluating mkand(WFF291, WFF292) gives mkand(WFF291, WFF292) underyling (and
+Evaluating mkand(WFF291, WFF292) gives mkand(WFF291, WFF292) underlying (and
                                                                          A
                                                                          B)
 mkand(WFF291, WFF292): syntactic simplification fails.
 Evaluating THEOREM(mkand(WFF291, WFF292)) doesn' t work
 THEOREM(mkand(WFF291, WFF292)): syntactic simplification fails.
-Evaluating WFF291 gives WFF291 underyling A
+Evaluating WFF291 gives WFF291 underlying A
 WFF291: syntactic simplification fails.
-Evaluating WFF292 gives WFF292 underyling B
+Evaluating WFF292 gives WFF292 underlying B
 WFF292: syntactic simplification fails.
-Evaluating mkand(WFF291, WFF292) gives mkand(WFF291, WFF292) underyling (and
+Evaluating mkand(WFF291, WFF292) gives mkand(WFF291, WFF292) underlying (and
                                                                          A
                                                                          B)
 mkand(WFF291, WFF292): syntactic simplification fails.
@@ -424,23 +424,23 @@ reflect ANDI_SOUND T1 T2;
 I am switching from the current context to: META
 THEOREM has no interpretation.
 THEOREM(mkand(wffof(FACT293), wffof(FACT294))): syntactic simplification fails.
-Evaluating FACT293 gives FACT293 underyling (T1
+Evaluating FACT293 gives FACT293 underlying (T1
                                              (imp A A)
                                              NIL
                                              AXIOM
                                              (%AXIOM% T1 (imp A A)))
 FACT293: syntactic simplification fails.
-Evaluating wffof(FACT293) gives wffof(FACT293) underyling (imp A A)
+Evaluating wffof(FACT293) gives wffof(FACT293) underlying (imp A A)
 wffof(FACT293): syntactic simplification fails.
-Evaluating FACT294 gives FACT294 underyling (T2
+Evaluating FACT294 gives FACT294 underlying (T2
                                              (imp B B)
                                              NIL
                                              AXIOM
                                              (%AXIOM% T2 (imp B B)))
 FACT294: syntactic simplification fails.
-Evaluating wffof(FACT294) gives wffof(FACT294) underyling (imp B B)
+Evaluating wffof(FACT294) gives wffof(FACT294) underlying (imp B B)
 wffof(FACT294): syntactic simplification fails.
-Evaluating mkand(wffof(FACT293), wffof(FACT294)) gives mkand(wffof(FACT293), wffof(FACT294)) underyling (and
+Evaluating mkand(wffof(FACT293), wffof(FACT294)) gives mkand(wffof(FACT293), wffof(FACT294)) underlying (and
                                                                                                          (imp
                                                                                                           A
                                                                                                           A)
@@ -450,23 +450,23 @@ Evaluating mkand(wffof(FACT293), wffof(FACT294)) gives mkand(wffof(FACT293), wff
 mkand(wffof(FACT293), wffof(FACT294)): syntactic simplification fails.
 Evaluating THEOREM(mkand(wffof(FACT293), wffof(FACT294))) doesn' t work
 THEOREM(mkand(wffof(FACT293), wffof(FACT294))): syntactic simplification fails.
-Evaluating FACT293 gives FACT293 underyling (T1
+Evaluating FACT293 gives FACT293 underlying (T1
                                              (imp A A)
                                              NIL
                                              AXIOM
                                              (%AXIOM% T1 (imp A A)))
 FACT293: syntactic simplification fails.
-Evaluating wffof(FACT293) gives wffof(FACT293) underyling (imp A A)
+Evaluating wffof(FACT293) gives wffof(FACT293) underlying (imp A A)
 wffof(FACT293): syntactic simplification fails.
-Evaluating FACT294 gives FACT294 underyling (T2
+Evaluating FACT294 gives FACT294 underlying (T2
                                              (imp B B)
                                              NIL
                                              AXIOM
                                              (%AXIOM% T2 (imp B B)))
 FACT294: syntactic simplification fails.
-Evaluating wffof(FACT294) gives wffof(FACT294) underyling (imp B B)
+Evaluating wffof(FACT294) gives wffof(FACT294) underlying (imp B B)
 wffof(FACT294): syntactic simplification fails.
-Evaluating mkand(wffof(FACT293), wffof(FACT294)) gives mkand(wffof(FACT293), wffof(FACT294)) underyling (and
+Evaluating mkand(wffof(FACT293), wffof(FACT294)) gives mkand(wffof(FACT293), wffof(FACT294)) underlying (and
                                                                                                          (imp
                                                                                                           A
                                                                                                           A)
@@ -485,19 +485,19 @@ reflect ANDI FALSE FALSE;
 I am switching from the current context to: META
 THEOREM has no interpretation.
 THEOREM(mkand(WFF295, WFF296)): syntactic simplification fails.
-Evaluating WFF295 gives WFF296 underyling FALSE
-Evaluating WFF296 gives WFF296 underyling FALSE
+Evaluating WFF295 gives WFF296 underlying FALSE
+Evaluating WFF296 gives WFF296 underlying FALSE
 WFF296: syntactic simplification fails.
-Evaluating mkand(WFF295, WFF296) gives mkand(WFF296, WFF296) underyling (and
+Evaluating mkand(WFF295, WFF296) gives mkand(WFF296, WFF296) underlying (and
                                                                          FALSE
                                                                          FALSE)
 Evaluating THEOREM(mkand(WFF295, WFF296)) doesn' t work
 THEOREM(mkand(WFF296, WFF296)): syntactic simplification fails.
-Evaluating WFF296 gives WFF296 underyling FALSE
+Evaluating WFF296 gives WFF296 underlying FALSE
 WFF296: syntactic simplification fails.
-Evaluating WFF296 gives WFF296 underyling FALSE
+Evaluating WFF296 gives WFF296 underlying FALSE
 WFF296: syntactic simplification fails.
-Evaluating mkand(WFF296, WFF296) gives mkand(WFF296, WFF296) underyling (and
+Evaluating mkand(WFF296, WFF296) gives mkand(WFF296, WFF296) underlying (and
                                                                          FALSE
                                                                          FALSE)
 mkand(WFF296, WFF296): syntactic simplification fails.
@@ -1038,7 +1038,7 @@ Syntactic simplification of LINEAREQ(wffof(FACT311), TERM312) gives ((((mainpred
 (((mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -))) and (larg(lhs(wffof(FACT311))) = TERM312)) and (NUMERAL(rarg(lhs(wffof(FACT311)))) and NUMERAL(rhs(wffof(FACT311)))): syntactic simplification fails.
 ((mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -))) and (larg(lhs(wffof(FACT311))) = TERM312): syntactic simplification fails.
 (mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -)): syntactic simplification fails.
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1046,18 +1046,18 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating mainpred(wffof(FACT311)) gives Equal underyling =
-Evaluating Equal gives Equal underyling =
+Evaluating mainpred(wffof(FACT311)) gives Equal underlying =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
 Evaluating mainpred(wffof(FACT311)) = Equal gives TRUE
 (mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -): syntactic simplification fails.
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1065,23 +1065,23 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underlying (-
                                                                      y
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT311)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underlying -
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT311))) = + gives FALSE
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1089,25 +1089,25 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underlying (-
                                                                      y
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT311)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
-Evaluating - gives - underyling -
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underlying -
+Evaluating - gives - underlying -
 -: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT311))) = - gives TRUE
 TRUE: syntactic simplification fails.
 TRUE: syntactic simplification fails.
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1115,27 +1115,27 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underlying (-
                                                                      y
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT311)): syntactic simplification fails.
-Evaluating larg(lhs(wffof(FACT311))) gives TERM312 underyling y
-Evaluating TERM312 gives TERM312 underyling y
+Evaluating larg(lhs(wffof(FACT311))) gives TERM312 underlying y
+Evaluating TERM312 gives TERM312 underlying y
 TERM312: syntactic simplification fails.
 Evaluating larg(lhs(wffof(FACT311))) = TERM312 gives TRUE
 TRUE: syntactic simplification fails.
 NUMERAL(rarg(lhs(wffof(FACT311)))) and NUMERAL(rhs(wffof(FACT311))): syntactic simplification fails.
 NUMERAL has no interpretation.
 Syntactic simplification of NUMERAL(rarg(lhs(wffof(FACT311)))) gives numeral(rarg(lhs(wffof(FACT311))), zro, suc)
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1143,31 +1143,31 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underlying (-
                                                                      y
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT311)): syntactic simplification fails.
-Evaluating rarg(lhs(wffof(FACT311))) gives rarg(lhs(wffof(FACT311))) underyling (suc
+Evaluating rarg(lhs(wffof(FACT311))) gives rarg(lhs(wffof(FACT311))) underlying (suc
                                                                                  (suc
                                                                                   zro))
 rarg(lhs(wffof(FACT311))): syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
 Evaluating numeral(rarg(lhs(wffof(FACT311))), zro, suc) gives TRUE
 Evaluating NUMERAL(rarg(lhs(wffof(FACT311)))) gives TRUE
 NUMERAL has no interpretation.
 Syntactic simplification of NUMERAL(rhs(wffof(FACT311))) gives numeral(rhs(wffof(FACT311)), zro, suc)
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1175,23 +1175,23 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating rhs(wffof(FACT311)) gives zro underyling zro
-Evaluating zro gives zro underyling zro
+Evaluating rhs(wffof(FACT311)) gives zro underlying zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
 Evaluating numeral(rhs(wffof(FACT311)), zro, suc) gives TRUE
 Evaluating NUMERAL(rhs(wffof(FACT311))) gives TRUE
 TRUE: syntactic simplification fails.
 TRUE: syntactic simplification fails.
 (mainfun(lhs(wffof(FACT311))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT311)))), mknum(rhs(wffof(FACT311)))): syntactic simplification fails.
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1199,20 +1199,20 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underlying (-
                                                                      y
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT311)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underlying -
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT311))) = + gives FALSE
 TRUE: syntactic simplification fails.
@@ -1222,13 +1222,13 @@ THEOREM has no interpretation.
 THEOREM(mkequal(TERM312, solve(wffof(FACT311), TERM312))): syntactic simplification fails.
 mkequal has no interpretation.
 Syntactic simplification of mkequal(TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, solve(wffof(FACT311), TERM312))
-Evaluating Equal gives Equal underyling =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
-Evaluating TERM312 gives TERM312 underyling y
+Evaluating TERM312 gives TERM312 underlying y
 TERM312: syntactic simplification fails.
 solve has no interpretation.
 Syntactic simplification of solve(wffof(FACT311), TERM312) gives trmif (mainfun(lhs(wffof(FACT311))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) else mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))))
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1236,25 +1236,25 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underlying (-
                                                                      y
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT311)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underlying -
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT311))) = + gives FALSE
 mknumeral has no interpretation.
 Syntactic simplification of mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))), zro, suc)
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1262,15 +1262,15 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating rhs(wffof(FACT311)) gives zro underyling zro
-Evaluating mknum(rhs(wffof(FACT311))) gives 0 underyling 0
-Evaluating FACT311 gives FACT311 underyling (Ey
+Evaluating rhs(wffof(FACT311)) gives zro underlying zro
+Evaluating mknum(rhs(wffof(FACT311))) gives 0 underlying 0
+Evaluating FACT311 gives FACT311 underlying (Ey
                                              (= (- y (suc (suc zro))) zro)
                                              NIL
                                              AXIOM
@@ -1278,46 +1278,46 @@ Evaluating FACT311 gives FACT311 underyling (Ey
                                               Ey
                                               (= (- y (suc (suc zro))) zro)))
 FACT311: syntactic simplification fails.
-Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+Evaluating wffof(FACT311) gives wffof(FACT311) underlying (=
                                                            (-
                                                             y
                                                             (suc (suc zro)))
                                                            zro)
 wffof(FACT311): syntactic simplification fails.
-Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underlying (-
                                                                      y
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT311)): syntactic simplification fails.
-Evaluating rarg(lhs(wffof(FACT311))) gives rarg(lhs(wffof(FACT311))) underyling (suc
+Evaluating rarg(lhs(wffof(FACT311))) gives rarg(lhs(wffof(FACT311))) underlying (suc
                                                                                  (suc
                                                                                   zro))
 rarg(lhs(wffof(FACT311))): syntactic simplification fails.
-Evaluating mknum(rarg(lhs(wffof(FACT311)))) gives 2 underyling 2
-Evaluating plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))) gives 2 underyling 2
-Evaluating zro gives zro underyling zro
+Evaluating mknum(rarg(lhs(wffof(FACT311)))) gives 2 underlying 2
+Evaluating plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))) gives 2 underlying 2
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
-Evaluating mknumerali(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))), zro, suc) gives mknumerali(2, zro, suc) underyling (suc
+Evaluating mknumerali(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))), zro, suc) gives mknumerali(2, zro, suc) underlying (suc
                                                                                                                                               (suc
                                                                                                                                                zro))
-Evaluating mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(2, zro, suc) underyling (suc
+Evaluating mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(2, zro, suc) underlying (suc
                                                                                                                                    (suc
                                                                                                                                     zro))
-Evaluating trmif (mainfun(lhs(wffof(FACT311))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) else mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(2, zro, suc) underyling (suc
+Evaluating trmif (mainfun(lhs(wffof(FACT311))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) else mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(2, zro, suc) underlying (suc
                                                                                                                                                                                                                                                                      (suc
                                                                                                                                                                                                                                                                       zro))
-Evaluating solve(wffof(FACT311), TERM312) gives mknumerali(2, zro, suc) underyling (suc
+Evaluating solve(wffof(FACT311), TERM312) gives mknumerali(2, zro, suc) underlying (suc
                                                                                     (suc
                                                                                      zro))
-Evaluating pred2apply(Equal, TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underyling (=
+Evaluating pred2apply(Equal, TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underlying (=
                                                                                                                                             y
                                                                                                                                             (suc
                                                                                                                                              (suc
                                                                                                                                               zro)))
-Evaluating mkequal(TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underyling (=
+Evaluating mkequal(TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underlying (=
                                                                                                                                   y
                                                                                                                                   (suc
                                                                                                                                    (suc
@@ -1325,21 +1325,21 @@ Evaluating mkequal(TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equ
 Evaluating THEOREM(mkequal(TERM312, solve(wffof(FACT311), TERM312))) doesn' t work
 THEOREM(pred2apply(Equal, TERM312, mknumerali(2, zro, suc))): syntactic simplification fails.
 THEOREM(pred2apply(Equal, TERM312, mknumerali(2, zro, suc))): syntactic simplification fails.
-Evaluating Equal gives Equal underyling =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
-Evaluating TERM312 gives TERM312 underyling y
+Evaluating TERM312 gives TERM312 underlying y
 TERM312: syntactic simplification fails.
-Evaluating 2 gives 2 underyling 2
+Evaluating 2 gives 2 underlying 2
 2: syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
-Evaluating mknumerali(2, zro, suc) gives mknumerali(2, zro, suc) underyling (suc
+Evaluating mknumerali(2, zro, suc) gives mknumerali(2, zro, suc) underlying (suc
                                                                              (suc
                                                                               zro))
 mknumerali(2, zro, suc): syntactic simplification fails.
-Evaluating pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underyling (=
+Evaluating pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underlying (=
                                                                                                                                      y
                                                                                                                                      (suc
                                                                                                                                       (suc
@@ -1365,7 +1365,7 @@ Syntactic simplification of LINEAREQ(wffof(FACT322), TERM323) gives ((((mainpred
 (((mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -))) and (larg(lhs(wffof(FACT322))) = TERM323)) and (NUMERAL(rarg(lhs(wffof(FACT322)))) and NUMERAL(rhs(wffof(FACT322)))): syntactic simplification fails.
 ((mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -))) and (larg(lhs(wffof(FACT322))) = TERM323): syntactic simplification fails.
 (mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -)): syntactic simplification fails.
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1379,7 +1379,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1389,12 +1389,12 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating mainpred(wffof(FACT322)) gives Equal underyling =
-Evaluating Equal gives Equal underyling =
+Evaluating mainpred(wffof(FACT322)) gives Equal underlying =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
 Evaluating mainpred(wffof(FACT322)) = Equal gives TRUE
 (mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -): syntactic simplification fails.
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1408,7 +1408,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1418,19 +1418,19 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underlying (+
                                                                      x
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT322))) gives + underyling +
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT322))) gives + underlying +
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT322))) = + gives TRUE
 TRUE: syntactic simplification fails.
 TRUE: syntactic simplification fails.
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1444,7 +1444,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1454,21 +1454,21 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underlying (+
                                                                      x
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating larg(lhs(wffof(FACT322))) gives TERM323 underyling x
-Evaluating TERM323 gives TERM323 underyling x
+Evaluating larg(lhs(wffof(FACT322))) gives TERM323 underlying x
+Evaluating TERM323 gives TERM323 underlying x
 TERM323: syntactic simplification fails.
 Evaluating larg(lhs(wffof(FACT322))) = TERM323 gives TRUE
 TRUE: syntactic simplification fails.
 NUMERAL(rarg(lhs(wffof(FACT322)))) and NUMERAL(rhs(wffof(FACT322))): syntactic simplification fails.
 NUMERAL has no interpretation.
 Syntactic simplification of NUMERAL(rarg(lhs(wffof(FACT322)))) gives numeral(rarg(lhs(wffof(FACT322))), zro, suc)
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1482,7 +1482,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1492,25 +1492,25 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underlying (+
                                                                      x
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating rarg(lhs(wffof(FACT322))) gives rarg(lhs(wffof(FACT322))) underyling (suc
+Evaluating rarg(lhs(wffof(FACT322))) gives rarg(lhs(wffof(FACT322))) underlying (suc
                                                                                  (suc
                                                                                   zro))
 rarg(lhs(wffof(FACT322))): syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
 Evaluating numeral(rarg(lhs(wffof(FACT322))), zro, suc) gives TRUE
 Evaluating NUMERAL(rarg(lhs(wffof(FACT322)))) gives TRUE
 NUMERAL has no interpretation.
 Syntactic simplification of NUMERAL(rhs(wffof(FACT322))) gives numeral(rhs(wffof(FACT322)), zro, suc)
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1524,7 +1524,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1534,23 +1534,23 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underyling (suc
+Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underlying (suc
                                                                      (suc
                                                                       (suc
                                                                        (suc
                                                                         (suc
                                                                          zro)))))
 rhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
 Evaluating numeral(rhs(wffof(FACT322)), zro, suc) gives TRUE
 Evaluating NUMERAL(rhs(wffof(FACT322))) gives TRUE
 TRUE: syntactic simplification fails.
 TRUE: syntactic simplification fails.
 (mainfun(lhs(wffof(FACT322))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT322)))), mknum(rhs(wffof(FACT322)))): syntactic simplification fails.
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1564,7 +1564,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1574,17 +1574,17 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underlying (+
                                                                      x
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT322))) gives + underyling +
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT322))) gives + underlying +
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT322))) = + gives TRUE
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1598,7 +1598,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1608,15 +1608,15 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underlying (+
                                                                      x
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating larg(lhs(wffof(FACT322))) gives TERM323 underyling x
-Evaluating mknum(larg(lhs(wffof(FACT322)))) gives 0 underyling 0
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating larg(lhs(wffof(FACT322))) gives TERM323 underlying x
+Evaluating mknum(larg(lhs(wffof(FACT322)))) gives 0 underlying 0
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1630,7 +1630,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1640,14 +1640,14 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underyling (suc
+Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underlying (suc
                                                                      (suc
                                                                       (suc
                                                                        (suc
                                                                         (suc
                                                                          zro)))))
 rhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating mknum(rhs(wffof(FACT322))) gives 5 underyling 5
+Evaluating mknum(rhs(wffof(FACT322))) gives 5 underlying 5
 Evaluating LEQ(mknum(larg(lhs(wffof(FACT322)))), mknum(rhs(wffof(FACT322)))) gives TRUE
 TRUE: syntactic simplification fails.
 TRUE: syntactic simplification fails.
@@ -1656,13 +1656,13 @@ THEOREM has no interpretation.
 THEOREM(mkequal(TERM323, solve(wffof(FACT322), TERM323))): syntactic simplification fails.
 mkequal has no interpretation.
 Syntactic simplification of mkequal(TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, solve(wffof(FACT322), TERM323))
-Evaluating Equal gives Equal underyling =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
-Evaluating TERM323 gives TERM323 underyling x
+Evaluating TERM323 gives TERM323 underlying x
 TERM323: syntactic simplification fails.
 solve has no interpretation.
 Syntactic simplification of solve(wffof(FACT322), TERM323) gives trmif (mainfun(lhs(wffof(FACT322))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) else mknumeral(plus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))))
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1676,7 +1676,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1686,19 +1686,19 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underlying (+
                                                                      x
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT322))) gives + underyling +
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT322))) gives + underlying +
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT322))) = + gives TRUE
 mknumeral has no interpretation.
 Syntactic simplification of mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))), zro, suc)
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1712,7 +1712,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1722,15 +1722,15 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underyling (suc
+Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underlying (suc
                                                                      (suc
                                                                       (suc
                                                                        (suc
                                                                         (suc
                                                                          zro)))))
 rhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating mknum(rhs(wffof(FACT322))) gives 5 underyling 5
-Evaluating FACT322 gives FACT322 underyling (Ex
+Evaluating mknum(rhs(wffof(FACT322))) gives 5 underlying 5
+Evaluating FACT322 gives FACT322 underlying (Ex
                                              (=
                                               (+ x (suc (suc zro)))
                                               (suc
@@ -1744,7 +1744,7 @@ Evaluating FACT322 gives FACT322 underyling (Ex
                                                (suc
                                                 (suc (suc (suc (suc zro))))))))
 FACT322: syntactic simplification fails.
-Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+Evaluating wffof(FACT322) gives wffof(FACT322) underlying (=
                                                            (+
                                                             x
                                                             (suc (suc zro)))
@@ -1754,45 +1754,45 @@ Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
                                                               (suc
                                                                (suc zro))))))
 wffof(FACT322): syntactic simplification fails.
-Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underlying (+
                                                                      x
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT322)): syntactic simplification fails.
-Evaluating rarg(lhs(wffof(FACT322))) gives rarg(lhs(wffof(FACT322))) underyling (suc
+Evaluating rarg(lhs(wffof(FACT322))) gives rarg(lhs(wffof(FACT322))) underlying (suc
                                                                                  (suc
                                                                                   zro))
 rarg(lhs(wffof(FACT322))): syntactic simplification fails.
-Evaluating mknum(rarg(lhs(wffof(FACT322)))) gives 2 underyling 2
-Evaluating minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))) gives 3 underyling 3
-Evaluating zro gives zro underyling zro
+Evaluating mknum(rarg(lhs(wffof(FACT322)))) gives 2 underlying 2
+Evaluating minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))) gives 3 underlying 3
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
-Evaluating mknumerali(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))), zro, suc) gives mknumerali(3, zro, suc) underyling (suc
+Evaluating mknumerali(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))), zro, suc) gives mknumerali(3, zro, suc) underlying (suc
                                                                                                                                                (suc
                                                                                                                                                 (suc
                                                                                                                                                  zro)))
-Evaluating mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(3, zro, suc) underyling (suc
+Evaluating mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(3, zro, suc) underlying (suc
                                                                                                                                     (suc
                                                                                                                                      (suc
                                                                                                                                       zro)))
-Evaluating trmif (mainfun(lhs(wffof(FACT322))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) else mknumeral(plus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(3, zro, suc) underyling (suc
+Evaluating trmif (mainfun(lhs(wffof(FACT322))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) else mknumeral(plus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(3, zro, suc) underlying (suc
                                                                                                                                                                                                                                                                      (suc
                                                                                                                                                                                                                                                                       (suc
                                                                                                                                                                                                                                                                        zro)))
-Evaluating solve(wffof(FACT322), TERM323) gives mknumerali(3, zro, suc) underyling (suc
+Evaluating solve(wffof(FACT322), TERM323) gives mknumerali(3, zro, suc) underlying (suc
                                                                                     (suc
                                                                                      (suc
                                                                                       zro)))
-Evaluating pred2apply(Equal, TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underyling (=
+Evaluating pred2apply(Equal, TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underlying (=
                                                                                                                                             x
                                                                                                                                             (suc
                                                                                                                                              (suc
                                                                                                                                               (suc
                                                                                                                                                zro))))
-Evaluating mkequal(TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underyling (=
+Evaluating mkequal(TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underlying (=
                                                                                                                                   x
                                                                                                                                   (suc
                                                                                                                                    (suc
@@ -1801,22 +1801,22 @@ Evaluating mkequal(TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equ
 Evaluating THEOREM(mkequal(TERM323, solve(wffof(FACT322), TERM323))) doesn' t work
 THEOREM(pred2apply(Equal, TERM323, mknumerali(3, zro, suc))): syntactic simplification fails.
 THEOREM(pred2apply(Equal, TERM323, mknumerali(3, zro, suc))): syntactic simplification fails.
-Evaluating Equal gives Equal underyling =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
-Evaluating TERM323 gives TERM323 underyling x
+Evaluating TERM323 gives TERM323 underlying x
 TERM323: syntactic simplification fails.
-Evaluating 3 gives 3 underyling 3
+Evaluating 3 gives 3 underlying 3
 3: syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
-Evaluating mknumerali(3, zro, suc) gives mknumerali(3, zro, suc) underyling (suc
+Evaluating mknumerali(3, zro, suc) gives mknumerali(3, zro, suc) underlying (suc
                                                                              (suc
                                                                               (suc
                                                                                zro)))
 mknumerali(3, zro, suc): syntactic simplification fails.
-Evaluating pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underyling (=
+Evaluating pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underlying (=
                                                                                                                                      x
                                                                                                                                      (suc
                                                                                                                                       (suc
@@ -1843,7 +1843,7 @@ Syntactic simplification of LINEAREQ(wffof(FACT333), TERM334) gives ((((mainpred
 (((mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -))) and (larg(lhs(wffof(FACT333))) = TERM334)) and (NUMERAL(rarg(lhs(wffof(FACT333)))) and NUMERAL(rhs(wffof(FACT333)))): syntactic simplification fails.
 ((mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -))) and (larg(lhs(wffof(FACT333))) = TERM334): syntactic simplification fails.
 (mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -)): syntactic simplification fails.
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -1855,19 +1855,19 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating mainpred(wffof(FACT333)) gives Equal underyling =
-Evaluating Equal gives Equal underyling =
+Evaluating mainpred(wffof(FACT333)) gives Equal underlying =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
 Evaluating mainpred(wffof(FACT333)) = Equal gives TRUE
 (mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -): syntactic simplification fails.
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -1879,24 +1879,24 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underlying (-
                                                                      z
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underlying -
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT333))) = + gives FALSE
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -1908,26 +1908,26 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underlying (-
                                                                      z
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
-Evaluating - gives - underyling -
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underlying -
+Evaluating - gives - underlying -
 -: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT333))) = - gives TRUE
 TRUE: syntactic simplification fails.
 TRUE: syntactic simplification fails.
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -1939,28 +1939,28 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underlying (-
                                                                      z
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating larg(lhs(wffof(FACT333))) gives TERM334 underyling z
-Evaluating TERM334 gives TERM334 underyling z
+Evaluating larg(lhs(wffof(FACT333))) gives TERM334 underlying z
+Evaluating TERM334 gives TERM334 underlying z
 TERM334: syntactic simplification fails.
 Evaluating larg(lhs(wffof(FACT333))) = TERM334 gives TRUE
 TRUE: syntactic simplification fails.
 NUMERAL(rarg(lhs(wffof(FACT333)))) and NUMERAL(rhs(wffof(FACT333))): syntactic simplification fails.
 NUMERAL has no interpretation.
 Syntactic simplification of NUMERAL(rarg(lhs(wffof(FACT333)))) gives numeral(rarg(lhs(wffof(FACT333))), zro, suc)
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -1972,32 +1972,32 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underlying (-
                                                                      z
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating rarg(lhs(wffof(FACT333))) gives rarg(lhs(wffof(FACT333))) underyling (suc
+Evaluating rarg(lhs(wffof(FACT333))) gives rarg(lhs(wffof(FACT333))) underlying (suc
                                                                                  (suc
                                                                                   zro))
 rarg(lhs(wffof(FACT333))): syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
 Evaluating numeral(rarg(lhs(wffof(FACT333))), zro, suc) gives TRUE
 Evaluating NUMERAL(rarg(lhs(wffof(FACT333)))) gives TRUE
 NUMERAL has no interpretation.
 Syntactic simplification of NUMERAL(rhs(wffof(FACT333))) gives numeral(rhs(wffof(FACT333)), zro, suc)
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -2009,28 +2009,28 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating rhs(wffof(FACT333)) gives rhs(wffof(FACT333)) underyling (suc
+Evaluating rhs(wffof(FACT333)) gives rhs(wffof(FACT333)) underlying (suc
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 rhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
 Evaluating numeral(rhs(wffof(FACT333)), zro, suc) gives TRUE
 Evaluating NUMERAL(rhs(wffof(FACT333))) gives TRUE
 TRUE: syntactic simplification fails.
 TRUE: syntactic simplification fails.
 (mainfun(lhs(wffof(FACT333))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT333)))), mknum(rhs(wffof(FACT333)))): syntactic simplification fails.
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -2042,21 +2042,21 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underlying (-
                                                                      z
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underlying -
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT333))) = + gives FALSE
 TRUE: syntactic simplification fails.
@@ -2066,13 +2066,13 @@ THEOREM has no interpretation.
 THEOREM(mkequal(TERM334, solve(wffof(FACT333), TERM334))): syntactic simplification fails.
 mkequal has no interpretation.
 Syntactic simplification of mkequal(TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, solve(wffof(FACT333), TERM334))
-Evaluating Equal gives Equal underyling =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
-Evaluating TERM334 gives TERM334 underyling z
+Evaluating TERM334 gives TERM334 underlying z
 TERM334: syntactic simplification fails.
 solve has no interpretation.
 Syntactic simplification of solve(wffof(FACT333), TERM334) gives trmif (mainfun(lhs(wffof(FACT333))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) else mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))))
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -2084,26 +2084,26 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underlying (-
                                                                      z
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
-Evaluating + gives + underyling +
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underlying -
+Evaluating + gives + underlying +
 +: syntactic simplification fails.
 Evaluating mainfun(lhs(wffof(FACT333))) = + gives FALSE
 mknumeral has no interpretation.
 Syntactic simplification of mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))), zro, suc)
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -2115,20 +2115,20 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating rhs(wffof(FACT333)) gives rhs(wffof(FACT333)) underyling (suc
+Evaluating rhs(wffof(FACT333)) gives rhs(wffof(FACT333)) underlying (suc
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 rhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating mknum(rhs(wffof(FACT333))) gives 3 underyling 3
-Evaluating FACT333 gives FACT333 underyling (Ez
+Evaluating mknum(rhs(wffof(FACT333))) gives 3 underlying 3
+Evaluating FACT333 gives FACT333 underlying (Ez
                                              (=
                                               (- z (suc (suc zro)))
                                               (suc (suc (suc zro))))
@@ -2140,54 +2140,54 @@ Evaluating FACT333 gives FACT333 underyling (Ez
                                                (- z (suc (suc zro)))
                                                (suc (suc (suc zro))))))
 FACT333: syntactic simplification fails.
-Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+Evaluating wffof(FACT333) gives wffof(FACT333) underlying (=
                                                            (-
                                                             z
                                                             (suc (suc zro)))
                                                            (suc
                                                             (suc (suc zro))))
 wffof(FACT333): syntactic simplification fails.
-Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underlying (-
                                                                      z
                                                                      (suc
                                                                       (suc
                                                                        zro)))
 lhs(wffof(FACT333)): syntactic simplification fails.
-Evaluating rarg(lhs(wffof(FACT333))) gives rarg(lhs(wffof(FACT333))) underyling (suc
+Evaluating rarg(lhs(wffof(FACT333))) gives rarg(lhs(wffof(FACT333))) underlying (suc
                                                                                  (suc
                                                                                   zro))
 rarg(lhs(wffof(FACT333))): syntactic simplification fails.
-Evaluating mknum(rarg(lhs(wffof(FACT333)))) gives 2 underyling 2
-Evaluating plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))) gives 5 underyling 5
-Evaluating zro gives zro underyling zro
+Evaluating mknum(rarg(lhs(wffof(FACT333)))) gives 2 underlying 2
+Evaluating plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))) gives 5 underlying 5
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
-Evaluating mknumerali(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))), zro, suc) gives mknumerali(5, zro, suc) underyling (suc
+Evaluating mknumerali(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))), zro, suc) gives mknumerali(5, zro, suc) underlying (suc
                                                                                                                                               (suc
                                                                                                                                                (suc
                                                                                                                                                 (suc
                                                                                                                                                  (suc
                                                                                                                                                   zro)))))
-Evaluating mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(5, zro, suc) underyling (suc
+Evaluating mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(5, zro, suc) underlying (suc
                                                                                                                                    (suc
                                                                                                                                     (suc
                                                                                                                                      (suc
                                                                                                                                       (suc
                                                                                                                                        zro)))))
-Evaluating trmif (mainfun(lhs(wffof(FACT333))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) else mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(5, zro, suc) underyling (suc
+Evaluating trmif (mainfun(lhs(wffof(FACT333))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) else mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(5, zro, suc) underlying (suc
                                                                                                                                                                                                                                                                      (suc
                                                                                                                                                                                                                                                                       (suc
                                                                                                                                                                                                                                                                        (suc
                                                                                                                                                                                                                                                                         (suc
                                                                                                                                                                                                                                                                          zro)))))
-Evaluating solve(wffof(FACT333), TERM334) gives mknumerali(5, zro, suc) underyling (suc
+Evaluating solve(wffof(FACT333), TERM334) gives mknumerali(5, zro, suc) underlying (suc
                                                                                     (suc
                                                                                      (suc
                                                                                       (suc
                                                                                        (suc
                                                                                         zro)))))
-Evaluating pred2apply(Equal, TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underyling (=
+Evaluating pred2apply(Equal, TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underlying (=
                                                                                                                                             z
                                                                                                                                             (suc
                                                                                                                                              (suc
@@ -2195,7 +2195,7 @@ Evaluating pred2apply(Equal, TERM334, solve(wffof(FACT333), TERM334)) gives pred
                                                                                                                                                (suc
                                                                                                                                                 (suc
                                                                                                                                                  zro))))))
-Evaluating mkequal(TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underyling (=
+Evaluating mkequal(TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underlying (=
                                                                                                                                   z
                                                                                                                                   (suc
                                                                                                                                    (suc
@@ -2206,24 +2206,24 @@ Evaluating mkequal(TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equ
 Evaluating THEOREM(mkequal(TERM334, solve(wffof(FACT333), TERM334))) doesn' t work
 THEOREM(pred2apply(Equal, TERM334, mknumerali(5, zro, suc))): syntactic simplification fails.
 THEOREM(pred2apply(Equal, TERM334, mknumerali(5, zro, suc))): syntactic simplification fails.
-Evaluating Equal gives Equal underyling =
+Evaluating Equal gives Equal underlying =
 Equal: syntactic simplification fails.
-Evaluating TERM334 gives TERM334 underyling z
+Evaluating TERM334 gives TERM334 underlying z
 TERM334: syntactic simplification fails.
-Evaluating 5 gives 5 underyling 5
+Evaluating 5 gives 5 underlying 5
 5: syntactic simplification fails.
-Evaluating zro gives zro underyling zro
+Evaluating zro gives zro underlying zro
 zro: syntactic simplification fails.
-Evaluating suc gives suc underyling suc
+Evaluating suc gives suc underlying suc
 suc: syntactic simplification fails.
-Evaluating mknumerali(5, zro, suc) gives mknumerali(5, zro, suc) underyling (suc
+Evaluating mknumerali(5, zro, suc) gives mknumerali(5, zro, suc) underlying (suc
                                                                              (suc
                                                                               (suc
                                                                                (suc
                                                                                 (suc
                                                                                  zro)))))
 mknumerali(5, zro, suc): syntactic simplification fails.
-Evaluating pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underyling (=
+Evaluating pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underlying (=
                                                                                                                                      z
                                                                                                                                      (suc
                                                                                                                                       (suc

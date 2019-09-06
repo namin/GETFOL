@@ -11,9 +11,6 @@ declare funconst @ 2 [inf];
 moregeneral Sexp < List, Atom, Null >;
 moregeneral List < Null >;
 
-DECREP SEXPREP;
-represent {Sexp} as SEXPREP;
-
 axiom CAR: forall x y. car(cons(x,y))=x;
 axiom CDR: forall x y. cdr(cons(x,y))=y;
 axiom CONS: forall x y. not(Null(cons(x,y)));

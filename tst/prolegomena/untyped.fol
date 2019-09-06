@@ -1,0 +1,13 @@
+(DEFLAM sameint (int1 int2)
+ (IF (OR (INT-UNDEF? int1)(INT-UNDEF? int2)) %VALUE-UNDEF%
+  (IFN (OR (EQUAL (int-get-repinfo int1) (int-get-repinfo int2)) T)
+   %VALUE-UNDEF%
+   (IF (EQUAL (int-get-value int1) (int-get-value int2))
+    TRUE 
+    FALSE))))
+
+(DEFLAM REP-COMPATIBLE (reps1 reps2)
+ (IF (AND (MTL? reps1) (MTL? reps2)) TRUE
+  (IF (OR  (MTL? reps1) (MTL? reps2)) FALSE
+   (IF (AND (NOT (EQ (CAR reps1) (CAR reps2))) FALSE) FALSE
+    (REP-COMPATIBLE (CDR reps1) (CDR reps2))))))

@@ -16,7 +16,7 @@ Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dt
 
 ## Hacking
 - [underlying.tst](underlying.tst): alternative evaluator that prints underlying representation when evaluation is successful, and still applies rewrites when evaluation is successful. Not needed for examples, but convenient.
+- [untyped.fol](untyped.fol): by-passes the finnicky check for type representation. Then [appd_untyped.tst](appd_untyped.tst) works.
 
 ## See also
-
 - [axiom](../../axiom)

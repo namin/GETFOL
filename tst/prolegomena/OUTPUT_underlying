@@ -1,0 +1,2905 @@
+Hi!  I am GETFOL - a Fantastically Overrated Logician.
+This is version 2.001, September 1994
+
+GETFOL:: load ../tst/prolegomena/underlying.hgk;
+
+GETFOL:: load ../tst/prolegomena/underlying.fol;
+
+Warning: |expeval1|, :OPERATOR was defined in
+         /Users/namin/code/fol/GETFOL/source/eval/eval.fol and is now being
+         defined at the top level
+
+GETFOL:: fetch ../tst/prolegomena/RUN;
+I am starting to fetch ../tst/prolegomena/RUN
+
+GETFOL:: 
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/sec2.tst;
+I am starting to fetch ../tst/prolegomena/sec2.tst
+
+GETFOL:: declare indconst Socrates;
+UNIVERSAL is a sort
+Socrates has been declared to be an Indconst
+
+GETFOL:: declare predconst Mortal Man 1;
+Mortal has been declared to be a Predconst
+Man has been declared to be a Predconst
+
+GETFOL:: declare indvar x;
+UNIVERSAL is a sort
+x has been declared to be an Indvar
+
+GETFOL:: assume (Man(Socrates) and (forall x. (Man(x) imp Mortal(x))));
+
+1   Man(Socrates) and forall x. (Man(x) imp Mortal(x))     (1)
+
+GETFOL:: taut forall x. (Man(x) imp Mortal(x)) by 1;
+
+2   forall x. (Man(x) imp Mortal(x))     (1)
+
+GETFOL:: alle 2 Socrates;
+
+3   Man(Socrates) imp Mortal(Socrates)     (1)
+
+GETFOL:: taut Mortal(Socrates) by 1 3;
+
+4   Mortal(Socrates)     (1)
+
+GETFOL:: impi 1 imp 4;
+
+5   (Man(Socrates) and forall x. (Man(x) imp Mortal(x))) imp Mortal(Socrates)     
+
+GETFOL:: I am finished fetching ../tst/prolegomena/sec2.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/sec6.tst;
+I am starting to fetch ../tst/prolegomena/sec6.tst
+
+GETFOL:: fetch ../tst/prolegomena/appa.tst;
+I am starting to fetch ../tst/prolegomena/appa.tst
+
+GETFOL:: declare sort NATNUM;
+NATNUM has been declared to be a sort
+
+GETFOL:: declare indvar n m p q [NATNUM];
+NATNUM is a sort
+n has been declared to be an Indvar
+m has been declared to be an Indvar
+p has been declared to be an Indvar
+q has been declared to be an Indvar
+
+GETFOL:: declare indconst zro [NATNUM];
+NATNUM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: declare funconst suc prd (NATNUM) = NATNUM;
+NATNUM is a sort
+NATNUM is a sort
+suc has been declared to be a Funconst
+prd has been declared to be a Funconst
+
+GETFOL:: declare funconst +(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
++ has been declared to be a Funconst
+
+GETFOL:: declare funconst *(NATNUM,NATNUM) = NATNUM [inf = 550 555];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+* has been declared to be a Funconst
+
+GETFOL:: declare predconst < 2 [inf];
+< has been declared to be a Predconst
+
+GETFOL:: declare predpar P 1;
+P has been declared to be a Predpar
+
+GETFOL:: axiom ONEONE: forall n m.(suc(n)=suc(m) imp n=m);
+
+ONEONE : forall n m. ((suc(n) = suc(m)) imp (n = m))
+
+GETFOL:: axiom SUCC1: forall n.not(zro=suc(n));
+
+SUCC1 : forall n. (not (zro = suc(n)))
+
+GETFOL:: axiom SUCC2: forall n.not(zro=n) imp exists m.n=suc(m);
+
+SUCC2 : forall n. (not (zro = n)) imp exists m. (n = suc(m))
+
+GETFOL:: axiom PLUS0: forall n. n + zro = n;
+
+PLUS0 : forall n. ((n + zro) = n)
+
+GETFOL:: axiom PLUS: forall n m. n+suc(m)=suc(n+m);
+
+PLUS : forall n m. ((n + suc(m)) = suc(n + m))
+
+GETFOL:: axiom TIMES0: forall n. n * zro = zro;
+
+TIMES0 : forall n. ((n * zro) = zro)
+
+GETFOL:: axiom TIMES: forall n m. n*suc(m)=(n*m)+n;
+
+TIMES : forall n m. ((n * suc(m)) = ((n * m) + n))
+
+GETFOL:: axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
+
+INDUCT : (P(zro) and forall n. (P(n) imp P(suc(n)))) imp forall n. P(n)
+
+GETFOL:: setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
+
+GETFOL:: decrep NATNUM;
+
+GETFOL:: represent {NATNUM} as NATNUM;
+
+GETFOL:: attach zro to [NATNUM] 0;
+zro attached to '0
+
+GETFOL:: attach suc to [NATNUM=NATNUM] ADD1;
+suc attached to ADD1
+
+GETFOL:: deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
+
+GETFOL:: attach prd to [NATNUM=NATNUM] prd;
+prd attached to prd
+
+GETFOL:: attach + to [NATNUM,NATNUM=NATNUM] +;
++ attached to +
+
+GETFOL:: attach * to [NATNUM,NATNUM=NATNUM] *;
+* attached to *
+
+GETFOL:: attach < to [NATNUM,NATNUM] <;
+< attached to <
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appa.tst
+
+GETFOL:: declare funconst fact(NATNUM)=NATNUM;
+NATNUM is a sort
+NATNUM is a sort
+fact has been declared to be a Funconst
+
+GETFOL:: axiom FACT: forall n.fact(n)=trmif n=zro then suc(zro) else n*fact(prd(n));
+
+FACT : forall n. (fact(n) = (trmif (n = zro) then suc(zro) else (n * fact(prd(n)))))
+
+GETFOL:: simplify (zro=zro iff TRUE);
+
+1   (zro = zro) iff TRUE     
+
+GETFOL:: setbasicsimp N0 at facts {1};
+
+GETFOL:: setbasicsimp FACT_UNFOLD at facts {FACT};
+
+GETFOL:: rewrite (fact(zro)) by N0 uni FACT_UNFOLD uni LOGICTREE;
+
+2   fact(zro) = suc(zro)     
+
+GETFOL:: setbasicsimp F0 at facts {2};
+
+GETFOL:: simplify (suc(zro)=zro iff FALSE);
+
+3   (suc(zro) = zro) iff FALSE     
+
+GETFOL:: setbasicsimp N1 at facts {3};
+
+GETFOL:: axiom PRDSUC: forall n. prd(suc(n))=n;
+
+PRDSUC : forall n. (prd(suc(n)) = n)
+
+GETFOL:: setbasicsimp PRDSUC at facts {PRDSUC};
+
+GETFOL:: rewrite (fact(suc(zro))) by N0 uni N1 uni FACT_UNFOLD uni PRDSUC uni LOGICTREE;
+
+4   fact(suc(zro)) = (suc(zro) * suc(zro))     
+
+GETFOL:: simplify (suc(suc(zro))=zro iff FALSE);
+
+5   (suc(suc(zro)) = zro) iff FALSE     
+
+GETFOL:: setbasicsimp N2 at facts {5};
+
+GETFOL:: simplify (suc(suc(suc(zro)))=zro iff FALSE);
+
+6   (suc(suc(suc(zro))) = zro) iff FALSE     
+
+GETFOL:: setbasicsimp N3 at facts {6};
+
+GETFOL:: rewrite (fact(suc(suc(suc(zro))))) by N0 uni N1 uni N2 uni N3 uni FACT_UNFOLD uni PRDSUC uni LOGICTREE;
+
+7   fact(suc(suc(suc(zro)))) = (suc(suc(suc(zro))) * (suc(suc(zro)) * (suc(zro) * suc(zro))))     
+
+GETFOL:: rewrite (fact(suc(suc(suc(zro))))) by N0 uni N1 uni N2 uni N3 uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
+
+8   fact(suc(suc(suc(zro)))) = suc(suc(suc(suc(suc(suc(zro))))))     
+
+GETFOL:: axiom EQSYM: forall n m.(n = m iff m = n);
+
+EQSYM : forall n m. ((n = m) iff (m = n))
+
+GETFOL:: setbasicsimp EQSYM at facts {EQSYM};
+
+GETFOL:: rewrite forall n.(suc(n)=zro iff FALSE) by PEANO uni EQSYM uni LOGICTREE;
+
+9   forall n. ((suc(n) = zro) iff FALSE)     
+
+GETFOL:: setbasicsimp NS at facts {9};
+
+GETFOL:: rewrite (fact(suc(suc(suc(zro))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
+
+10   fact(suc(suc(suc(zro)))) = suc(suc(suc(suc(suc(suc(zro))))))     
+
+GETFOL:: rewrite (fact(suc(suc(suc(suc(zro)))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
+
+11   fact(suc(suc(suc(suc(zro))))) = suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(suc(zro))))))))))))))))))))))))     
+
+GETFOL:: I am finished fetching ../tst/prolegomena/sec6.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/sec9.tst;
+I am starting to fetch ../tst/prolegomena/sec9.tst
+
+GETFOL:: NAMECONTEXT META;
+You have named the current context: META
+
+GETFOL:: DECLARE sort WFF FACT;
+WFF has been declared to be a sort
+FACT has been declared to be a sort
+
+GETFOL:: DECREP WFF FACT;
+
+GETFOL:: REPRESENT {WFF} as WFF;
+
+GETFOL:: REPRESENT {FACT} as FACT;
+
+GETFOL:: DECLARE predconst THEOREM 1;
+THEOREM has been declared to be a Predconst
+
+GETFOL:: DECLARE funconst mkand (WFF,WFF)=WFF;
+WFF is a sort
+WFF is a sort
+WFF is a sort
+mkand has been declared to be a Funconst
+
+GETFOL:: DECLARE funconst wffof (FACT)=WFF;
+WFF is a sort
+FACT is a sort
+wffof has been declared to be a Funconst
+
+GETFOL:: DECLARE indvar A B [WFF];
+WFF is a sort
+A has been declared to be an Indvar
+B has been declared to be an Indvar
+
+GETFOL:: DECLARE indvar T1 T2 [FACT];
+FACT is a sort
+T1 has been declared to be an Indvar
+T2 has been declared to be an Indvar
+
+GETFOL:: AXIOM ANDI: forall A B.THEOREM(mkand(A,B));
+
+ANDI : forall A B. THEOREM(mkand(A, B))
+
+GETFOL:: AXIOM ANDI_SOUND: forall T1 T2.THEOREM(mkand(wffof(T1),wffof(T2)));
+
+ANDI_SOUND : forall T1 T2. THEOREM(mkand(wffof(T1), wffof(T2)))
+
+GETFOL:: ATTACH mkand TO [WFF,WFF=WFF] mkand;
+mkand attached to mkand
+
+GETFOL:: deflam wffof(x) (CADR x);
+
+GETFOL:: ATTACH wffof TO [FACT=WFF] wffof;
+wffof attached to wffof
+
+GETFOL:: MAKECONTEXT OBJ;
+You have created the empty context: OBJ
+
+GETFOL:: SWITCHCONTEXT OBJ;
+You are now using context: OBJ
+You are switching to a proof with no name.
+
+GETFOL:: declare sentconst A B;
+A has been declared to be a Sentconst
+B has been declared to be a Sentconst
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect ANDI A B;
+I am switching from the current context to: META
+THEOREM has no interpretation.
+THEOREM(mkand(WFF289, WFF290)): syntactic simplification fails.
+Evaluating WFF289 gives WFF289 underyling A
+WFF289: syntactic simplification fails.
+Evaluating WFF290 gives WFF290 underyling B
+WFF290: syntactic simplification fails.
+Evaluating mkand(WFF289, WFF290) gives mkand(WFF289, WFF290) underyling (and
+                                                                         A
+                                                                         B)
+mkand(WFF289, WFF290): syntactic simplification fails.
+Evaluating THEOREM(mkand(WFF289, WFF290)) doesn' t work
+THEOREM(mkand(WFF289, WFF290)): syntactic simplification fails.
+Evaluating WFF289 gives WFF289 underyling A
+WFF289: syntactic simplification fails.
+Evaluating WFF290 gives WFF290 underyling B
+WFF290: syntactic simplification fails.
+Evaluating mkand(WFF289, WFF290) gives mkand(WFF289, WFF290) underyling (and
+                                                                         A
+                                                                         B)
+mkand(WFF289, WFF290): syntactic simplification fails.
+I am switching from the current context to: OBJ
+
+1   A and B     
+Ok!! I am finished doing reflection
+
+GETFOL:: nameproof P_AND_UNSOUND;
+You have named the current proof: P_AND_UNSOUND
+
+GETFOL:: makeproof P1;
+You have created the empty proof: P1
+
+GETFOL:: switchproof P1;
+You are now using the proof: P1
+
+GETFOL:: assume A;
+
+1   A     (1)
+
+GETFOL:: impi 1 1;
+
+2   A imp A     
+
+GETFOL:: theorem T1 2;
+
+T1 : A imp A
+
+GETFOL:: makeproof P2;
+You have created the empty proof: P2
+
+GETFOL:: switchproof P2;
+You are now using the proof: P2
+
+GETFOL:: assume B;
+
+1   B     (1)
+
+GETFOL:: impi 1 1;
+
+2   B imp B     
+
+GETFOL:: theorem T2 2;
+
+T2 : B imp B
+
+GETFOL:: makeproof P_ANDS;
+You have created the empty proof: P_ANDS
+
+GETFOL:: switchproof P_ANDS;
+You are now using the proof: P_ANDS
+
+GETFOL:: andi T1 T2;
+
+1   (A imp A) and (B imp B)     
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect ANDI A B;
+I am switching from the current context to: META
+THEOREM has no interpretation.
+THEOREM(mkand(WFF291, WFF292)): syntactic simplification fails.
+Evaluating WFF291 gives WFF291 underyling A
+WFF291: syntactic simplification fails.
+Evaluating WFF292 gives WFF292 underyling B
+WFF292: syntactic simplification fails.
+Evaluating mkand(WFF291, WFF292) gives mkand(WFF291, WFF292) underyling (and
+                                                                         A
+                                                                         B)
+mkand(WFF291, WFF292): syntactic simplification fails.
+Evaluating THEOREM(mkand(WFF291, WFF292)) doesn' t work
+THEOREM(mkand(WFF291, WFF292)): syntactic simplification fails.
+Evaluating WFF291 gives WFF291 underyling A
+WFF291: syntactic simplification fails.
+Evaluating WFF292 gives WFF292 underyling B
+WFF292: syntactic simplification fails.
+Evaluating mkand(WFF291, WFF292) gives mkand(WFF291, WFF292) underyling (and
+                                                                         A
+                                                                         B)
+mkand(WFF291, WFF292): syntactic simplification fails.
+I am switching from the current context to: OBJ
+
+2   A and B     
+Ok!! I am finished doing reflection
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect ANDI_SOUND T1 T2;
+I am switching from the current context to: META
+THEOREM has no interpretation.
+THEOREM(mkand(wffof(FACT293), wffof(FACT294))): syntactic simplification fails.
+Evaluating FACT293 gives FACT293 underyling (T1
+                                             (imp A A)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM% T1 (imp A A)))
+FACT293: syntactic simplification fails.
+Evaluating wffof(FACT293) gives wffof(FACT293) underyling (imp A A)
+wffof(FACT293): syntactic simplification fails.
+Evaluating FACT294 gives FACT294 underyling (T2
+                                             (imp B B)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM% T2 (imp B B)))
+FACT294: syntactic simplification fails.
+Evaluating wffof(FACT294) gives wffof(FACT294) underyling (imp B B)
+wffof(FACT294): syntactic simplification fails.
+Evaluating mkand(wffof(FACT293), wffof(FACT294)) gives mkand(wffof(FACT293), wffof(FACT294)) underyling (and
+                                                                                                         (imp
+                                                                                                          A
+                                                                                                          A)
+                                                                                                         (imp
+                                                                                                          B
+                                                                                                          B))
+mkand(wffof(FACT293), wffof(FACT294)): syntactic simplification fails.
+Evaluating THEOREM(mkand(wffof(FACT293), wffof(FACT294))) doesn' t work
+THEOREM(mkand(wffof(FACT293), wffof(FACT294))): syntactic simplification fails.
+Evaluating FACT293 gives FACT293 underyling (T1
+                                             (imp A A)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM% T1 (imp A A)))
+FACT293: syntactic simplification fails.
+Evaluating wffof(FACT293) gives wffof(FACT293) underyling (imp A A)
+wffof(FACT293): syntactic simplification fails.
+Evaluating FACT294 gives FACT294 underyling (T2
+                                             (imp B B)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM% T2 (imp B B)))
+FACT294: syntactic simplification fails.
+Evaluating wffof(FACT294) gives wffof(FACT294) underyling (imp B B)
+wffof(FACT294): syntactic simplification fails.
+Evaluating mkand(wffof(FACT293), wffof(FACT294)) gives mkand(wffof(FACT293), wffof(FACT294)) underyling (and
+                                                                                                         (imp
+                                                                                                          A
+                                                                                                          A)
+                                                                                                         (imp
+                                                                                                          B
+                                                                                                          B))
+mkand(wffof(FACT293), wffof(FACT294)): syntactic simplification fails.
+I am switching from the current context to: OBJ
+
+3   (A imp A) and (B imp B)     
+Ok!! I am finished doing reflection
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect ANDI FALSE FALSE;
+I am switching from the current context to: META
+THEOREM has no interpretation.
+THEOREM(mkand(WFF295, WFF296)): syntactic simplification fails.
+Evaluating WFF295 gives WFF296 underyling FALSE
+Evaluating WFF296 gives WFF296 underyling FALSE
+WFF296: syntactic simplification fails.
+Evaluating mkand(WFF295, WFF296) gives mkand(WFF296, WFF296) underyling (and
+                                                                         FALSE
+                                                                         FALSE)
+Evaluating THEOREM(mkand(WFF295, WFF296)) doesn' t work
+THEOREM(mkand(WFF296, WFF296)): syntactic simplification fails.
+Evaluating WFF296 gives WFF296 underyling FALSE
+WFF296: syntactic simplification fails.
+Evaluating WFF296 gives WFF296 underyling FALSE
+WFF296: syntactic simplification fails.
+Evaluating mkand(WFF296, WFF296) gives mkand(WFF296, WFF296) underyling (and
+                                                                         FALSE
+                                                                         FALSE)
+mkand(WFF296, WFF296): syntactic simplification fails.
+I am switching from the current context to: OBJ
+
+4   FALSE and FALSE     
+Ok!! I am finished doing reflection
+
+GETFOL:: I am finished fetching ../tst/prolegomena/sec9.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/sec91.tst;
+I am starting to fetch ../tst/prolegomena/sec91.tst
+
+GETFOL:: fetch ../tst/prolegomena/appa.tst;
+I am starting to fetch ../tst/prolegomena/appa.tst
+
+GETFOL:: declare sort NATNUM;
+NATNUM has been declared to be a sort
+
+GETFOL:: declare indvar n m p q [NATNUM];
+NATNUM is a sort
+n has been declared to be an Indvar
+m has been declared to be an Indvar
+p has been declared to be an Indvar
+q has been declared to be an Indvar
+
+GETFOL:: declare indconst zro [NATNUM];
+NATNUM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: declare funconst suc prd (NATNUM) = NATNUM;
+NATNUM is a sort
+NATNUM is a sort
+suc has been declared to be a Funconst
+prd has been declared to be a Funconst
+
+GETFOL:: declare funconst +(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
++ has been declared to be a Funconst
+
+GETFOL:: declare funconst *(NATNUM,NATNUM) = NATNUM [inf = 550 555];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+* has been declared to be a Funconst
+
+GETFOL:: declare predconst < 2 [inf];
+< has been declared to be a Predconst
+
+GETFOL:: declare predpar P 1;
+P has been declared to be a Predpar
+
+GETFOL:: axiom ONEONE: forall n m.(suc(n)=suc(m) imp n=m);
+
+ONEONE : forall n m. ((suc(n) = suc(m)) imp (n = m))
+
+GETFOL:: axiom SUCC1: forall n.not(zro=suc(n));
+
+SUCC1 : forall n. (not (zro = suc(n)))
+
+GETFOL:: axiom SUCC2: forall n.not(zro=n) imp exists m.n=suc(m);
+
+SUCC2 : forall n. (not (zro = n)) imp exists m. (n = suc(m))
+
+GETFOL:: axiom PLUS0: forall n. n + zro = n;
+
+PLUS0 : forall n. ((n + zro) = n)
+
+GETFOL:: axiom PLUS: forall n m. n+suc(m)=suc(n+m);
+
+PLUS : forall n m. ((n + suc(m)) = suc(n + m))
+
+GETFOL:: axiom TIMES0: forall n. n * zro = zro;
+
+TIMES0 : forall n. ((n * zro) = zro)
+
+GETFOL:: axiom TIMES: forall n m. n*suc(m)=(n*m)+n;
+
+TIMES : forall n m. ((n * suc(m)) = ((n * m) + n))
+
+GETFOL:: axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
+
+INDUCT : (P(zro) and forall n. (P(n) imp P(suc(n)))) imp forall n. P(n)
+
+GETFOL:: setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
+
+GETFOL:: decrep NATNUM;
+
+GETFOL:: represent {NATNUM} as NATNUM;
+
+GETFOL:: attach zro to [NATNUM] 0;
+zro attached to '0
+
+GETFOL:: attach suc to [NATNUM=NATNUM] ADD1;
+suc attached to ADD1
+
+GETFOL:: deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
+
+GETFOL:: attach prd to [NATNUM=NATNUM] prd;
+prd attached to prd
+
+GETFOL:: attach + to [NATNUM,NATNUM=NATNUM] +;
++ attached to +
+
+GETFOL:: attach * to [NATNUM,NATNUM=NATNUM] *;
+* attached to *
+
+GETFOL:: attach < to [NATNUM,NATNUM] <;
+< attached to <
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appa.tst
+
+GETFOL:: 
+GETFOL:: declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+- has been declared to be a Funconst
+
+GETFOL:: deflam minus (N M) (LET ((R (- N M))) (COND ((> R 0) R) (T 0)));
+
+GETFOL:: attach - to [NATNUM,NATNUM=NATNUM] minus;
+- attached to minus
+
+GETFOL:: axiom MINUS0R: forall n. n - zro = n;
+
+MINUS0R : forall n. ((n - zro) = n)
+
+GETFOL:: axiom MINUS0L: forall n. zro - n = zro;
+
+MINUS0L : forall n. ((zro - n) = zro)
+
+GETFOL:: axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
+
+MINUS : forall n m. ((suc(n) - suc(m)) = (n - m))
+
+GETFOL:: setbasicsimp TMINUS at facts {MINUS0R,MINUS0L,MINUS};
+
+GETFOL:: 
+GETFOL:: declare indconst x y z [NATNUM];
+NATNUM is a sort
+x has been declared to be an Indconst
+y has been declared to be an Indconst
+z has been declared to be an Indconst
+
+GETFOL:: axiom Ex: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
+
+Ex : (x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))
+
+GETFOL:: axiom Ey: y - suc(suc(zro)) = zro;
+
+Ey : (y - suc(suc(zro))) = zro
+
+GETFOL:: axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
+
+Ez : (z - suc(suc(zro))) = suc(suc(suc(zro)))
+
+GETFOL:: 
+GETFOL:: axiom THM1: forall p q m.(p=q imp p-m=q-m);
+
+THM1 : forall p q m. ((p = q) imp ((p - m) = (q - m)))
+
+GETFOL:: axiom THM2: forall p q m.(m<suc(q) imp (p+q)-m=p+(q-m));
+
+THM2 : forall p q m. ((m < suc(q)) imp (((p + q) - m) = (p + (q - m))))
+
+GETFOL:: theorem THM3 PLUS0;
+
+THM3 : forall n. ((n + zro) = n)
+
+GETFOL:: setbasicsimp THM1 at facts {THM1};
+
+GETFOL:: setbasicsimp THM3 at facts {THM3};
+
+GETFOL:: alle THM2 x,suc(suc(zro)),suc(suc(zro));
+
+1   (suc(suc(zro)) < suc(suc(suc(zro)))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (x + (suc(suc(zro)) - suc(suc(zro)))))     
+
+GETFOL:: simplify suc(suc(zro))<suc(suc(suc(zro)));
+
+2   suc(suc(zro)) < suc(suc(suc(zro)))     
+
+GETFOL:: impe 2 1;
+
+3   ((x + suc(suc(zro))) - suc(suc(zro))) = (x + (suc(suc(zro)) - suc(suc(zro))))     
+
+GETFOL:: theorem THM2instance 3;
+
+THM2instance : ((x + suc(suc(zro))) - suc(suc(zro))) = (x + (suc(suc(zro)) - suc(suc(zro))))
+
+GETFOL:: setbasicsimp THM2instance at facts {THM2instance};
+
+GETFOL:: alle THM1 x+suc(suc(zro)),suc(suc(suc(suc(suc(zro))))),suc(suc(zro));
+
+4   ((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (suc(suc(suc(suc(suc(zro))))) - suc(suc(zro))))     
+
+GETFOL:: rewrite 4 by TMINUS uni THM2instance uni THM3 uni LOGICTREE;
+
+5   (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (suc(suc(suc(suc(suc(zro))))) - suc(suc(zro))))) iff (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (x = suc(suc(suc(zro)))))     
+
+GETFOL:: iffe 5 1;
+
+6   (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (((x + suc(suc(zro))) - suc(suc(zro))) = (suc(suc(suc(suc(suc(zro))))) - suc(suc(zro))))) imp (((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (x = suc(suc(suc(zro)))))     
+
+GETFOL:: impe 6 4;
+
+7   ((x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))) imp (x = suc(suc(suc(zro))))     
+
+GETFOL:: impe 7 Ex;
+
+8   x = suc(suc(suc(zro)))     
+
+GETFOL:: theorem THMx 8;
+
+THMx : x = suc(suc(suc(zro)))
+
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: 
+GETFOL:: namecontext OBJ;
+You have named the current context: OBJ
+
+GETFOL:: MAKECONTEXT META;
+You have created the empty context: META
+
+GETFOL:: SWITCHCONTEXT META;
+You are now using context: META
+You are switching to a proof with no name.
+
+GETFOL:: DECLARE PREDCONST THEOREM 1;
+THEOREM has been declared to be a Predconst
+
+GETFOL:: DECLARE SORT TERM WFF FACT PREDSYM FUNSYM;
+TERM has been declared to be a sort
+WFF has been declared to be a sort
+FACT has been declared to be a sort
+PREDSYM has been declared to be a sort
+FUNSYM has been declared to be a sort
+
+GETFOL:: DECREP TERM WFF FACT PREDSYM FUNSYM;
+
+GETFOL:: REPRESENT {TERM} AS TERM;
+
+GETFOL:: REPRESENT {WFF} AS WFF;
+
+GETFOL:: REPRESENT {FACT} AS FACT;
+
+GETFOL:: REPRESENT {PREDSYM} AS PREDSYM;
+
+GETFOL:: REPRESENT {FUNSYM} AS FUNSYM;
+
+GETFOL:: DECLARE FUNCONST wffof (FACT)=WFF;
+WFF is a sort
+FACT is a sort
+wffof has been declared to be a Funconst
+
+GETFOL:: ATTACH wffof TO [FACT=WFF] fact\-get\-wff;
+wffof attached to fact-get-wff
+
+GETFOL:: DECLARE FUNCONST lhs rhs (WFF)=TERM;
+TERM is a sort
+WFF is a sort
+lhs has been declared to be a Funconst
+rhs has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST larg rarg (TERM)=TERM;
+TERM is a sort
+TERM is a sort
+larg has been declared to be a Funconst
+rarg has been declared to be a Funconst
+
+GETFOL:: ATTACH lhs TO [WFF=TERM] lhs;
+lhs attached to lhs
+
+GETFOL:: ATTACH rhs TO [WFF=TERM] rhs;
+rhs attached to rhs
+
+GETFOL:: DEFLAM larg (t) (CAR (appl\-get\-args t));
+
+GETFOL:: ATTACH larg TO [TERM=TERM] larg;
+larg attached to larg
+
+GETFOL:: DEFLAM rarg (t) (CADR (appl\-get\-args t));
+
+GETFOL:: ATTACH rarg TO [TERM=TERM] rarg;
+rarg attached to rarg
+
+GETFOL:: DECLARE FUNCONST mainpred (WFF)=PREDSYM;
+PREDSYM is a sort
+WFF is a sort
+mainpred has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST pred2apply (PREDSYM TERM TERM)=WFF;
+WFF is a sort
+PREDSYM is a sort
+TERM is a sort
+TERM is a sort
+pred2apply has been declared to be a Funconst
+
+GETFOL:: DECLARE INDCONST Equal [PREDSYM];
+PREDSYM is a sort
+Equal has been declared to be an Indconst
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH Equal dar [PREDSYM] OBJ::PREDCONST:=;
+Equal attached to '=
+Equal is the preferred name of =
+
+GETFOL:: DEFLAM mainpred (X) (AND (PREDAPPL X) (predappl\-get\-pred X));
+
+GETFOL:: ATTACH mainpred to [WFF=PREDSYM] mainpred;
+mainpred attached to mainpred
+
+GETFOL:: ATTACH pred2apply TO [PREDSYM,TERM,TERM=WFF] predappl2\-mak;
+pred2apply attached to predappl2-mak
+
+GETFOL:: DECLARE FUNCONST mainfun (TERM)=FUNSYM;
+FUNSYM is a sort
+TERM is a sort
+mainfun has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST fun1apply (FUNSYM TERM)=TERM;
+TERM is a sort
+FUNSYM is a sort
+TERM is a sort
+fun1apply has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST fun2apply (FUNSYM TERM TERM)=TERM;
+TERM is a sort
+FUNSYM is a sort
+TERM is a sort
+TERM is a sort
+fun2apply has been declared to be a Funconst
+
+GETFOL:: DECLARE INDCONST zro [TERM];
+TERM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: DECLARE INDCONST suc + - [FUNSYM];
+FUNSYM is a sort
+suc has been declared to be an Indconst
++ has been declared to be an Indconst
+- has been declared to be an Indconst
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH zro dar [TERM] OBJ::INDCONST:zro;
+zro attached to 'zro
+zro is the preferred name of zro
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH suc dar [FUNSYM] OBJ::FUNCONST:suc;
+suc attached to 'suc
+suc is the preferred name of suc
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH + dar [FUNSYM] OBJ::FUNCONST:+;
++ attached to '+
++ is the preferred name of +
+
+GETFOL:: ctext-get: I changed context to: OBJ
+ctext-get: I changed context to: META
+MATTACH - dar [FUNSYM] OBJ::FUNCONST:-;
+- attached to '-
+- is the preferred name of -
+
+GETFOL:: DEFLAM mainfun (X) (AND (FUNAPPL X) (funappl\-get\-fun X));
+
+GETFOL:: ATTACH mainfun to [TERM=FUNSYM] mainfun;
+mainfun attached to mainfun
+
+GETFOL:: ATTACH fun1apply TO [FUNSYM,TERM=TERM] funappl1\-mak;
+fun1apply attached to funappl1-mak
+
+GETFOL:: ATTACH fun2apply TO [FUNSYM,TERM,TERM=TERM] funappl2\-mak;
+fun2apply attached to funappl2-mak
+
+GETFOL:: DECLARE indvar x y z [TERM];
+TERM is a sort
+x has been declared to be an Indvar
+y has been declared to be an Indvar
+z has been declared to be an Indvar
+
+GETFOL:: DECLARE indvar w [WFF];
+WFF is a sort
+w has been declared to be an Indvar
+
+GETFOL:: DECLARE indvar vl [FACT];
+FACT is a sort
+vl has been declared to be an Indvar
+
+GETFOL:: DECLARE PREDCONST NUMERAL 1;
+NUMERAL has been declared to be a Predconst
+
+GETFOL:: DECLARE PREDCONST numeral 3;
+numeral has been declared to be a Predconst
+
+GETFOL:: DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (FUNAPPL X) (EQ (funappl\-get\-fun X) suc) (numeral (funappl1\-get\-arg X) zro suc)));
+
+GETFOL:: ATTACH numeral TO [TERM,TERM,FUNSYM] numeral;
+numeral attached to numeral
+
+GETFOL:: AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
+
+AX_NUMERAL : forall x. (NUMERAL(x) iff numeral(x, zro, suc))
+
+GETFOL:: KNOW natnums;
+
+GETFOL:: declare indvar n [NATNUMSORT];
+NATNUMSORT is a sort
+n has been declared to be an Indvar
+
+GETFOL:: DECLARE FUNCONST mknum (TERM)=NATNUMSORT;
+NATNUMSORT is a sort
+TERM is a sort
+mknum has been declared to be a Funconst
+
+GETFOL:: DEFLAM mknum (X) (IF (FUNAPPL X) (ADD1 (mknum (funappl1\-get\-arg X))) 0);
+
+GETFOL:: ATTACH mknum TO [TERM=NATNUMREP] mknum;
+mknum attached to mknum
+
+GETFOL:: DECLARE FUNCONST mknumerali (NATNUMSORT,TERM,FUNSYM)=TERM;
+TERM is a sort
+NATNUMSORT is a sort
+TERM is a sort
+FUNSYM is a sort
+mknumerali has been declared to be a Funconst
+
+GETFOL:: DECLARE FUNCONST mknumeral (NATNUMSORT)=TERM;
+TERM is a sort
+NATNUMSORT is a sort
+mknumeral has been declared to be a Funconst
+
+GETFOL:: DEFLAM mknumerali (X zro suc) (IF (= X 0) zro (funappl1\-mak suc (mknumerali (SUB1 X) zro suc)));
+
+GETFOL:: ATTACH mknumerali TO [NATNUMREP,TERM,FUNSYM=TERM] mknumerali;
+mknumerali attached to mknumerali
+
+GETFOL:: AXIOM AX_MKNUMERAL: forall n.(mknumeral(n)=mknumerali(n,zro,suc));
+
+AX_MKNUMERAL : forall n. (mknumeral(n) = mknumerali(n, zro, suc))
+
+GETFOL:: DECLARE PREDCONST LEQ 2;
+LEQ has been declared to be a Predconst
+
+GETFOL:: DEFLAM leq (X Y) (OR (< X Y) (= X Y));
+
+GETFOL:: ATTACH LEQ TO [NATNUMREP,NATNUMREP] leq;
+LEQ attached to leq
+
+GETFOL:: DECLARE FUNCONST plus minus (NATNUMSORT NATNUMSORT)=NATNUMSORT;
+NATNUMSORT is a sort
+NATNUMSORT is a sort
+NATNUMSORT is a sort
+plus has been declared to be a Funconst
+minus has been declared to be a Funconst
+
+GETFOL:: ATTACH plus TO [NATNUMREP,NATNUMREP=NATNUMREP] +;
+plus attached to +
+
+GETFOL:: ATTACH minus TO [NATNUMREP,NATNUMREP=NATNUMREP] -;
+minus attached to -
+
+GETFOL:: DECLARE FUNCONST mkequal (TERM TERM)=WFF;
+WFF is a sort
+TERM is a sort
+TERM is a sort
+mkequal has been declared to be a Funconst
+
+GETFOL:: AXIOM AX_MKEQUAL: forall x y.mkequal(x,y)=pred2apply(Equal,x,y);
+
+AX_MKEQUAL : forall x y. (mkequal(x, y) = pred2apply(Equal, x, y))
+
+GETFOL:: DECLARE PREDCONST LINEAREQ 2;
+LINEAREQ has been declared to be a Predconst
+
+GETFOL:: DECLARE FUNCONST solve (WFF TERM)=TERM;
+TERM is a sort
+WFF is a sort
+TERM is a sort
+solve has been declared to be a Funconst
+
+GETFOL:: 
+GETFOL:: AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
+  mainpred(w)=Equal and
+  (mainfun(lhs(w))=+ or mainfun(lhs(w))=-) and
+  larg(lhs(w))=x and
+  (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w))) and
+  (mainfun(lhs(w))=+ imp LEQ(mknum(larg(lhs(w))),mknum(rhs(w))))));
+
+AX_LINEAREQ : forall w x. (LINEAREQ(w, x) iff (((((mainpred(w) = Equal) and ((mainfun(lhs(w)) = +) or (mainfun(lhs(w)) = -))) and (larg(lhs(w)) = x)) and (NUMERAL(rarg(lhs(w))) and NUMERAL(rhs(w)))) and ((mainfun(lhs(w)) = +) imp LEQ(mknum(larg(lhs(w))), mknum(rhs(w))))))
+
+GETFOL:: AXIOM AX_SOLVE: forall w x.(solve(w, x)=
+  trmif mainfun(lhs(w))=+
+  then mknumeral(minus(mknum(rhs(w)),mknum(rarg(lhs(w)))))
+  else mknumeral(plus(mknum(rhs(w)),mknum(rarg(lhs(w))))));
+
+AX_SOLVE : forall w x. (solve(w, x) = (trmif (mainfun(lhs(w)) = +) then mknumeral(minus(mknum(rhs(w)), mknum(rarg(lhs(w))))) else mknumeral(plus(mknum(rhs(w)), mknum(rarg(lhs(w)))))))
+
+GETFOL:: AXIOM SOLVE: forall vl x.(LINEAREQ(wffof(vl),x) imp THEOREM(mkequal(x,solve(wffof(vl),x))));
+
+SOLVE : forall vl x. (LINEAREQ(wffof(vl), x) imp THEOREM(mkequal(x, solve(wffof(vl), x))))
+
+GETFOL:: SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SOLVE,AX_NUMERAL,AX_MKNUMERAL,AX_MKEQUAL};
+
+GETFOL:: SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
+Attention! EVALSS is already the label of a simpset.
+
+GETFOL:: SWITCHCONTEXT OBJ;
+You are now using context: OBJ
+You are switching to a proof with no name.
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect SOLVE Ey y;
+I am switching from the current context to: META
+LINEAREQ(wffof(FACT311), TERM312) imp THEOREM(mkequal(TERM312, solve(wffof(FACT311), TERM312))): syntactic simplification fails.
+LINEAREQ has no interpretation.
+Syntactic simplification of LINEAREQ(wffof(FACT311), TERM312) gives ((((mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -))) and (larg(lhs(wffof(FACT311))) = TERM312)) and (NUMERAL(rarg(lhs(wffof(FACT311)))) and NUMERAL(rhs(wffof(FACT311))))) and ((mainfun(lhs(wffof(FACT311))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT311)))), mknum(rhs(wffof(FACT311)))))
+((((mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -))) and (larg(lhs(wffof(FACT311))) = TERM312)) and (NUMERAL(rarg(lhs(wffof(FACT311)))) and NUMERAL(rhs(wffof(FACT311))))) and ((mainfun(lhs(wffof(FACT311))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT311)))), mknum(rhs(wffof(FACT311))))): syntactic simplification fails.
+(((mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -))) and (larg(lhs(wffof(FACT311))) = TERM312)) and (NUMERAL(rarg(lhs(wffof(FACT311)))) and NUMERAL(rhs(wffof(FACT311)))): syntactic simplification fails.
+((mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -))) and (larg(lhs(wffof(FACT311))) = TERM312): syntactic simplification fails.
+(mainpred(wffof(FACT311)) = Equal) and ((mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -)): syntactic simplification fails.
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating mainpred(wffof(FACT311)) gives Equal underyling =
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating mainpred(wffof(FACT311)) = Equal gives TRUE
+(mainfun(lhs(wffof(FACT311))) = +) or (mainfun(lhs(wffof(FACT311))) = -): syntactic simplification fails.
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+                                                                     y
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT311)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) = + gives FALSE
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+                                                                     y
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT311)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
+Evaluating - gives - underyling -
+-: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) = - gives TRUE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+                                                                     y
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT311)): syntactic simplification fails.
+Evaluating larg(lhs(wffof(FACT311))) gives TERM312 underyling y
+Evaluating TERM312 gives TERM312 underyling y
+TERM312: syntactic simplification fails.
+Evaluating larg(lhs(wffof(FACT311))) = TERM312 gives TRUE
+TRUE: syntactic simplification fails.
+NUMERAL(rarg(lhs(wffof(FACT311)))) and NUMERAL(rhs(wffof(FACT311))): syntactic simplification fails.
+NUMERAL has no interpretation.
+Syntactic simplification of NUMERAL(rarg(lhs(wffof(FACT311)))) gives numeral(rarg(lhs(wffof(FACT311))), zro, suc)
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+                                                                     y
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT311)): syntactic simplification fails.
+Evaluating rarg(lhs(wffof(FACT311))) gives rarg(lhs(wffof(FACT311))) underyling (suc
+                                                                                 (suc
+                                                                                  zro))
+rarg(lhs(wffof(FACT311))): syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating numeral(rarg(lhs(wffof(FACT311))), zro, suc) gives TRUE
+Evaluating NUMERAL(rarg(lhs(wffof(FACT311)))) gives TRUE
+NUMERAL has no interpretation.
+Syntactic simplification of NUMERAL(rhs(wffof(FACT311))) gives numeral(rhs(wffof(FACT311)), zro, suc)
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating rhs(wffof(FACT311)) gives zro underyling zro
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating numeral(rhs(wffof(FACT311)), zro, suc) gives TRUE
+Evaluating NUMERAL(rhs(wffof(FACT311))) gives TRUE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+(mainfun(lhs(wffof(FACT311))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT311)))), mknum(rhs(wffof(FACT311)))): syntactic simplification fails.
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+                                                                     y
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT311)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) = + gives FALSE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+Evaluating LINEAREQ(wffof(FACT311), TERM312) gives TRUE
+THEOREM has no interpretation.
+THEOREM(mkequal(TERM312, solve(wffof(FACT311), TERM312))): syntactic simplification fails.
+mkequal has no interpretation.
+Syntactic simplification of mkequal(TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, solve(wffof(FACT311), TERM312))
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating TERM312 gives TERM312 underyling y
+TERM312: syntactic simplification fails.
+solve has no interpretation.
+Syntactic simplification of solve(wffof(FACT311), TERM312) gives trmif (mainfun(lhs(wffof(FACT311))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) else mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))))
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+                                                                     y
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT311)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) gives - underyling -
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT311))) = + gives FALSE
+mknumeral has no interpretation.
+Syntactic simplification of mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))), zro, suc)
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating rhs(wffof(FACT311)) gives zro underyling zro
+Evaluating mknum(rhs(wffof(FACT311))) gives 0 underyling 0
+Evaluating FACT311 gives FACT311 underyling (Ey
+                                             (= (- y (suc (suc zro))) zro)
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ey
+                                              (= (- y (suc (suc zro))) zro)))
+FACT311: syntactic simplification fails.
+Evaluating wffof(FACT311) gives wffof(FACT311) underyling (=
+                                                           (-
+                                                            y
+                                                            (suc (suc zro)))
+                                                           zro)
+wffof(FACT311): syntactic simplification fails.
+Evaluating lhs(wffof(FACT311)) gives lhs(wffof(FACT311)) underyling (-
+                                                                     y
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT311)): syntactic simplification fails.
+Evaluating rarg(lhs(wffof(FACT311))) gives rarg(lhs(wffof(FACT311))) underyling (suc
+                                                                                 (suc
+                                                                                  zro))
+rarg(lhs(wffof(FACT311))): syntactic simplification fails.
+Evaluating mknum(rarg(lhs(wffof(FACT311)))) gives 2 underyling 2
+Evaluating plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))) gives 2 underyling 2
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating mknumerali(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311))))), zro, suc) gives mknumerali(2, zro, suc) underyling (suc
+                                                                                                                                              (suc
+                                                                                                                                               zro))
+Evaluating mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(2, zro, suc) underyling (suc
+                                                                                                                                   (suc
+                                                                                                                                    zro))
+Evaluating trmif (mainfun(lhs(wffof(FACT311))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) else mknumeral(plus(mknum(rhs(wffof(FACT311))), mknum(rarg(lhs(wffof(FACT311)))))) gives mknumerali(2, zro, suc) underyling (suc
+                                                                                                                                                                                                                                                                     (suc
+                                                                                                                                                                                                                                                                      zro))
+Evaluating solve(wffof(FACT311), TERM312) gives mknumerali(2, zro, suc) underyling (suc
+                                                                                    (suc
+                                                                                     zro))
+Evaluating pred2apply(Equal, TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underyling (=
+                                                                                                                                            y
+                                                                                                                                            (suc
+                                                                                                                                             (suc
+                                                                                                                                              zro)))
+Evaluating mkequal(TERM312, solve(wffof(FACT311), TERM312)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underyling (=
+                                                                                                                                  y
+                                                                                                                                  (suc
+                                                                                                                                   (suc
+                                                                                                                                    zro)))
+Evaluating THEOREM(mkequal(TERM312, solve(wffof(FACT311), TERM312))) doesn' t work
+THEOREM(pred2apply(Equal, TERM312, mknumerali(2, zro, suc))): syntactic simplification fails.
+THEOREM(pred2apply(Equal, TERM312, mknumerali(2, zro, suc))): syntactic simplification fails.
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating TERM312 gives TERM312 underyling y
+TERM312: syntactic simplification fails.
+Evaluating 2 gives 2 underyling 2
+2: syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating mknumerali(2, zro, suc) gives mknumerali(2, zro, suc) underyling (suc
+                                                                             (suc
+                                                                              zro))
+mknumerali(2, zro, suc): syntactic simplification fails.
+Evaluating pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) gives pred2apply(Equal, TERM312, mknumerali(2, zro, suc)) underyling (=
+                                                                                                                                     y
+                                                                                                                                     (suc
+                                                                                                                                      (suc
+                                                                                                                                       zro)))
+pred2apply(Equal, TERM312, mknumerali(2, zro, suc)): syntactic simplification fails.
+I am switching from the current context to: OBJ
+
+9   y = suc(suc(zro))     
+Ok!! I am finished doing reflection
+
+GETFOL:: theorem THMy 9;
+
+THMy : y = suc(suc(zro))
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect SOLVE Ex x;
+I am switching from the current context to: META
+LINEAREQ(wffof(FACT322), TERM323) imp THEOREM(mkequal(TERM323, solve(wffof(FACT322), TERM323))): syntactic simplification fails.
+LINEAREQ has no interpretation.
+Syntactic simplification of LINEAREQ(wffof(FACT322), TERM323) gives ((((mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -))) and (larg(lhs(wffof(FACT322))) = TERM323)) and (NUMERAL(rarg(lhs(wffof(FACT322)))) and NUMERAL(rhs(wffof(FACT322))))) and ((mainfun(lhs(wffof(FACT322))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT322)))), mknum(rhs(wffof(FACT322)))))
+((((mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -))) and (larg(lhs(wffof(FACT322))) = TERM323)) and (NUMERAL(rarg(lhs(wffof(FACT322)))) and NUMERAL(rhs(wffof(FACT322))))) and ((mainfun(lhs(wffof(FACT322))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT322)))), mknum(rhs(wffof(FACT322))))): syntactic simplification fails.
+(((mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -))) and (larg(lhs(wffof(FACT322))) = TERM323)) and (NUMERAL(rarg(lhs(wffof(FACT322)))) and NUMERAL(rhs(wffof(FACT322)))): syntactic simplification fails.
+((mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -))) and (larg(lhs(wffof(FACT322))) = TERM323): syntactic simplification fails.
+(mainpred(wffof(FACT322)) = Equal) and ((mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -)): syntactic simplification fails.
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating mainpred(wffof(FACT322)) gives Equal underyling =
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating mainpred(wffof(FACT322)) = Equal gives TRUE
+(mainfun(lhs(wffof(FACT322))) = +) or (mainfun(lhs(wffof(FACT322))) = -): syntactic simplification fails.
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+                                                                     x
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT322))) gives + underyling +
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT322))) = + gives TRUE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+                                                                     x
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating larg(lhs(wffof(FACT322))) gives TERM323 underyling x
+Evaluating TERM323 gives TERM323 underyling x
+TERM323: syntactic simplification fails.
+Evaluating larg(lhs(wffof(FACT322))) = TERM323 gives TRUE
+TRUE: syntactic simplification fails.
+NUMERAL(rarg(lhs(wffof(FACT322)))) and NUMERAL(rhs(wffof(FACT322))): syntactic simplification fails.
+NUMERAL has no interpretation.
+Syntactic simplification of NUMERAL(rarg(lhs(wffof(FACT322)))) gives numeral(rarg(lhs(wffof(FACT322))), zro, suc)
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+                                                                     x
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating rarg(lhs(wffof(FACT322))) gives rarg(lhs(wffof(FACT322))) underyling (suc
+                                                                                 (suc
+                                                                                  zro))
+rarg(lhs(wffof(FACT322))): syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating numeral(rarg(lhs(wffof(FACT322))), zro, suc) gives TRUE
+Evaluating NUMERAL(rarg(lhs(wffof(FACT322)))) gives TRUE
+NUMERAL has no interpretation.
+Syntactic simplification of NUMERAL(rhs(wffof(FACT322))) gives numeral(rhs(wffof(FACT322)), zro, suc)
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underyling (suc
+                                                                     (suc
+                                                                      (suc
+                                                                       (suc
+                                                                        (suc
+                                                                         zro)))))
+rhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating numeral(rhs(wffof(FACT322)), zro, suc) gives TRUE
+Evaluating NUMERAL(rhs(wffof(FACT322))) gives TRUE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+(mainfun(lhs(wffof(FACT322))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT322)))), mknum(rhs(wffof(FACT322)))): syntactic simplification fails.
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+                                                                     x
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT322))) gives + underyling +
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT322))) = + gives TRUE
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+                                                                     x
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating larg(lhs(wffof(FACT322))) gives TERM323 underyling x
+Evaluating mknum(larg(lhs(wffof(FACT322)))) gives 0 underyling 0
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underyling (suc
+                                                                     (suc
+                                                                      (suc
+                                                                       (suc
+                                                                        (suc
+                                                                         zro)))))
+rhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating mknum(rhs(wffof(FACT322))) gives 5 underyling 5
+Evaluating LEQ(mknum(larg(lhs(wffof(FACT322)))), mknum(rhs(wffof(FACT322)))) gives TRUE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+Evaluating LINEAREQ(wffof(FACT322), TERM323) gives TRUE
+THEOREM has no interpretation.
+THEOREM(mkequal(TERM323, solve(wffof(FACT322), TERM323))): syntactic simplification fails.
+mkequal has no interpretation.
+Syntactic simplification of mkequal(TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, solve(wffof(FACT322), TERM323))
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating TERM323 gives TERM323 underyling x
+TERM323: syntactic simplification fails.
+solve has no interpretation.
+Syntactic simplification of solve(wffof(FACT322), TERM323) gives trmif (mainfun(lhs(wffof(FACT322))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) else mknumeral(plus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))))
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+                                                                     x
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT322))) gives + underyling +
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT322))) = + gives TRUE
+mknumeral has no interpretation.
+Syntactic simplification of mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))), zro, suc)
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating rhs(wffof(FACT322)) gives rhs(wffof(FACT322)) underyling (suc
+                                                                     (suc
+                                                                      (suc
+                                                                       (suc
+                                                                        (suc
+                                                                         zro)))))
+rhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating mknum(rhs(wffof(FACT322))) gives 5 underyling 5
+Evaluating FACT322 gives FACT322 underyling (Ex
+                                             (=
+                                              (+ x (suc (suc zro)))
+                                              (suc
+                                               (suc (suc (suc (suc zro))))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ex
+                                              (=
+                                               (+ x (suc (suc zro)))
+                                               (suc
+                                                (suc (suc (suc (suc zro))))))))
+FACT322: syntactic simplification fails.
+Evaluating wffof(FACT322) gives wffof(FACT322) underyling (=
+                                                           (+
+                                                            x
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc
+                                                             (suc
+                                                              (suc
+                                                               (suc zro))))))
+wffof(FACT322): syntactic simplification fails.
+Evaluating lhs(wffof(FACT322)) gives lhs(wffof(FACT322)) underyling (+
+                                                                     x
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT322)): syntactic simplification fails.
+Evaluating rarg(lhs(wffof(FACT322))) gives rarg(lhs(wffof(FACT322))) underyling (suc
+                                                                                 (suc
+                                                                                  zro))
+rarg(lhs(wffof(FACT322))): syntactic simplification fails.
+Evaluating mknum(rarg(lhs(wffof(FACT322)))) gives 2 underyling 2
+Evaluating minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))) gives 3 underyling 3
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating mknumerali(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322))))), zro, suc) gives mknumerali(3, zro, suc) underyling (suc
+                                                                                                                                               (suc
+                                                                                                                                                (suc
+                                                                                                                                                 zro)))
+Evaluating mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(3, zro, suc) underyling (suc
+                                                                                                                                    (suc
+                                                                                                                                     (suc
+                                                                                                                                      zro)))
+Evaluating trmif (mainfun(lhs(wffof(FACT322))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) else mknumeral(plus(mknum(rhs(wffof(FACT322))), mknum(rarg(lhs(wffof(FACT322)))))) gives mknumerali(3, zro, suc) underyling (suc
+                                                                                                                                                                                                                                                                     (suc
+                                                                                                                                                                                                                                                                      (suc
+                                                                                                                                                                                                                                                                       zro)))
+Evaluating solve(wffof(FACT322), TERM323) gives mknumerali(3, zro, suc) underyling (suc
+                                                                                    (suc
+                                                                                     (suc
+                                                                                      zro)))
+Evaluating pred2apply(Equal, TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underyling (=
+                                                                                                                                            x
+                                                                                                                                            (suc
+                                                                                                                                             (suc
+                                                                                                                                              (suc
+                                                                                                                                               zro))))
+Evaluating mkequal(TERM323, solve(wffof(FACT322), TERM323)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underyling (=
+                                                                                                                                  x
+                                                                                                                                  (suc
+                                                                                                                                   (suc
+                                                                                                                                    (suc
+                                                                                                                                     zro))))
+Evaluating THEOREM(mkequal(TERM323, solve(wffof(FACT322), TERM323))) doesn' t work
+THEOREM(pred2apply(Equal, TERM323, mknumerali(3, zro, suc))): syntactic simplification fails.
+THEOREM(pred2apply(Equal, TERM323, mknumerali(3, zro, suc))): syntactic simplification fails.
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating TERM323 gives TERM323 underyling x
+TERM323: syntactic simplification fails.
+Evaluating 3 gives 3 underyling 3
+3: syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating mknumerali(3, zro, suc) gives mknumerali(3, zro, suc) underyling (suc
+                                                                             (suc
+                                                                              (suc
+                                                                               zro)))
+mknumerali(3, zro, suc): syntactic simplification fails.
+Evaluating pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) gives pred2apply(Equal, TERM323, mknumerali(3, zro, suc)) underyling (=
+                                                                                                                                     x
+                                                                                                                                     (suc
+                                                                                                                                      (suc
+                                                                                                                                       (suc
+                                                                                                                                        zro))))
+pred2apply(Equal, TERM323, mknumerali(3, zro, suc)): syntactic simplification fails.
+I am switching from the current context to: OBJ
+
+10   x = suc(suc(suc(zro)))     
+Ok!! I am finished doing reflection
+
+GETFOL:: theorem THx2 10;
+
+THx2 : x = suc(suc(suc(zro)))
+
+GETFOL:: I am switching from the current context to: META
+I am switching from the current context to: OBJ
+reflect SOLVE Ez z;
+I am switching from the current context to: META
+LINEAREQ(wffof(FACT333), TERM334) imp THEOREM(mkequal(TERM334, solve(wffof(FACT333), TERM334))): syntactic simplification fails.
+LINEAREQ has no interpretation.
+Syntactic simplification of LINEAREQ(wffof(FACT333), TERM334) gives ((((mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -))) and (larg(lhs(wffof(FACT333))) = TERM334)) and (NUMERAL(rarg(lhs(wffof(FACT333)))) and NUMERAL(rhs(wffof(FACT333))))) and ((mainfun(lhs(wffof(FACT333))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT333)))), mknum(rhs(wffof(FACT333)))))
+((((mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -))) and (larg(lhs(wffof(FACT333))) = TERM334)) and (NUMERAL(rarg(lhs(wffof(FACT333)))) and NUMERAL(rhs(wffof(FACT333))))) and ((mainfun(lhs(wffof(FACT333))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT333)))), mknum(rhs(wffof(FACT333))))): syntactic simplification fails.
+(((mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -))) and (larg(lhs(wffof(FACT333))) = TERM334)) and (NUMERAL(rarg(lhs(wffof(FACT333)))) and NUMERAL(rhs(wffof(FACT333)))): syntactic simplification fails.
+((mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -))) and (larg(lhs(wffof(FACT333))) = TERM334): syntactic simplification fails.
+(mainpred(wffof(FACT333)) = Equal) and ((mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -)): syntactic simplification fails.
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating mainpred(wffof(FACT333)) gives Equal underyling =
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating mainpred(wffof(FACT333)) = Equal gives TRUE
+(mainfun(lhs(wffof(FACT333))) = +) or (mainfun(lhs(wffof(FACT333))) = -): syntactic simplification fails.
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+                                                                     z
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) = + gives FALSE
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+                                                                     z
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
+Evaluating - gives - underyling -
+-: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) = - gives TRUE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+                                                                     z
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating larg(lhs(wffof(FACT333))) gives TERM334 underyling z
+Evaluating TERM334 gives TERM334 underyling z
+TERM334: syntactic simplification fails.
+Evaluating larg(lhs(wffof(FACT333))) = TERM334 gives TRUE
+TRUE: syntactic simplification fails.
+NUMERAL(rarg(lhs(wffof(FACT333)))) and NUMERAL(rhs(wffof(FACT333))): syntactic simplification fails.
+NUMERAL has no interpretation.
+Syntactic simplification of NUMERAL(rarg(lhs(wffof(FACT333)))) gives numeral(rarg(lhs(wffof(FACT333))), zro, suc)
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+                                                                     z
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating rarg(lhs(wffof(FACT333))) gives rarg(lhs(wffof(FACT333))) underyling (suc
+                                                                                 (suc
+                                                                                  zro))
+rarg(lhs(wffof(FACT333))): syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating numeral(rarg(lhs(wffof(FACT333))), zro, suc) gives TRUE
+Evaluating NUMERAL(rarg(lhs(wffof(FACT333)))) gives TRUE
+NUMERAL has no interpretation.
+Syntactic simplification of NUMERAL(rhs(wffof(FACT333))) gives numeral(rhs(wffof(FACT333)), zro, suc)
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating rhs(wffof(FACT333)) gives rhs(wffof(FACT333)) underyling (suc
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+rhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating numeral(rhs(wffof(FACT333)), zro, suc) gives TRUE
+Evaluating NUMERAL(rhs(wffof(FACT333))) gives TRUE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+(mainfun(lhs(wffof(FACT333))) = +) imp LEQ(mknum(larg(lhs(wffof(FACT333)))), mknum(rhs(wffof(FACT333)))): syntactic simplification fails.
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+                                                                     z
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) = + gives FALSE
+TRUE: syntactic simplification fails.
+TRUE: syntactic simplification fails.
+Evaluating LINEAREQ(wffof(FACT333), TERM334) gives TRUE
+THEOREM has no interpretation.
+THEOREM(mkequal(TERM334, solve(wffof(FACT333), TERM334))): syntactic simplification fails.
+mkequal has no interpretation.
+Syntactic simplification of mkequal(TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, solve(wffof(FACT333), TERM334))
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating TERM334 gives TERM334 underyling z
+TERM334: syntactic simplification fails.
+solve has no interpretation.
+Syntactic simplification of solve(wffof(FACT333), TERM334) gives trmif (mainfun(lhs(wffof(FACT333))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) else mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))))
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+                                                                     z
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) gives - underyling -
+Evaluating + gives + underyling +
++: syntactic simplification fails.
+Evaluating mainfun(lhs(wffof(FACT333))) = + gives FALSE
+mknumeral has no interpretation.
+Syntactic simplification of mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))), zro, suc)
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating rhs(wffof(FACT333)) gives rhs(wffof(FACT333)) underyling (suc
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+rhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating mknum(rhs(wffof(FACT333))) gives 3 underyling 3
+Evaluating FACT333 gives FACT333 underyling (Ez
+                                             (=
+                                              (- z (suc (suc zro)))
+                                              (suc (suc (suc zro))))
+                                             NIL
+                                             AXIOM
+                                             (%AXIOM%
+                                              Ez
+                                              (=
+                                               (- z (suc (suc zro)))
+                                               (suc (suc (suc zro))))))
+FACT333: syntactic simplification fails.
+Evaluating wffof(FACT333) gives wffof(FACT333) underyling (=
+                                                           (-
+                                                            z
+                                                            (suc (suc zro)))
+                                                           (suc
+                                                            (suc (suc zro))))
+wffof(FACT333): syntactic simplification fails.
+Evaluating lhs(wffof(FACT333)) gives lhs(wffof(FACT333)) underyling (-
+                                                                     z
+                                                                     (suc
+                                                                      (suc
+                                                                       zro)))
+lhs(wffof(FACT333)): syntactic simplification fails.
+Evaluating rarg(lhs(wffof(FACT333))) gives rarg(lhs(wffof(FACT333))) underyling (suc
+                                                                                 (suc
+                                                                                  zro))
+rarg(lhs(wffof(FACT333))): syntactic simplification fails.
+Evaluating mknum(rarg(lhs(wffof(FACT333)))) gives 2 underyling 2
+Evaluating plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))) gives 5 underyling 5
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating mknumerali(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333))))), zro, suc) gives mknumerali(5, zro, suc) underyling (suc
+                                                                                                                                              (suc
+                                                                                                                                               (suc
+                                                                                                                                                (suc
+                                                                                                                                                 (suc
+                                                                                                                                                  zro)))))
+Evaluating mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(5, zro, suc) underyling (suc
+                                                                                                                                   (suc
+                                                                                                                                    (suc
+                                                                                                                                     (suc
+                                                                                                                                      (suc
+                                                                                                                                       zro)))))
+Evaluating trmif (mainfun(lhs(wffof(FACT333))) = +) then mknumeral(minus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) else mknumeral(plus(mknum(rhs(wffof(FACT333))), mknum(rarg(lhs(wffof(FACT333)))))) gives mknumerali(5, zro, suc) underyling (suc
+                                                                                                                                                                                                                                                                     (suc
+                                                                                                                                                                                                                                                                      (suc
+                                                                                                                                                                                                                                                                       (suc
+                                                                                                                                                                                                                                                                        (suc
+                                                                                                                                                                                                                                                                         zro)))))
+Evaluating solve(wffof(FACT333), TERM334) gives mknumerali(5, zro, suc) underyling (suc
+                                                                                    (suc
+                                                                                     (suc
+                                                                                      (suc
+                                                                                       (suc
+                                                                                        zro)))))
+Evaluating pred2apply(Equal, TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underyling (=
+                                                                                                                                            z
+                                                                                                                                            (suc
+                                                                                                                                             (suc
+                                                                                                                                              (suc
+                                                                                                                                               (suc
+                                                                                                                                                (suc
+                                                                                                                                                 zro))))))
+Evaluating mkequal(TERM334, solve(wffof(FACT333), TERM334)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underyling (=
+                                                                                                                                  z
+                                                                                                                                  (suc
+                                                                                                                                   (suc
+                                                                                                                                    (suc
+                                                                                                                                     (suc
+                                                                                                                                      (suc
+                                                                                                                                       zro))))))
+Evaluating THEOREM(mkequal(TERM334, solve(wffof(FACT333), TERM334))) doesn' t work
+THEOREM(pred2apply(Equal, TERM334, mknumerali(5, zro, suc))): syntactic simplification fails.
+THEOREM(pred2apply(Equal, TERM334, mknumerali(5, zro, suc))): syntactic simplification fails.
+Evaluating Equal gives Equal underyling =
+Equal: syntactic simplification fails.
+Evaluating TERM334 gives TERM334 underyling z
+TERM334: syntactic simplification fails.
+Evaluating 5 gives 5 underyling 5
+5: syntactic simplification fails.
+Evaluating zro gives zro underyling zro
+zro: syntactic simplification fails.
+Evaluating suc gives suc underyling suc
+suc: syntactic simplification fails.
+Evaluating mknumerali(5, zro, suc) gives mknumerali(5, zro, suc) underyling (suc
+                                                                             (suc
+                                                                              (suc
+                                                                               (suc
+                                                                                (suc
+                                                                                 zro)))))
+mknumerali(5, zro, suc): syntactic simplification fails.
+Evaluating pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) gives pred2apply(Equal, TERM334, mknumerali(5, zro, suc)) underyling (=
+                                                                                                                                     z
+                                                                                                                                     (suc
+                                                                                                                                      (suc
+                                                                                                                                       (suc
+                                                                                                                                        (suc
+                                                                                                                                         (suc
+                                                                                                                                          zro))))))
+pred2apply(Equal, TERM334, mknumerali(5, zro, suc)): syntactic simplification fails.
+I am switching from the current context to: OBJ
+
+11   z = suc(suc(suc(suc(suc(zro)))))     
+Ok!! I am finished doing reflection
+
+GETFOL:: theorem THMz 11;
+
+THMz : z = suc(suc(suc(suc(suc(zro)))))
+
+GETFOL:: show axiom;
+
+ONEONE : forall n m. ((suc(n) = suc(m)) imp (n = m))
+
+SUCC1 : forall n. (not (zro = suc(n)))
+
+SUCC2 : forall n. (not (zro = n)) imp exists m. (n = suc(m))
+
+PLUS0 : forall n. ((n + zro) = n)
+
+PLUS : forall n m. ((n + suc(m)) = suc(n + m))
+
+TIMES0 : forall n. ((n * zro) = zro)
+
+TIMES : forall n m. ((n * suc(m)) = ((n * m) + n))
+
+INDUCT : (P(zro) and forall n. (P(n) imp P(suc(n)))) imp forall n. P(n)
+
+MINUS0R : forall n. ((n - zro) = n)
+
+MINUS0L : forall n. ((zro - n) = zro)
+
+MINUS : forall n m. ((suc(n) - suc(m)) = (n - m))
+
+Ex : (x + suc(suc(zro))) = suc(suc(suc(suc(suc(zro)))))
+
+Ey : (y - suc(suc(zro))) = zro
+
+Ez : (z - suc(suc(zro))) = suc(suc(suc(zro)))
+
+THM1 : forall p q m. ((p = q) imp ((p - m) = (q - m)))
+
+THM2 : forall p q m. ((m < suc(q)) imp (((p + q) - m) = (p + (q - m))))
+
+THM3 : forall n. ((n + zro) = n)
+
+THM2instance : ((x + suc(suc(zro))) - suc(suc(zro))) = (x + (suc(suc(zro)) - suc(suc(zro))))
+
+THMx : x = suc(suc(suc(zro)))
+
+THMy : y = suc(suc(zro))
+
+THx2 : x = suc(suc(suc(zro)))
+
+THMz : z = suc(suc(suc(suc(suc(zro)))))
+
+GETFOL:: I am finished fetching ../tst/prolegomena/sec91.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/appa.tst;
+I am starting to fetch ../tst/prolegomena/appa.tst
+
+GETFOL:: declare sort NATNUM;
+NATNUM has been declared to be a sort
+
+GETFOL:: declare indvar n m p q [NATNUM];
+NATNUM is a sort
+n has been declared to be an Indvar
+m has been declared to be an Indvar
+p has been declared to be an Indvar
+q has been declared to be an Indvar
+
+GETFOL:: declare indconst zro [NATNUM];
+NATNUM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: declare funconst suc prd (NATNUM) = NATNUM;
+NATNUM is a sort
+NATNUM is a sort
+suc has been declared to be a Funconst
+prd has been declared to be a Funconst
+
+GETFOL:: declare funconst +(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
++ has been declared to be a Funconst
+
+GETFOL:: declare funconst *(NATNUM,NATNUM) = NATNUM [inf = 550 555];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+* has been declared to be a Funconst
+
+GETFOL:: declare predconst < 2 [inf];
+< has been declared to be a Predconst
+
+GETFOL:: declare predpar P 1;
+P has been declared to be a Predpar
+
+GETFOL:: axiom ONEONE: forall n m.(suc(n)=suc(m) imp n=m);
+
+ONEONE : forall n m. ((suc(n) = suc(m)) imp (n = m))
+
+GETFOL:: axiom SUCC1: forall n.not(zro=suc(n));
+
+SUCC1 : forall n. (not (zro = suc(n)))
+
+GETFOL:: axiom SUCC2: forall n.not(zro=n) imp exists m.n=suc(m);
+
+SUCC2 : forall n. (not (zro = n)) imp exists m. (n = suc(m))
+
+GETFOL:: axiom PLUS0: forall n. n + zro = n;
+
+PLUS0 : forall n. ((n + zro) = n)
+
+GETFOL:: axiom PLUS: forall n m. n+suc(m)=suc(n+m);
+
+PLUS : forall n m. ((n + suc(m)) = suc(n + m))
+
+GETFOL:: axiom TIMES0: forall n. n * zro = zro;
+
+TIMES0 : forall n. ((n * zro) = zro)
+
+GETFOL:: axiom TIMES: forall n m. n*suc(m)=(n*m)+n;
+
+TIMES : forall n m. ((n * suc(m)) = ((n * m) + n))
+
+GETFOL:: axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
+
+INDUCT : (P(zro) and forall n. (P(n) imp P(suc(n)))) imp forall n. P(n)
+
+GETFOL:: setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
+
+GETFOL:: decrep NATNUM;
+
+GETFOL:: represent {NATNUM} as NATNUM;
+
+GETFOL:: attach zro to [NATNUM] 0;
+zro attached to '0
+
+GETFOL:: attach suc to [NATNUM=NATNUM] ADD1;
+suc attached to ADD1
+
+GETFOL:: deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
+
+GETFOL:: attach prd to [NATNUM=NATNUM] prd;
+prd attached to prd
+
+GETFOL:: attach + to [NATNUM,NATNUM=NATNUM] +;
++ attached to +
+
+GETFOL:: attach * to [NATNUM,NATNUM=NATNUM] *;
+* attached to *
+
+GETFOL:: attach < to [NATNUM,NATNUM] <;
+< attached to <
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appa.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/appb.tst;
+I am starting to fetch ../tst/prolegomena/appb.tst
+
+GETFOL:: declare sort Sexp Lisp Null Atom;
+Sexp has been declared to be a sort
+Lisp has been declared to be a sort
+Null has been declared to be a sort
+Atom has been declared to be a sort
+
+GETFOL:: declare indvar x y z [Sexp];
+Sexp is a sort
+x has been declared to be an Indvar
+y has been declared to be an Indvar
+z has been declared to be an Indvar
+
+GETFOL:: declare indvar u v w [List];
+List has been declared to be a sort
+u has been declared to be an Indvar
+v has been declared to be an Indvar
+w has been declared to be an Indvar
+
+GETFOL:: declare indconst nil [Null];
+Null is a sort
+nil has been declared to be an Indconst
+
+GETFOL:: declare funconst car cdr 1;
+car has been declared to be a Funconst
+cdr has been declared to be a Funconst
+
+GETFOL:: declare funconst cons(Sexp,List)=List;
+List is a sort
+Sexp is a sort
+List is a sort
+cons has been declared to be a Funconst
+
+GETFOL:: declare funconst rev 1;
+rev has been declared to be a Funconst
+
+GETFOL:: declare funconst @ 2 [inf];
+@ has been declared to be a Funconst
+
+GETFOL:: moregeneral Sexp < List, Atom, Null >;
+
+GETFOL:: moregeneral List < Null >;
+
+GETFOL:: decrep Sexp;
+
+GETFOL:: represent {Sexp} as Sexp;
+
+GETFOL:: represent {List} as Sexp;
+
+GETFOL:: represent {Atom} as Sexp;
+
+GETFOL:: represent {Null} as Sexp;
+
+GETFOL:: axiom CAR: forall x y. car(cons(x,y))=x;
+
+CAR : forall x y. (car(cons(x, y)) = x)
+
+GETFOL:: axiom CDR: forall x y. cdr(cons(x,y))=y;
+
+CDR : forall x y. (cdr(cons(x, y)) = y)
+
+GETFOL:: axiom CONS: forall x y. not(Null(cons(x,y)));
+
+CONS : forall x y. (not Null(cons(x, y)))
+
+GETFOL:: setbasicsimp Basic at facts {CAR,CDR,CONS};
+
+GETFOL:: axiom REV: forall u.(rev(u) = trmif Null(u) then u else rev(cdr(u)) @ cons(car(u),nil));
+
+REV : forall u. (rev(u) = (trmif Null(u) then u else (rev(cdr(u)) @ cons(car(u), nil))))
+
+GETFOL:: axiom APPEND: forall u v.(u@v = trmif Null(u) then v else cons(car(u),cdr(u)@v));
+
+APPEND : forall u v. ((u @ v) = (trmif Null(u) then v else cons(car(u), cdr(u) @ v)))
+
+GETFOL:: setbasicsimp Funs at facts {REV,APPEND};
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appb.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/appd.tst;
+I am starting to fetch ../tst/prolegomena/appd.tst
+
+GETFOL:: fetch ../tst/prolegomena/appa.tst;
+I am starting to fetch ../tst/prolegomena/appa.tst
+
+GETFOL:: declare sort NATNUM;
+NATNUM has been declared to be a sort
+
+GETFOL:: declare indvar n m p q [NATNUM];
+NATNUM is a sort
+n has been declared to be an Indvar
+m has been declared to be an Indvar
+p has been declared to be an Indvar
+q has been declared to be an Indvar
+
+GETFOL:: declare indconst zro [NATNUM];
+NATNUM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: declare funconst suc prd (NATNUM) = NATNUM;
+NATNUM is a sort
+NATNUM is a sort
+suc has been declared to be a Funconst
+prd has been declared to be a Funconst
+
+GETFOL:: declare funconst +(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
++ has been declared to be a Funconst
+
+GETFOL:: declare funconst *(NATNUM,NATNUM) = NATNUM [inf = 550 555];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+* has been declared to be a Funconst
+
+GETFOL:: declare predconst < 2 [inf];
+< has been declared to be a Predconst
+
+GETFOL:: declare predpar P 1;
+P has been declared to be a Predpar
+
+GETFOL:: axiom ONEONE: forall n m.(suc(n)=suc(m) imp n=m);
+
+ONEONE : forall n m. ((suc(n) = suc(m)) imp (n = m))
+
+GETFOL:: axiom SUCC1: forall n.not(zro=suc(n));
+
+SUCC1 : forall n. (not (zro = suc(n)))
+
+GETFOL:: axiom SUCC2: forall n.not(zro=n) imp exists m.n=suc(m);
+
+SUCC2 : forall n. (not (zro = n)) imp exists m. (n = suc(m))
+
+GETFOL:: axiom PLUS0: forall n. n + zro = n;
+
+PLUS0 : forall n. ((n + zro) = n)
+
+GETFOL:: axiom PLUS: forall n m. n+suc(m)=suc(n+m);
+
+PLUS : forall n m. ((n + suc(m)) = suc(n + m))
+
+GETFOL:: axiom TIMES0: forall n. n * zro = zro;
+
+TIMES0 : forall n. ((n * zro) = zro)
+
+GETFOL:: axiom TIMES: forall n m. n*suc(m)=(n*m)+n;
+
+TIMES : forall n m. ((n * suc(m)) = ((n * m) + n))
+
+GETFOL:: axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
+
+INDUCT : (P(zro) and forall n. (P(n) imp P(suc(n)))) imp forall n. P(n)
+
+GETFOL:: setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
+
+GETFOL:: decrep NATNUM;
+
+GETFOL:: represent {NATNUM} as NATNUM;
+
+GETFOL:: attach zro to [NATNUM] 0;
+zro attached to '0
+
+GETFOL:: attach suc to [NATNUM=NATNUM] ADD1;
+suc attached to ADD1
+
+GETFOL:: deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
+
+GETFOL:: attach prd to [NATNUM=NATNUM] prd;
+prd attached to prd
+
+GETFOL:: attach + to [NATNUM,NATNUM=NATNUM] +;
++ attached to +
+
+GETFOL:: attach * to [NATNUM,NATNUM=NATNUM] *;
+* attached to *
+
+GETFOL:: attach < to [NATNUM,NATNUM] <;
+< attached to <
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appa.tst
+
+GETFOL:: fetch ../tst/prolegomena/appb.tst;
+I am starting to fetch ../tst/prolegomena/appb.tst
+
+GETFOL:: declare sort Sexp Lisp Null Atom;
+Sexp has been declared to be a sort
+Lisp has been declared to be a sort
+Null has been declared to be a sort
+Atom has been declared to be a sort
+
+GETFOL:: declare indvar x y z [Sexp];
+Sexp is a sort
+x has been declared to be an Indvar
+y has been declared to be an Indvar
+z has been declared to be an Indvar
+
+GETFOL:: declare indvar u v w [List];
+List has been declared to be a sort
+u has been declared to be an Indvar
+v has been declared to be an Indvar
+w has been declared to be an Indvar
+
+GETFOL:: declare indconst nil [Null];
+Null is a sort
+nil has been declared to be an Indconst
+
+GETFOL:: declare funconst car cdr 1;
+car has been declared to be a Funconst
+cdr has been declared to be a Funconst
+
+GETFOL:: declare funconst cons(Sexp,List)=List;
+List is a sort
+Sexp is a sort
+List is a sort
+cons has been declared to be a Funconst
+
+GETFOL:: declare funconst rev 1;
+rev has been declared to be a Funconst
+
+GETFOL:: declare funconst @ 2 [inf];
+@ has been declared to be a Funconst
+
+GETFOL:: moregeneral Sexp < List, Atom, Null >;
+
+GETFOL:: moregeneral List < Null >;
+
+GETFOL:: decrep Sexp;
+
+GETFOL:: represent {Sexp} as Sexp;
+
+GETFOL:: represent {List} as Sexp;
+
+GETFOL:: represent {Atom} as Sexp;
+
+GETFOL:: represent {Null} as Sexp;
+
+GETFOL:: axiom CAR: forall x y. car(cons(x,y))=x;
+
+CAR : forall x y. (car(cons(x, y)) = x)
+
+GETFOL:: axiom CDR: forall x y. cdr(cons(x,y))=y;
+
+CDR : forall x y. (cdr(cons(x, y)) = y)
+
+GETFOL:: axiom CONS: forall x y. not(Null(cons(x,y)));
+
+CONS : forall x y. (not Null(cons(x, y)))
+
+GETFOL:: setbasicsimp Basic at facts {CAR,CDR,CONS};
+
+GETFOL:: axiom REV: forall u.(rev(u) = trmif Null(u) then u else rev(cdr(u)) @ cons(car(u),nil));
+
+REV : forall u. (rev(u) = (trmif Null(u) then u else (rev(cdr(u)) @ cons(car(u), nil))))
+
+GETFOL:: axiom APPEND: forall u v.(u@v = trmif Null(u) then v else cons(car(u),cdr(u)@v));
+
+APPEND : forall u v. ((u @ v) = (trmif Null(u) then v else cons(car(u), cdr(u) @ v)))
+
+GETFOL:: setbasicsimp Funs at facts {REV,APPEND};
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appb.tst
+
+GETFOL:: declare funconst length (List)=NATNUM;
+NATNUM is a sort
+List is a sort
+length has been declared to be a Funconst
+
+GETFOL:: attach cons to [Sexp,Sexp=Sexp] CONS;
+cons attached to CONS
+
+GETFOL:: attach car to [Sexp=Sexp] CAR;
+car attached to CAR
+
+GETFOL:: attach cdr to [Sexp=Sexp] CDR;
+cdr attached to CDR
+
+GETFOL:: attach nil to [Sexp] NIL;
+nil attached to 'NIL
+
+GETFOL:: attach length to [Sexp=NATNUM] LENGTH;
+length attached to LENGTH
+
+GETFOL:: simplify length(cons(nil, cons(nil, nil)))=suc(suc(zro));
+
+1   length(cons(nil, cons(nil, nil))) = suc(suc(zro))     
+
+GETFOL:: simplify suc(zro)+zro=zro;
+
+2   not ((suc(zro) + zro) = zro)     
+
+GETFOL:: simplify zro < prd(suc(suc(zro)));
+
+3   zro < prd(suc(suc(zro)))     
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appd.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL::  fetch ../tst/prolegomena/appe.tst;
+I am starting to fetch ../tst/prolegomena/appe.tst
+
+GETFOL:: fetch ../tst/prolegomena/appa.tst;
+I am starting to fetch ../tst/prolegomena/appa.tst
+
+GETFOL:: declare sort NATNUM;
+NATNUM has been declared to be a sort
+
+GETFOL:: declare indvar n m p q [NATNUM];
+NATNUM is a sort
+n has been declared to be an Indvar
+m has been declared to be an Indvar
+p has been declared to be an Indvar
+q has been declared to be an Indvar
+
+GETFOL:: declare indconst zro [NATNUM];
+NATNUM is a sort
+zro has been declared to be an Indconst
+
+GETFOL:: declare funconst suc prd (NATNUM) = NATNUM;
+NATNUM is a sort
+NATNUM is a sort
+suc has been declared to be a Funconst
+prd has been declared to be a Funconst
+
+GETFOL:: declare funconst +(NATNUM,NATNUM) = NATNUM [inf = 450 455];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
++ has been declared to be a Funconst
+
+GETFOL:: declare funconst *(NATNUM,NATNUM) = NATNUM [inf = 550 555];
+NATNUM is a sort
+NATNUM is a sort
+NATNUM is a sort
+* has been declared to be a Funconst
+
+GETFOL:: declare predconst < 2 [inf];
+< has been declared to be a Predconst
+
+GETFOL:: declare predpar P 1;
+P has been declared to be a Predpar
+
+GETFOL:: axiom ONEONE: forall n m.(suc(n)=suc(m) imp n=m);
+
+ONEONE : forall n m. ((suc(n) = suc(m)) imp (n = m))
+
+GETFOL:: axiom SUCC1: forall n.not(zro=suc(n));
+
+SUCC1 : forall n. (not (zro = suc(n)))
+
+GETFOL:: axiom SUCC2: forall n.not(zro=n) imp exists m.n=suc(m);
+
+SUCC2 : forall n. (not (zro = n)) imp exists m. (n = suc(m))
+
+GETFOL:: axiom PLUS0: forall n. n + zro = n;
+
+PLUS0 : forall n. ((n + zro) = n)
+
+GETFOL:: axiom PLUS: forall n m. n+suc(m)=suc(n+m);
+
+PLUS : forall n m. ((n + suc(m)) = suc(n + m))
+
+GETFOL:: axiom TIMES0: forall n. n * zro = zro;
+
+TIMES0 : forall n. ((n * zro) = zro)
+
+GETFOL:: axiom TIMES: forall n m. n*suc(m)=(n*m)+n;
+
+TIMES : forall n m. ((n * suc(m)) = ((n * m) + n))
+
+GETFOL:: axiom INDUCT: P(zro) and forall n.(P(n) imp P(suc(n))) imp forall n.P(n);
+
+INDUCT : (P(zro) and forall n. (P(n) imp P(suc(n)))) imp forall n. P(n)
+
+GETFOL:: setbasicsimp PEANO at facts {ONEONE,SUCC1,SUCC2,PLUS0,PLUS,TIMES0,TIMES};
+
+GETFOL:: decrep NATNUM;
+
+GETFOL:: represent {NATNUM} as NATNUM;
+
+GETFOL:: attach zro to [NATNUM] 0;
+zro attached to '0
+
+GETFOL:: attach suc to [NATNUM=NATNUM] ADD1;
+suc attached to ADD1
+
+GETFOL:: deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
+
+GETFOL:: attach prd to [NATNUM=NATNUM] prd;
+prd attached to prd
+
+GETFOL:: attach + to [NATNUM,NATNUM=NATNUM] +;
++ attached to +
+
+GETFOL:: attach * to [NATNUM,NATNUM=NATNUM] *;
+* attached to *
+
+GETFOL:: attach < to [NATNUM,NATNUM] <;
+< attached to <
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appa.tst
+
+GETFOL:: fetch ../tst/prolegomena/appb.tst;
+I am starting to fetch ../tst/prolegomena/appb.tst
+
+GETFOL:: declare sort Sexp Lisp Null Atom;
+Sexp has been declared to be a sort
+Lisp has been declared to be a sort
+Null has been declared to be a sort
+Atom has been declared to be a sort
+
+GETFOL:: declare indvar x y z [Sexp];
+Sexp is a sort
+x has been declared to be an Indvar
+y has been declared to be an Indvar
+z has been declared to be an Indvar
+
+GETFOL:: declare indvar u v w [List];
+List has been declared to be a sort
+u has been declared to be an Indvar
+v has been declared to be an Indvar
+w has been declared to be an Indvar
+
+GETFOL:: declare indconst nil [Null];
+Null is a sort
+nil has been declared to be an Indconst
+
+GETFOL:: declare funconst car cdr 1;
+car has been declared to be a Funconst
+cdr has been declared to be a Funconst
+
+GETFOL:: declare funconst cons(Sexp,List)=List;
+List is a sort
+Sexp is a sort
+List is a sort
+cons has been declared to be a Funconst
+
+GETFOL:: declare funconst rev 1;
+rev has been declared to be a Funconst
+
+GETFOL:: declare funconst @ 2 [inf];
+@ has been declared to be a Funconst
+
+GETFOL:: moregeneral Sexp < List, Atom, Null >;
+
+GETFOL:: moregeneral List < Null >;
+
+GETFOL:: decrep Sexp;
+
+GETFOL:: represent {Sexp} as Sexp;
+
+GETFOL:: represent {List} as Sexp;
+
+GETFOL:: represent {Atom} as Sexp;
+
+GETFOL:: represent {Null} as Sexp;
+
+GETFOL:: axiom CAR: forall x y. car(cons(x,y))=x;
+
+CAR : forall x y. (car(cons(x, y)) = x)
+
+GETFOL:: axiom CDR: forall x y. cdr(cons(x,y))=y;
+
+CDR : forall x y. (cdr(cons(x, y)) = y)
+
+GETFOL:: axiom CONS: forall x y. not(Null(cons(x,y)));
+
+CONS : forall x y. (not Null(cons(x, y)))
+
+GETFOL:: setbasicsimp Basic at facts {CAR,CDR,CONS};
+
+GETFOL:: axiom REV: forall u.(rev(u) = trmif Null(u) then u else rev(cdr(u)) @ cons(car(u),nil));
+
+REV : forall u. (rev(u) = (trmif Null(u) then u else (rev(cdr(u)) @ cons(car(u), nil))))
+
+GETFOL:: axiom APPEND: forall u v.(u@v = trmif Null(u) then v else cons(car(u),cdr(u)@v));
+
+APPEND : forall u v. ((u @ v) = (trmif Null(u) then v else cons(car(u), cdr(u) @ v)))
+
+GETFOL:: setbasicsimp Funs at facts {REV,APPEND};
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appb.tst
+
+GETFOL:: simplify Null(nil);
+
+1   Null(nil)     
+
+GETFOL:: setbasicsimp S1 at facts {1};
+
+GETFOL:: rewrite rev(cons(x,nil)) by Basic uni Funs uni S1 uni LOGICTREE;
+
+2   rev(cons(x, nil)) = cons(x, nil)     
+
+GETFOL:: I am finished fetching ../tst/prolegomena/appe.tst
+
+GETFOL:: reset;
+Resetting the whole GETFOL-system
+
+GETFOL:: I am finished fetching ../tst/prolegomena/RUN

@@ -75,7 +75,7 @@
 
 (DEFLAM LABELFACT# ()
 	(LET ((LABEL (FOLSYM# "LABEL FACT")))
-	(IF (TK@ EQUAL)
+	(IF (TK@ EQUALS)
 	    (LET ((LINE (NATNUM# (QUOTE "LABEL command"))))
             (labfact-mak LABEL LINE))
             (labfact-mak LABEL (curnline-get)) )))

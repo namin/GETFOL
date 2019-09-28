@@ -389,7 +389,6 @@
 ;                     INSTALLATION FACILITIES                             ;
 ;                                                                         ;
 ;*************************************************************************;
-
 (DEFUN INSTALL-SYS (SYS)
   (INSTALL-MODULES (SYS-GET-MODULES SYS) (SYS-GET-MODE SYS)))
 

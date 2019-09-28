@@ -82,7 +82,9 @@
 ; !!!!!!                      ON YOUR SYSTEM                        !!!!!!
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+#+SBCL (DEFVAR %HOME-DIR%)
 (SETQ %HOME-DIR% "/Users/namin/code/fol/GETFOL")
+#+SBCL (DEFVAR %PATHNAME-SEPARATOR%)
 (SETQ %PATHNAME-SEPARATOR% "/")
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -118,6 +120,8 @@
 ;                                                                         ;
 ;*************************************************************************;
 #+ALLEGRO (SETQ %OBJFILE-SUFFIX% ".o")
+#+SBCL (DEFVAR %OBJFILE-SUFFIX%)
+#+SBCL  (SETQ %OBJFILE-SUFFIX% ".o")
 #+IBCL  (SETQ %OBJFILE-SUFFIX% ".o")
 #+KCL   (SETQ %OBJFILE-SUFFIX% ".o")
 #+LUCID (SETQ %OBJFILE-SUFFIX% ".sbin")
@@ -140,8 +144,11 @@
 ;*                                                                           *
 ;*****************************************************************************
 
+#+SBCL (DEFVAR %OBJ-DIR%)
 (SETQ %OBJ-DIR% (PATH-CONCAT %HOME-DIR% "o"))
+#+SBCL (DEFVAR %SRC-DIR%)
 (SETQ %SRC-DIR% (PATH-CONCAT %HOME-DIR% "source"))
+#+SBCL (DEFVAR %DOC-DIR%)
 (SETQ %DOC-DIR% (PATH-CONCAT %HOME-DIR% "doc"))
 
 
@@ -225,9 +232,11 @@
 
 (DEFUN SYSTEM-SAVE (STR)
  (PROGN
+  #+SBCL (SETF SB-EXT::*GC-RUN-TIME* 0) ;; SBCL dependent global garbage collection
   #+ALLEGRO (GC T)               ;ALLEGRO dependent global garbage collect
   #+IBCL (GBC T)                 ;IBCL dependent total garbage collect
   #+KCL  (GBC T)                 ;KCL  dependent total garbage collect
+  #+SBCL (SAVE-LISP-AND-DIE STR :EXECUTABLE T :COMPRESSION T :SAVE-RUNTIME-OPTIONS T :PURIFY T :TOPLEVEL #'SYSBOOT)
   #+ALLEGRO (DUMPLISP :name STR) ;saving
   #+IBCL (SAVE STR)              ;saving
   #+KCL  (SAVE STR)              ;saving

@@ -116,8 +116,9 @@ reflect ANDI FALSE FALSE;
 </div>
 
 <h3>Section 9.1: Linear Equations</h3>
-<div class="live" id="sec91" data-lib="appa header">
-comment &#124; We add a theory of minus -. &#124;
+
+<p>We add a theory of minus \(-\).</p>
+<div class="live" id="sec91_1" data-lib="appa header">
 declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
 deflam minus (N M) (LET ((R (- N M))) (COND ((&gt; R 0) R) (T 0)));
 attach - to [NATNUM,NATNUM=NATNUM] minus;
@@ -125,14 +126,18 @@ axiom MINUS0R: forall n. n - zro = n;
 axiom MINUS0L: forall n. zro - n = zro;
 axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
 setbasicsimp TMINUS at facts {MINUS0R,MINUS0L,MINUS};
+</div>
 
-comment &#124; We have some linear equations. &#124;
+<p>We have some linear equations.</p>
+<div class="live" id="sec91_2" data-lib="appa sec91_1 header">
 declare indconst x y z [NATNUM];
 axiom Ex: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
 axiom Ey: y - suc(suc(zro)) = zro;
 axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
+</div>
 
-comment &#124; Assuming the following theorems, we can solve by hand. &#124;
+<p>Assuming the following theorems, we can solve by hand.</p>
+<div class="live" id="sec91_3" data-lib="appa sec91_1 sec91_2 header">
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
 axiom THM2: forall p q m.(m&lt;suc(q) imp (p+q)-m=p+(q-m));
 theorem THM3 PLUS0;
@@ -152,18 +157,24 @@ iffe 5 1;
 impe 6 4;
 impe 7 Ex;
 theorem THMx 8;
+</div>
 
-comment &#124; Let us switch to the meta level, and do some algebra. &#124;
-comment &#124; We will say (not prove) that                          &#124;
-comment &#124;     x + n = m is x=m-n (if still non-negative)        &#124;
-comment &#124; and x - n = m is x=m+n (always valid).                &#124;
-comment &#124; We will require that                                  &#124;
-comment &#124; 1. the equation has one of the shapes above,          &#124;
-comment &#124; 2. including n and m are literal numbers,             &#124;
-comment &#124; 3. for x=m-n we ensure that n&lt;=m.                     &#124;
-comment &#124; We will give a solved answer of the form x=n.         &#124;
-comment &#124; That is, we do all the checking and computation       &#124;
-comment &#124; at the meta level.                                    &#124;
+<p>Let us switch to the meta level, and do some algebra.
+  <ul>
+    <li>We will say (not prove) that:<ul>
+        <li>\(x + n = m\) is \(x=m-n\) (if still non-negative)</li>
+        <li>and \(x - n = m\) is \(x=m+n\) (always valid).</li>
+    </ul></li>
+    <li>We will require that:<ol>
+        <li>the equation has one of the shapes above,</li>
+        <li>including \(n\) and \(m\) are literal numbers</li>
+        <li>for \(x=m-n\) we ensure that \(n<=m\).</li>
+    </ol></li>
+    <li>We will give a solved answer of the form \(x=n\).
+      That is, we do all the checking and computation at the meta level.</li>
+  </ul>
+</p>
+<div class="live" id="sec91_4" data-lib="appa sec91_1 sec91_2 header">
 namecontext OBJ;
 MAKECONTEXT META;
 SWITCHCONTEXT META;
@@ -247,9 +258,10 @@ AXIOM AX_MKEQUAL: forall x y.mkequal(x,y)=pred2apply(Equal,x,y);
 
 DECLARE PREDCONST LINEAREQ 2;
 DECLARE FUNCONST solve (WFF TERM)=TERM;
+</div>
 
-comment &#124; The 3 next axioms are close to the formulation in the paper. &#124;
-
+<p>The 3 next axioms are close to the formulation in the paper.</p>
+<div class="live" id="sec91_5" data-lib="appa sec91_1 sec91_2 sec91_4 header">
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   mainpred(w)=Equal and
   (mainfun(lhs(w))=+ or mainfun(lhs(w))=-) and
@@ -268,7 +280,11 @@ SETBASICSIMP meta\-axioms at facts {AX_LINEAREQ,AX_SOLVE,AX_NUMERAL,AX_MKNUMERAL
 SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
 
 SWITCHCONTEXT OBJ;
+</div>
 
+<p>Back at the object level, we can solve the linear equations with a
+single reflective call.</p>
+<div class="live" id="sec91_6" data-lib="appa sec91_1 sec91_2 sec91_4 sec91_5 header">
 reflect SOLVE Ey y;
 theorem THMy 9;
 

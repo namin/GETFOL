@@ -83,7 +83,8 @@
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #+SBCL (DEFVAR %HOME-DIR%)
-(SETQ %HOME-DIR% "/Users/namin/code/fol/GETFOL")
+;;(SETQ %HOME-DIR% "/Users/namin/code/fol/GETFOL")
+(SETQ %HOME-DIR% "/home/runner/code/")
 #+SBCL (DEFVAR %PATHNAME-SEPARATOR%)
 (SETQ %PATHNAME-SEPARATOR% "/")
 

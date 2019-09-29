@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+cd make
+
 cat .io.livecode.ch/header.txt $1 .io.livecode.ch/footer.txt >out.txt
 if [ -s $2 ]
 then

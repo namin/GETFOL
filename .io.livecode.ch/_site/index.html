@@ -3,6 +3,14 @@
 {% block title %}FOL{% endblock %}
 
 {% block content %}
+<script>
+function livecode_process_data(id, data) {
+  var i = data.indexOf("Hi!");
+  if (i == -1) return data;
+  return data.substring(i);
+}
+</script>
+
 <div class="live" id="ex">
 </div>
 

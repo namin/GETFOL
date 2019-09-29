@@ -435,10 +435,10 @@ construction, is possible.</p>
 <p>The theorem states that for any wff \(\Psi\) with one free variable
 there is a sentence PHI such that:</p>
 <center>
-            \(\vdash \Phi \longleftrightarrow \Psi[~\Phi~]\)    (DIAG)
+            \(\vdash \Phi \longleftrightarrow \Psi[\sim\Phi\sim]\)    (DIAG)
 </center>
 
-<p>Here \(~.~\) represents the code of its argument, \(\Psi[t]\) represents
+<p>Here \(\sim.\sim\) represents the code of its argument, \(\Psi[t]\) represents
 the wff \(\Phi\) with each occurence of its free variable replaced by
 the term t, and \(\vdash) is the provability turnstile.</p>
 
@@ -449,7 +449,7 @@ function to be possible) but the details of the encoding need not
 be made explicit. The only requirement is that the following
 holds for each wff \(W\), variable \(v\) and code \(n\):</p>
 <center>
-\(\vdash  \text{subst}(~W~,~v~,n) = ~W[n/v]~\)      (*)
+\(\vdash  \text{subst}(\sim W\sim,\sim v\sim,n) = \sim W[n/v]\sim\)      (*)
 </center>
 
 <p>Here \(W[n/v]\) represents the wff \(W\) with all free occurrences of \(v\)
@@ -458,7 +458,7 @@ replaced by \(n\).</p>
 <p>The stipulation that \(n\) be a code in (*) is crucial. The basic
 substitution function, subst', satisfies:
 <center>
-\(\vdash  \text{subst'}(~W~,~v~,~t~) = ~W[t/v]~\)   (**)
+\(\vdash  \text{subst'}(\sim W\sim,\sim v\sim,\simt\sim) = \sim W[t/v]\sim\)   (**)
 </center>
 <p>where \(t\) is an arbitrary term. However this substitution is not
 sufficient for diagonalisation because the proof requires the
@@ -467,7 +467,7 @@ encodes.</p>
 
 <p>It is obviously impossible to have a function subst'' satisfying:</p>
 <center>
-\(\vdash  \text{subst''}(~W~,~v~,t) = ~W[t/v]~\)
+\(\vdash  \text{subst''}(\sim W\sim,\sim v\sim,t) = \sim W[t/v]\sim\)
 </center>
 <p>because different terms representing the same object evaluate
 equally on the left and differently on the right. The problem is
@@ -491,26 +491,26 @@ encodes a code and then to define:</p>
 <h3>Proof</h3>
 
 
-<p>Given an arbitrary wff \(Psi\) with one free variable the construction
+<p>Given an arbitrary wff \(\Psi\) with one free variable the construction
 of a sentence \(Phi\) which satisfies (DIAG) proceeds in the folowing
 way:
 
 <p>First an arbitrary variable, say \(v_0), is selected. It must have a
-code \(~v_0~\) so it is possible to construct the wff:</p>
+code \(\sim v_0\sim\) so it is possible to construct the wff:</p>
 <center>
-(\Theta \iff \Psi[\text{subst}(v_0,~v_0~,v_0)]\)      (1)
+(\Theta \iff \Psi[\text{subst}(v_0,\sim v_0\sim,v_0)]\)      (1)
 </center>
 <p>Here the \(\iff\) means that \(\Theta\) is defined to be this wff. \(Theta\) is
 not part of the language, it is meta-level abbreviation for
 the wff it represents.</p>
 
-<p>Putting \(W = \Theta, v = v_0, n = ~\Theta~\) in (*) gives:</p>
+<p>Putting \(W = \Theta, v = v_0, n = \sim\Theta\sim\) in (*) gives:</p>
 <center>
-\(\vdash \textt{subst}(~\Theta~,~v_0~,~\Theta~) = ~Theta[~Theta~/v_0]~\) (A)
+\(\vdash \textt{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim) = \sim\Theta[\sim\Theta\sim/v_0]\sim\) (A)
 </center>
 <p>Using the definition of \(\Theta\) the following holds:</p>
 <center>
-\(\Theta[~\Theta~/\v_0] == \Psi[subst(~\Theta~,~v_0~,~\Theta~)]\) (B)
+\(\Theta[\sim\Theta\sim/\v_0] == \Psi[subst(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\) (B)
 </center>
 <p>Here the \(==\) means that the two sides are identical wffs, and the
 equivalence is derived by performing the substitution on the
@@ -519,21 +519,21 @@ left hand side.</p>
 <p>Because the two sides of (B) are identical wffs their codes are
 identical, therefore substituting in (A) gives:</p>
 <center>
-\(\vdash \text{subst}(~\Theta~,~v0~,~\Theta~) = ~PSI[\text{subst}(~\Theta~,~v0~,~\Theta~)]~\) (C)
+\(\vdash \text{subst}(\sim\Theta\sim,\sim v0\sim,\sim\Theta\sim) = \simPSI[\text{subst}(\sim\Theta\sim,\sim v0\sim,\sim\Theta\sim)]\sim\) (C)
 </center>
 <p>Defining \(\Phi\) by</p>
 <center>
-\(\Phi \iff \Psi[\text{subst}(~\Theta~,~v_0~,~\Theta~)]\)  (2)
+\(\Phi \iff \Psi[\text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\)  (2)
 </center>
 <p>gives:</p>
 <center>
-\(\vdash  \text{subst}(~\Theta~,~v_0~,~\Theta~) = ~\Phi~\) (D)
+\(\vdash  \text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim) = \sim\Phi\sim\) (D)
 </center>
 <p>which is just (C) rewriten using the definition.</p>
 
 <p>But trivially:</p>
 <center>
-\(\vdash  \Phi \longleftrightarrow \Psi[\text{subst}(~\Theta~,~v_0~,~\Theta~)]\) (E)
+\(\vdash  \Phi \longleftrightarrow \Psi[\text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\) (E)
 </center>
 <p>because the left hand side is just an abbreviation for
 the right.</p>
@@ -541,7 +541,7 @@ the right.</p>
 <p>Now substituting via (D) in (E) shows that PHI is indeed the
 required wff.</p>
 <center>
-\(\vdash \Phi \longleftrightarrow \Psi[~\Phi~]\)      (DIAG)
+\(\vdash \Phi \longleftrightarrow \Psi[\sim\Phi\sim]\)      (DIAG)
 </center>
 
 
@@ -745,7 +745,7 @@ MATTACH "v0" TO OBJECT::INDVAR:v0;
 MATTACH "~v0~" TO OBJECT::INDCONST:~v0~;
 </div>
 
-<p>\(~v_0~\) is defined to be the code of \(v0\) by an axiom.</p>
+<p>\(\sim v_0\sim\) is defined to be the code of \(v0\) by an axiom.</p>
 
 <div class="live" id="diag17" data-lib="diag1 diag2 diag3 diag4 diag5 diag6 diag7 diag8 diag9 diag10 diag11 diag12 diag13 diag14 diag15 diag16 header">
 AXIOM CODE_v0: "~v0~" = encodevar("v0");
@@ -754,9 +754,9 @@ AXIOM CODE_v0: "~v0~" = encodevar("v0");
 <h4>DEFINITION OF \(\Theta\)</h4>
 
 <p>There is no mechanism for making an abbreviating definition in
-GETFOL. Thus to force \(\Theta\) to be the same wff as \(\Psi(v_0,~v_0~,v_0)\)
+GETFOL. Thus to force \(\Theta\) to be the same wff as \(\Psi(v_0,\sim v_0\sim,v_0)\)
 it is necessary to define the name of \(\Theta\) as equal to the name
-of \(\Psi(v_0,~v_0~,v_0)\). Thus \(\Theta\) is defined at the meta level.</p>
+of \(\Psi(v_0,\sim v_0\sim,v_0)\). Thus \(\Theta\) is defined at the meta level.</p>
 
 <div class="live" id="diag18" data-lib="diag1 diag2 diag3 diag4 diag5 diag6 diag7 diag8 diag9 diag10 diag11 diag12 diag13 diag14 diag15 diag16 diag17 header">
 DECLARE INDCONST "THETA" [WFF];

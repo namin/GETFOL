@@ -97,6 +97,15 @@ rewrite (fact(suc(suc(suc(suc(zro)))))) by FACT_RULES uni PEANO uni LOGICTREE;
 <h2><a name="sec9"></a>Section 9: Reflection Principle</h2>
 
 <p><em>&ldquo;Change theorem proving in the theory into evaluation in the metatheory.&rdquo;</em></p>
+
+<p>We can create object theorems at the meta level. We are free,
+  though not encouraged, to create erroneous ones! Here, we have sound
+  and unsound version of a reflective procedure that asserts the conjunction
+  of two arguments. In the sound version, these arguments
+  must be given as facts, which are guaranteed to be true, while in
+  the unsound version, these arguments are given as well-formed
+  formulas, which can be either true or false.</p>
+
 <div class="live" id="sec9" data-lib="header">
 NAMECONTEXT META;
 DECLARE sort WFF FACT;

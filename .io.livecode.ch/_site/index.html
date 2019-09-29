@@ -479,7 +479,7 @@ function to be possible) but the details of the encoding need not
 be made explicit. The only requirement is that the following
 holds for each wff \(W\), variable \(v\) and code \(n\):</p>
 <center>
-\(\vdash  \text{subst}(\sim W\sim,\sim v\sim,n) =\ \sim W[n/v]\sim\) (<a name="diag_star"></a>*)
+\(\vdash  \text{subst}(\sim W\sim,\sim v\sim,n)\ =\ \sim W[n/v]\sim\) (<a name="diag_star"></a>*)
 </center>
 
 <p>Here \(W[n/v]\) represents the wff \(W\) with all free occurrences of \(v\)
@@ -488,7 +488,7 @@ replaced by \(n\).</p>
 <p>The stipulation that \(n\) be a code in (<a href="#diag_star">*</a>) is crucial. The basic
 substitution function, subst', satisfies:
 <center>
-\(\vdash  \text{subst'}(\sim W\sim,\sim v\sim,\sim t\sim) =\ \sim W[t/v]\sim\) (<a name="diag_star2"></a>**)
+\(\vdash  \text{subst'}(\sim W\sim,\sim v\sim,\sim t\sim)\ =\ \sim W[t/v]\sim\) (<a name="diag_star2"></a>**)
 </center>
 <p>where \(t\) is an arbitrary term. However this substitution is not
 sufficient for diagonalisation because the proof requires the
@@ -497,7 +497,7 @@ encodes.</p>
 
 <p>It is obviously impossible to have a function subst'' satisfying:</p>
 <center>
-\(\vdash  \text{subst''}(\sim W\sim,\sim v\sim,t) =\ \sim W[t/v]\sim\)
+\(\vdash  \text{subst''}(\sim W\sim,\sim v\sim,t)\ =\ \sim W[t/v]\sim\)
 </center>
 <p>because different terms representing the same object evaluate
 equally on the left and differently on the right. The problem is

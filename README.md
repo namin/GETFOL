@@ -7,10 +7,14 @@ In addition, it strives to reproduce the results of the [Prolegomena](tst/proleg
 ## How to run
 
 - `mkdir -p o` from project directory
-- open `alisp` from [make](make) directory
+- open `alisp` or `sbcl` from [make](make) directory
 - `(load "install.lsp")`
 - `(MAKE-GETFOL)`
 - `(SYSBOOT)`
 - `fetch ../tst/TEST`
 - `fetch ../tst/LONGTEST`
 - `fetch ../tst/prolegomena/RUN`
+
+## Creating an executable
+
+- `sbcl --script boot.lsp` from [make](make) directory will create a `GETFOL` executable

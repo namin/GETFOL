@@ -5,14 +5,18 @@
 {% block content %}
 <script>
 function livecode_process_data(id, data) {
-  var i = data.indexOf("Hi!");
+  var i = data.indexOf("Hi!")
   if (i == -1) return data;
-  return data.substring(i);
+  var j = data.indexOf("Hi!", i)
+  if (j == -1) j=i;
+  return data.substring(j);
 }
 </script>
 
 <div class="live norun hidden" id="header">
 probe all;
+echo % Hi! I am GETFOL - a Fantastically Overrated Logician.
+This is version 3.001, September 2019 %
 </div>
 
 <h1>Prolegomena</h1>

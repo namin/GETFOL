@@ -467,9 +467,9 @@ established the interesting part of the proof, the diagonal
 construction, is possible.</p>
 
 <p>The theorem states that for any wff \(\Psi\) with one free variable
-there is a sentence PHI such that:</p>
+there is a sentence \(\Phi\) such that:</p>
 <center>
-            \(\vdash \Phi \longleftrightarrow \Psi[\sim\Phi\sim]\)    (DIAG)
+\(\vdash \Phi \longleftrightarrow \Psi[\sim\Phi\sim]\) (<a name="diag_diag"></a>DIAG)
 </center>
 
 <p>Here \(\sim.\sim\) represents the code of its argument, \(\Psi[t]\) represents
@@ -483,16 +483,16 @@ function to be possible) but the details of the encoding need not
 be made explicit. The only requirement is that the following
 holds for each wff \(W\), variable \(v\) and code \(n\):</p>
 <center>
-\(\vdash  \text{subst}(\sim W\sim,\sim v\sim,n) = \sim W[n/v]\sim\)      (*)
+\(\vdash  \text{subst}(\sim W\sim,\sim v\sim,n) = \sim W[n/v]\sim\) (<a name="diag_star"></a>*)
 </center>
 
 <p>Here \(W[n/v]\) represents the wff \(W\) with all free occurrences of \(v\)
 replaced by \(n\).</p>
 
-<p>The stipulation that \(n\) be a code in (*) is crucial. The basic
+<p>The stipulation that \(n\) be a code in (<a href="#diag_star">*</a>) is crucial. The basic
 substitution function, subst', satisfies:
 <center>
-\(\vdash  \text{subst'}(\sim W\sim,\sim v\sim,\sim t\sim) = \sim W[t/v]\sim\)   (**)
+\(\vdash  \text{subst'}(\sim W\sim,\sim v\sim,\sim t\sim) = \sim W[t/v]\sim\) (<a name="diag_star2"></a>**)
 </center>
 <p>where \(t\) is an arbitrary term. However this substitution is not
 sufficient for diagonalisation because the proof requires the
@@ -508,14 +508,14 @@ equally on the left and differently on the right. The problem is
 solved in Peano Arithmetic, for example, because only natural
 numbers are dealt with. Each  natural number is canonically
 represented by its numeral and so the existence of subst satisfying
-(*) (where \(n\) represents a numeral) follows from subst' satisfying
-(**) because the encoding  of the numerals is primitive recursive
+(<a href="#diag_star">*</a>) (where \(n\) represents a numeral) follows from subst' satisfying
+(<a href="#diag_star2">**</a>) because the encoding  of the numerals is primitive recursive
 and thus representable in the theory.</p>
 
 <p>To make the setting of the diagonalisation lemma as general as
 possible only the existence of a coding and substitution function
-satisfying (*) are assumed. Perhaps a more elegant way would
-be to have a substitution satisfying (**) and a function which
+satisfying (<a href="#diag_star">*</a>) are assumed. Perhaps a more elegant way would
+be to have a substitution satisfying (<a href="#diag_star2">**</a>) and a function which
 encodes a code and then to define:</p>
 <center>
 \(\text{subst}(x,y,n) = \text{subst'}(x,y,encode(n))\)
@@ -526,56 +526,56 @@ encodes a code and then to define:</p>
 
 
 <p>Given an arbitrary wff \(\Psi\) with one free variable the construction
-of a sentence \(Phi\) which satisfies (DIAG) proceeds in the folowing
+of a sentence \(Phi\) which satisfies (<a href="#diag_diag">DIAG</a>) proceeds in the folowing
 way:
 
 <p>First an arbitrary variable, say \(v_0\), is selected. It must have a
 code \(\sim v_0\sim\) so it is possible to construct the wff:</p>
 <center>
-\(\Theta \iff \Psi[\text{subst}(v_0,\sim v_0\sim,v_0)]\)      (1)
+\(\Theta \iff \Psi[\text{subst}(v_0,\sim v_0\sim,v_0)]\) (<a name="diag_s1"></a>1)
 </center>
 <p>Here the \(\iff\) means that \(\Theta\) is defined to be this wff. \(Theta\) is
 not part of the language, it is meta-level abbreviation for
 the wff it represents.</p>
 
-<p>Putting \(W = \Theta, v = v_0, n = \sim\Theta\sim\) in (*) gives:</p>
+<p>Putting \(W = \Theta, v = v_0, n = \sim\Theta\sim\) in (<a href="#diag_star">*</a>) gives:</p>
 <center>
-\(\vdash \text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim) = \sim\Theta[\sim\Theta\sim/v_0]\sim\) (A)
+\(\vdash \text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim) = \sim\Theta[\sim\Theta\sim/v_0]\sim\) (<a name="diag_a"></a>A)
 </center>
 <p>Using the definition of \(\Theta\) the following holds:</p>
 <center>
-\(\Theta[\sim\Theta\sim/v_0] == \Psi[subst(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\) (B)
+\(\Theta[\sim\Theta\sim/v_0] == \Psi[subst(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\) (<a name="diag_b"></a>B)
 </center>
 <p>Here the \(==\) means that the two sides are identical wffs, and the
 equivalence is derived by performing the substitution on the
 left hand side.</p>
 
-<p>Because the two sides of (B) are identical wffs their codes are
-identical, therefore substituting in (A) gives:</p>
+<p>Because the two sides of (<a href="#diag_b">B</a>) are identical wffs their codes are
+identical, therefore substituting in (<a href="#diag_a">A</a>) gives:</p>
 <center>
-\(\vdash \text{subst}(\sim\Theta\sim,\sim v0\sim,\sim\Theta\sim) = \sim\Psi[\text{subst}(\sim\Theta\sim,\sim v0\sim,\sim\Theta\sim)]\sim\) (C)
+\(\vdash \text{subst}(\sim\Theta\sim,\sim v0\sim,\sim\Theta\sim) = \sim\Psi[\text{subst}(\sim\Theta\sim,\sim v0\sim,\sim\Theta\sim)]\sim\) (<a name="diag_c"></a>C)
 </center>
 <p>Defining \(\Phi\) by</p>
 <center>
-\(\Phi \iff \Psi[\text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\)  (2)
+\(\Phi \iff \Psi[\text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\) (<a name="diag_s2"></a>2)
 </center>
 <p>gives:</p>
 <center>
-\(\vdash  \text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim) = \sim\Phi\sim\) (D)
+\(\vdash  \text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim) = \sim\Phi\sim\) (<a name="diag_d"></a>D)
 </center>
-<p>which is just (C) rewriten using the definition.</p>
+<p>which is just (<a href="#diag_c">C</a>) rewriten using the definition.</p>
 
 <p>But trivially:</p>
 <center>
-\(\vdash  \Phi \longleftrightarrow \Psi[\text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\) (E)
+\(\vdash  \Phi \longleftrightarrow \Psi[\text{subst}(\sim\Theta\sim,\sim v_0\sim,\sim\Theta\sim)]\) (<a name="diag_e"></a>E)
 </center>
 <p>because the left hand side is just an abbreviation for
 the right.</p>
 
-<p>Now substituting via (D) in (E) shows that PHI is indeed the
+<p>Now substituting via (<a href="#diag_d">D</a>) in (<a href="#diag_e">E</a>) shows that PHI is indeed the
 required wff.</p>
 <center>
-\(\vdash \Phi \longleftrightarrow \Psi[\sim\Phi\sim]\)      (DIAG)
+\(\vdash \Phi \longleftrightarrow \Psi[\sim\Phi\sim]\)      (<a href="#diag_diag">DIAG</a>)
 </center>
 
 
@@ -689,11 +689,11 @@ DECLARE FUNCONST subst (OBJ,OBJ,OBJ)=OBJ;
 SWITCHCONTEXT META;
 </div>
 
-<p>The only property required of subst is that it satisfies (*).
+<p>The only property required of subst is that it satisfies (<a href="#diag_star">*</a>).
 It is necessary to express this property as an axiom at the meta
 level.</p>
 
-<p>The right hand side of (*) requires the computation of \(W[n/v]\) which
+<p>The right hand side of (<a href="#diag_star">*</a>) requires the computation of \(W[n/v]\) which
 is basically the substitution function for names of expressions.
 The function which performs this is provided by semantic attachment
 to a GETFOL substitution routine (via the function substfree
@@ -716,7 +716,7 @@ DECLARE INDCONST "subst" [FUNCONST];
 MATTACH "subst" TO OBJECT::FUNCONST:subst;
 </div>
 
-<p>The axiom is a direct translation of (*).</p>
+<p>The axiom is a direct translation of (<a href="#diag_star">*</a>).</p>
 
 <div class="live" id="diag11" data-lib="diag1 diag2 diag3 diag4 diag5 diag6 diag7 diag8 diag8b diag-hgk diag9 diag10 header">
 AXIOM AX_subst:
@@ -822,9 +822,9 @@ MATTACH "~THETA~" TO OBJECT::INDCONST:~THETA~;
 AXIOM CODE_THETA: "~THETA~" = encodewff("THETA");
 </div>
 
-<h4>PROOF STEPS (A) - (C)</h4>
+<h4>PROOF STEPS (<a href="#diag_a">A</a>) - (<a href="#diag_c">C</a>)</h4>
 
-<p>(A) is obtained as an instance of (*) (ie. AX_subst) by doing
+<p>(<a href="#diag_a">A</a>) is obtained as an instance of (<a href="#diag_star">*</a>) (ie. AX_subst) by doing
 forall elimination using <code>"THETA"</code>, <code>"v0"</code> and <code>"~THETA~"</code>, then
 substituting the occurrence of <code>encodewff("THETA")</code> with the
 identical <code>"~THETA~"</code>, and the occurrence of <code>encodevar("v0")</code>
@@ -843,7 +843,7 @@ SUBST ^1 with CODE_v0 right;
 MARK M3;
 </div>
 
-<p>(B) is derived precisely by means of computing the substitution
+<p>(<a href="#diag_b">B</a>) is derived precisely by means of computing the substitution
 using the definition of THETA and the GETFOL substitution function
 which is attached to substfree.</p>
 
@@ -857,7 +857,7 @@ BY DEF\-THETA;
 MARK M4;
 </div>
 
-<p>(C) follows by a simple substitution.</p>
+<p>(<a href="#diag_c">C</a>) follows by a simple substitution.</p>
 
 <div class="live" id="diag22" data-lib="diag1 diag2 diag3 diag4 diag5 diag6 diag7 diag8 diag8b diag-hgk diag9 diag10 diag11 diag12 diag13 diag14 diag15 diag16 diag17 diag18 diag19 diag20 diag21 header">
 LABEL FACT C;
@@ -897,9 +897,9 @@ AXIOM CODE_PHI:
    "~PHI~" = encodewff("PHI");
 </div>
 
-<h4>PROOF STEPS (D) & (E)</h4>
+<h4>PROOF STEPS (<a href="#diag_d">D</a>) & (<a href="#diag_e">E</a>)</h4>
 
-<p>(D) follows from the abbreviation of \(\Phi\) in (C) and the
+<p>(<a href="#diag_d">D</a>) follows from the abbreviation of \(\Phi\) in (<a href="#diag_c">C</a>) and the
 substitution of <code>encodewff("PHI")</code> with the identical <code>"~PHI~"</code>.</p>
 
 <div class="live" id="diag24" data-lib="diag1 diag2 diag3 diag4 diag5 diag6 diag7 diag8 diag8b diag-hgk diag9 diag10 diag11 diag12 diag13 diag14 diag15 diag16 diag17 diag18 diag19 diag20 diag21 diag22 diag23 header">
@@ -911,7 +911,7 @@ SUBST ^1 with CODE_PHI right;
 MARK M7;
 </div>
 
-<p>(E) is an instance of the trivial (A1) after substitution of
+<p>(<a href="#diag_e">E</a>) is an instance of the trivial (A1) after substitution of
 identities.</p>
 
 <div class="live" id="diag25" data-lib="diag1 diag2 diag3 diag4 diag5 diag6 diag7 diag8 diag8b diag-hgk diag9 diag10 diag11 diag12 diag13 diag14 diag15 diag16 diag17 diag18 diag19 diag20 diag21 diag22 diag23 diag24 header">
@@ -923,11 +923,11 @@ SUBST ^1 with DEF_PHI OCC 2;
 MARK M8;
 </div>
 
-<h4>DEDUCING (DIAG)</h4>
+<h4>DEDUCING (<a href="#diag_diag">DIAG</a>)</h4>
 
 <p>The last part of the proof is the only part at the object level.
-(D) and (E) are reflected into theorems at the object level.
-(DIAG) then follows by substitution of equals at the object level.
+(<a href="#diag_d">D</a>) and (<a href="#diag_e">E</a>) are reflected into theorems at the object level.
+(<a href="#diag_diag">DIAG</a>) then follows by substitution of equals at the object level.
 Note this is an essentially object level step because the equality
 does not hold at the meta level.</p>
 

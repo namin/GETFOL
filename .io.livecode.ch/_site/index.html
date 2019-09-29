@@ -7,7 +7,7 @@
 function livecode_process_data(id, data) {
   var i = data.indexOf("Hi!")
   if (i == -1) return data;
-  var j = data.indexOf("Hi!", i)
+  var j = data.indexOf("Hi!", i+1)
   if (j == -1) j=i;
   return data.substring(j);
 }

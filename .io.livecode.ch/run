@@ -1,9 +1,7 @@
 #!/bin/bash
 set -e
 
-cd make
-
-cat .io.livecode.ch/header.txt $1 .io.livecode.ch/footer.txt >out.txt
+mv $1 out.txt
 if [ -s $2 ]
 then
     mv $2 extra.txt
@@ -12,4 +10,6 @@ else
 fi
 cat extra.txt out.txt >script.txt
 
-./GETFOL <script.txt
+cd make
+
+./GETFOL <../script.txt

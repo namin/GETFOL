@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+cd make
+sbcl --script boot.lsp
+echo OK

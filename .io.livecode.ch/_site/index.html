@@ -119,7 +119,7 @@ reflect ANDI FALSE FALSE;
 <div class="live" id="appa header">
 comment &#124; We add a theory of minus -. &#124;
 declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
-deflam minus (N M) (LET ((R (- N M))) (COND ((> R 0) R) (T 0)));
+deflam minus (N M) (LET ((R (- N M))) (COND ((&gt; R 0) R) (T 0)));
 attach - to [NATNUM,NATNUM=NATNUM] minus;
 axiom MINUS0R: forall n. n - zro = n;
 axiom MINUS0L: forall n. zro - n = zro;
@@ -134,14 +134,14 @@ axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
 
 comment &#124; Assuming the following theorems, we can solve by hand. &#124;
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
-axiom THM2: forall p q m.(m<suc(q) imp (p+q)-m=p+(q-m));
+axiom THM2: forall p q m.(m&lt;suc(q) imp (p+q)-m=p+(q-m));
 theorem THM3 PLUS0;
 
 setbasicsimp THM1 at facts {THM1};
 setbasicsimp THM3 at facts {THM3};
 
 alle THM2 x,suc(suc(zro)),suc(suc(zro));
-simplify suc(suc(zro))<suc(suc(suc(zro)));
+simplify suc(suc(zro))&lt;suc(suc(suc(zro)));
 impe 2 1;
 theorem THM2instance 3;
 setbasicsimp THM2instance at facts {THM2instance};
@@ -160,7 +160,7 @@ comment &#124; and x - n = m is x=m+n (always valid).                &#124;
 comment &#124; We will require that                                  &#124;
 comment &#124; 1. the equation has one of the shapes above,          &#124;
 comment &#124; 2. including n and m are literal numbers,             &#124;
-comment &#124; 3. for x=m-n we ensure that n<=m.                     &#124;
+comment &#124; 3. for x=m-n we ensure that n&lt;=m.                     &#124;
 comment &#124; We will give a solved answer of the form x=n.         &#124;
 comment &#124; That is, we do all the checking and computation       &#124;
 comment &#124; at the meta level.                                    &#124;
@@ -235,7 +235,7 @@ ATTACH mknumerali TO [NATNUMREP,TERM,FUNSYM=TERM] mknumerali;
 AXIOM AX_MKNUMERAL: forall n.(mknumeral(n)=mknumerali(n,zro,suc));
 
 DECLARE PREDCONST LEQ 2;
-DEFLAM leq (X Y) (OR (< X Y) (= X Y));
+DEFLAM leq (X Y) (OR (&lt; X Y) (= X Y));
 ATTACH LEQ TO [NATNUMREP,NATNUMREP] leq;
 
 DECLARE FUNCONST plus minus (NATNUMSORT NATNUMSORT)=NATNUMSORT;
@@ -289,7 +289,7 @@ declare indconst zro [NATNUM];
 declare funconst suc prd (NATNUM) = NATNUM;
 declare funconst +(NATNUM,NATNUM) = NATNUM [inf = 450 455];
 declare funconst *(NATNUM,NATNUM) = NATNUM [inf = 550 555];
-declare predconst < 2 [inf];
+declare predconst &lt; 2 [inf];
 declare predpar P 1;
 
 axiom ONEONE: forall n m.(suc(n)=suc(m) imp n=m);
@@ -308,11 +308,11 @@ decrep NATNUM;
 represent {NATNUM} as NATNUM;
 attach zro to [NATNUM] 0;
 attach suc to [NATNUM=NATNUM] ADD1;
-deflam prd(x) (COND ((> x 0) (SUB1 x)) (T 0));
+deflam prd(x) (COND ((&gt; x 0) (SUB1 x)) (T 0));
 attach prd to [NATNUM=NATNUM] prd;
 attach + to [NATNUM,NATNUM=NATNUM] +;
 attach * to [NATNUM,NATNUM=NATNUM] *;
-attach < to [NATNUM,NATNUM] <;
+attach &lt; to [NATNUM,NATNUM] &lt;;
 </div>
 
 <h2>Appendix B: An Axiomatization of S-Expressions</h2>
@@ -327,8 +327,8 @@ declare funconst cons(Sexp,List)=List;
 declare funconst rev 1;
 declare funconst @ 2 [inf];
 
-moregeneral Sexp < List, Atom, Null >;
-moregeneral List < Null >;
+moregeneral Sexp &lt; List, Atom, Null &gt;;
+moregeneral List &lt; Null &gt;;
 
 decrep Sexp;
 represent {Sexp} as Sexp;
@@ -362,7 +362,7 @@ simplify length(cons(nil, cons(nil, nil)))=suc(suc(zro));
 
 simplify suc(zro)+zro=zro;
 
-simplify zro < prd(suc(suc(zro)));
+simplify zro &lt; prd(suc(suc(zro)));
 </div>
 
 <h2>Appendix E: Syntactic Simplification</h2>

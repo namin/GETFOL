@@ -15,6 +15,8 @@ function livecode_process_data(id, data) {
 probe all;
 </div>
 
+<h1>Prolegomena</h1>
+
 <h2>Section 2: Syllogism</h2>
 <div class="live" id="sec2" data-lib="header">
 declare indconst Socrates;
@@ -279,7 +281,7 @@ theorem THMz 11;
 show axiom;
 </div>
 
-<h2>Appendix A: Natural Numbers</h2>
+<h2>Appendix A: An Axiomatization of Natural Numbers</h2>
 <div class="live" id="appa">
 declare sort NATNUM;
 declare indvar n m p q [NATNUM];
@@ -313,7 +315,68 @@ attach * to [NATNUM,NATNUM=NATNUM] *;
 attach < to [NATNUM,NATNUM] <;
 </div>
 
+<h2>Appendix B: An Axiomatization of S-Expressions</h2>
+<div class="live" id="appb">
+declare sort Sexp Lisp Null Atom;
+declare indvar x y z [Sexp];
+declare indvar u v w [List];
+declare indconst nil [Null];
+
+declare funconst car cdr 1;
+declare funconst cons(Sexp,List)=List;
+declare funconst rev 1;
+declare funconst @ 2 [inf];
+
+moregeneral Sexp < List, Atom, Null >;
+moregeneral List < Null >;
+
+decrep Sexp;
+represent {Sexp} as Sexp;
+represent {List} as Sexp;
+represent {Atom} as Sexp;
+represent {Null} as Sexp;
+
+axiom CAR: forall x y. car(cons(x,y))=x;
+axiom CDR: forall x y. cdr(cons(x,y))=y;
+axiom CONS: forall x y. not(Null(cons(x,y)));
+
+setbasicsimp Basic at facts {CAR,CDR,CONS};
+
+axiom REV: forall u.(rev(u) = trmif Null(u) then u else rev(cdr(u)) @ cons(car(u),nil));
+axiom APPEND: forall u v.(u@v = trmif Null(u) then v else cons(car(u),cdr(u)@v));
+
+setbasicsimp Funs at facts {REV,APPEND};
+</div>
+
+<h2>Appendix D: Semantic Evaluations</h2>
+
+<div class="live" id="appd" data-lib="appa appb">
+declare funconst length (List)=NATNUM;
+attach cons to [Sexp,Sexp=Sexp] CONS;
+attach car to [Sexp=Sexp] CAR;
+attach cdr to [Sexp=Sexp] CDR;
+attach nil to [Sexp] NIL;
+attach length to [Sexp=NATNUM] LENGTH;
+
+simplify length(cons(nil, cons(nil, nil)))=suc(suc(zro));
+
+simplify suc(zro)+zro=zro;
+
+simplify zro < prd(suc(suc(zro)));
+</div>
+
+<h2>Appendix E: Syntactic Simplification</h2>
+
+<div class="live" id="appe" data-lib="appa appb">
+simplify Null(nil);
+
+setbasicsimp S1 at facts {1};
+
+rewrite rev(cons(x,nil)) by Basic uni Funs uni S1 uni LOGICTREE;
+</div>
+
 <h2>Playground</h2>
+
 <div class="live" id="playground">
 </div>
 

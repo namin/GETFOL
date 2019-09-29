@@ -357,7 +357,7 @@
 ; OCCLIST is a list of numbers or the symbol 'ALL
 
 ; If OCCLIST is 'ALL then all occurrences of EX1 in EX are substituted,
-; otherwise the OCCth occrence of EX1 in EX is substituted only if
+; otherwise the OCCth occurence of EX1 in EX is substituted only if
 ; OCC is in OCCLIST.
 
 ; The +bind option is used when the replacement expression is a variable

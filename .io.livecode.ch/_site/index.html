@@ -68,43 +68,30 @@ impi 1 imp 4;
 
 <h2><a name="sec6"></a>Section 6: Rewrites</h2>
 
+
+<ul>
+  <li>We compute factorial with rewrites.</li>
+  <li>We define factorial axiomatically.</li>
+  <li>We also define predecessor on successor (the only case needed by factorial) axiomatically.</li>
+  <li>We use two helper facts that help rewrite the factorial conditional to take one of the zero or non-zero branches.</li>
+  <li>We can now rewrite any factorial call into a peano number.</li>
+</ul>
+
 <div class="live" id="sec6" data-lib="appa header">
 declare funconst fact(NATNUM)=NATNUM;
-axiom FACT: forall n.fact(n)=trmif n=zro then suc(zro) else n*fact(prd(n));
-
-simplify (zro=zro iff TRUE);
-setbasicsimp N0 at facts {1};
-setbasicsimp FACT_UNFOLD at facts {FACT};
-rewrite (fact(zro)) by N0 uni FACT_UNFOLD uni LOGICTREE;
-setbasicsimp F0 at facts {2};
-
-simplify (suc(zro)=zro iff FALSE);
-setbasicsimp N1 at facts {3};
+axiom FACT: forall n.fact(n)=trmif zro=n then suc(zro) else n*fact(prd(n));
 
 axiom PRDSUC: forall n. prd(suc(n))=n;
-setbasicsimp PRDSUC at facts {PRDSUC};
 
-rewrite (fact(suc(zro))) by N0 uni N1 uni FACT_UNFOLD uni PRDSUC uni LOGICTREE;
+simplify (zro=zro iff TRUE);
 
-simplify (suc(suc(zro))=zro iff FALSE);
-setbasicsimp N2 at facts {5};
+rewrite forall n.(zro=suc(n) iff FALSE) by PEANO uni LOGICTREE;
 
-simplify (suc(suc(suc(zro)))=zro iff FALSE);
-setbasicsimp N3 at facts {6};
+setbasicsimp FACT_RULES at facts {1, 2, FACT, PRDSUC};
 
-rewrite (fact(suc(suc(suc(zro))))) by N0 uni N1 uni N2 uni N3 uni FACT_UNFOLD uni PRDSUC uni LOGICTREE;
-
-rewrite (fact(suc(suc(suc(zro))))) by N0 uni N1 uni N2 uni N3 uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
-
-axiom EQSYM: forall n m.(n = m iff m = n);
-setbasicsimp EQSYM at facts {EQSYM};
-
-rewrite forall n.(suc(n)=zro iff FALSE) by PEANO uni EQSYM uni LOGICTREE;
-setbasicsimp NS at facts {9};
-
-rewrite (fact(suc(suc(suc(zro))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
-
-rewrite (fact(suc(suc(suc(suc(zro)))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
+rewrite (fact(zro)) by FACT_RULES uni PEANO uni LOGICTREE;
+rewrite (fact(suc(suc(suc(zro))))) by FACT_RULES uni PEANO uni LOGICTREE;
+rewrite (fact(suc(suc(suc(suc(zro)))))) by FACT_RULES uni PEANO uni LOGICTREE;
 </div>
 
 <h2><a name="sec9"></a>Section 9: Reflection Principle</h2>

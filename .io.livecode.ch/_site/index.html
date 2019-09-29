@@ -692,11 +692,12 @@ level.</p>
 <p>The right hand side of (<a href="#diag_star">*</a>) requires the computation of \(W[n/v]\) which
 is basically the substitution function for names of expressions.
 The function which performs this is provided by semantic attachment
-to a GETFOL substitution routine (via the function substfree
-contained in "diag2.hgk").<p>
+to a GETFOL substitution routine via the function substfree.<p>
 
 <div class="live" id="diag-hgk">
-LOAD ../axiom/diag2.hgk;
+DEFLAM substfree  (WFF VAR TRM)
+    (clist\-get\-ctext&amp;applfun  (QUOTE OBJECT) (QUOTE substexp)
+                                (LIST VAR TRM WFF) );
 </div>
 
 <div class="live" id="diag9" data-lib="diag1 diag2 diag3 diag4 diag5 diag6 diag7 diag8 diag8b diag-hgk header">

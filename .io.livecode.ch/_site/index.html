@@ -117,7 +117,7 @@ reflect ANDI FALSE FALSE;
 
 <h3>Section 9.1: Linear Equations</h3>
 <div class="live" id="appa header">
-comment | We add a theory of minus -. |
+comment &#124; We add a theory of minus -. &#124;
 declare funconst -(NATNUM,NATNUM) = NATNUM [inf = 450 455];
 deflam minus (N M) (LET ((R (- N M))) (COND ((> R 0) R) (T 0)));
 attach - to [NATNUM,NATNUM=NATNUM] minus;
@@ -126,13 +126,13 @@ axiom MINUS0L: forall n. zro - n = zro;
 axiom MINUS: forall n m. suc(n) - suc(m) = n - m;
 setbasicsimp TMINUS at facts {MINUS0R,MINUS0L,MINUS};
 
-comment | We have some linear equations. |
+comment &#124; We have some linear equations. &#124;
 declare indconst x y z [NATNUM];
 axiom Ex: x + suc(suc(zro)) = suc(suc(suc(suc(suc(zro)))));
 axiom Ey: y - suc(suc(zro)) = zro;
 axiom Ez: z - suc(suc(zro)) = suc(suc(suc(zro)));
 
-comment | Assuming the following theorems, we can solve by hand. |
+comment &#124; Assuming the following theorems, we can solve by hand. &#124;
 axiom THM1: forall p q m.(p=q imp p-m=q-m);
 axiom THM2: forall p q m.(m<suc(q) imp (p+q)-m=p+(q-m));
 theorem THM3 PLUS0;
@@ -153,17 +153,17 @@ impe 6 4;
 impe 7 Ex;
 theorem THMx 8;
 
-comment | Let us switch to the meta level, and do some algebra. |
-comment | We will say (not prove) that                          |
-comment |     x + n = m is x=m-n (if still non-negative)        |
-comment | and x - n = m is x=m+n (always valid).                |
-comment | We will require that                                  |
-comment | 1. the equation has one of the shapes above,          |
-comment | 2. including n and m are literal numbers,             |
-comment | 3. for x=m-n we ensure that n<=m.                     |
-comment | We will give a solved answer of the form x=n.         |
-comment | That is, we do all the checking and computation       |
-comment | at the meta level.                                    |
+comment &#124; Let us switch to the meta level, and do some algebra. &#124;
+comment &#124; We will say (not prove) that                          &#124;
+comment &#124;     x + n = m is x=m-n (if still non-negative)        &#124;
+comment &#124; and x - n = m is x=m+n (always valid).                &#124;
+comment &#124; We will require that                                  &#124;
+comment &#124; 1. the equation has one of the shapes above,          &#124;
+comment &#124; 2. including n and m are literal numbers,             &#124;
+comment &#124; 3. for x=m-n we ensure that n<=m.                     &#124;
+comment &#124; We will give a solved answer of the form x=n.         &#124;
+comment &#124; That is, we do all the checking and computation       &#124;
+comment &#124; at the meta level.                                    &#124;
 namecontext OBJ;
 MAKECONTEXT META;
 SWITCHCONTEXT META;
@@ -248,7 +248,7 @@ AXIOM AX_MKEQUAL: forall x y.mkequal(x,y)=pred2apply(Equal,x,y);
 DECLARE PREDCONST LINEAREQ 2;
 DECLARE FUNCONST solve (WFF TERM)=TERM;
 
-comment | The 3 next axioms are close to the formulation in the paper. |
+comment &#124; The 3 next axioms are close to the formulation in the paper. &#124;
 
 AXIOM AX_LINEAREQ: forall w x.(LINEAREQ(w,x) iff (
   mainpred(w)=Equal and

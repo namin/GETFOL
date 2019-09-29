@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+mkdir -p o
 cd make
 sbcl --script boot.lsp
 echo OK

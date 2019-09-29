@@ -232,7 +232,7 @@
 
 (DEFUN SYSTEM-SAVE (STR)
  (PROGN
-  #+SBCL (SETF SB-EXT::*GC-RUN-TIME* 0) ;; SBCL dependent global garbage collection
+  #+SBCL (SETF *GC-RUN-TIME* 0)  ;SBCL dependent global garbage collection
   #+ALLEGRO (GC T)               ;ALLEGRO dependent global garbage collect
   #+IBCL (GBC T)                 ;IBCL dependent total garbage collect
   #+KCL  (GBC T)                 ;KCL  dependent total garbage collect

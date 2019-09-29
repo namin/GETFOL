@@ -11,7 +11,23 @@ function livecode_process_data(id, data) {
 }
 </script>
 
-<div class="live" id="ex">
+<h2>Section 2: Syllogism</h2>
+<div class="live" id="sec2">
+declare indconst Socrates;
+declare predconst Mortal Man 1;
+declare indvar x;
+
+assume (Man(Socrates) and (forall x. (Man(x) imp Mortal(x))));
+
+taut forall x. (Man(x) imp Mortal(x)) by 1;
+alle 2 Socrates;
+taut Mortal(Socrates) by 1 3;
+
+impi 1 imp 4;
+</div>
+
+<h2>Playground</h2>
+<div class="live" id="playground">
 </div>
 
 {% endblock %}

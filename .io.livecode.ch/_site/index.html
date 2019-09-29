@@ -38,9 +38,20 @@ echo % Hi! I am GETFOL - a Fantastically Overrated Logician %
 
 <h1><a name="prolegomena"></a>Prolegomena</h1>
 
+<p><a name="prolegomena-toc"></a>What's here:</p>
+<ul>
+  <li><a href="#sec2">Section 2<a></li>
+  <li><a href="#sec6">Section 6</a></li>
+  <li><a href="#sec9">Section 9</a></li>
+  <li><a href="#appa">Appendix A</a></li>
+  <li><a href="#appb">Appendix B</a></li>
+  <li><a href="#appd">Appendix D</a></li>
+  <li><a href="#appe">Appendix e</a></li>
+</ul>
+
 <p>These examples are inspired from Weyhrauch's <em>Prolegomena to a Theory of Formal Reasoning</em> (<a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/a065698.pdf">PDF</a>, <a href="https://pdfs.semanticscholar.org/07b8/2b58e1fd76540cf2217ed4537136855685d5.pdf">alt. PDF</a>).</p>
 
-<h2>Section 2: Syllogism</h2>
+<h2><a name="sec2"></a>Section 2: Syllogism</h2>
 <div class="live" id="sec2" data-lib="header">
 declare indconst Socrates;
 declare predconst Mortal Man 1;
@@ -55,7 +66,7 @@ taut Mortal(Socrates) by 1 3;
 impi 1 imp 4;
 </div>
 
-<h2>Section 6: Factorial</h2>
+<h2><a name="sec6"></a>Section 6: Factorial</h2>
 
 <div class="live" id="sec6" data-lib="appa header">
 declare funconst fact(NATNUM)=NATNUM;
@@ -96,7 +107,7 @@ rewrite (fact(suc(suc(suc(zro))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni P
 rewrite (fact(suc(suc(suc(suc(zro)))))) by N0 uni NS uni FACT_UNFOLD uni PRDSUC uni PEANO uni LOGICTREE;
 </div>
 
-<h2>Section 9: Reflection Principle</h2>
+<h2><a name="sec9"></a>Section 9: Reflection Principle</h2>
 
 <p><em>"Change theorem proving in the theory into evaluation in the metatheory."</em></p>
 <div class="live" id="sec9" data-lib="header">
@@ -138,7 +149,7 @@ reflect ANDI_SOUND T1 T2;
 reflect ANDI FALSE FALSE;
 </div>
 
-<h3>Section 9.1: Linear Equations</h3>
+<h3><a name="sec91"></a>Section 9.1: Linear Equations</h3>
 
 <p>We add a theory of minus \(-\).</p>
 <div class="live" id="sec91_1" data-lib="appa header">
@@ -320,7 +331,7 @@ theorem THMz 3;
 show axiom;
 </div>
 
-<h2>Appendix A: An Axiomatization of Natural Numbers</h2>
+<h2><a name="appa"></a>Appendix A: An Axiomatization of Natural Numbers</h2>
 <div class="live" id="appa">
 declare sort NATNUM;
 declare indvar n m p q [NATNUM];
@@ -354,7 +365,7 @@ attach * to [NATNUM,NATNUM=NATNUM] *;
 attach &lt; to [NATNUM,NATNUM] &lt;;
 </div>
 
-<h2>Appendix B: An Axiomatization of S-Expressions</h2>
+<h2><a name="appb"></a>Appendix B: An Axiomatization of S-Expressions</h2>
 <div class="live" id="appb">
 declare sort Sexp Lisp Null Atom;
 declare indvar x y z [Sexp];
@@ -387,7 +398,7 @@ axiom APPEND: forall u v.(u@v = trmif Null(u) then v else cons(car(u),cdr(u)@v))
 setbasicsimp Funs at facts {REV,APPEND};
 </div>
 
-<h2>Appendix D: Semantic Evaluations</h2>
+<h2><a name="appd"</a>Appendix D: Semantic Evaluations</h2>
 
 <div class="live" id="appd" data-lib="appa appb">
 declare funconst length (List)=NATNUM;
@@ -404,7 +415,7 @@ simplify suc(zro)+zro=zro;
 simplify zro &lt; prd(suc(suc(zro)));
 </div>
 
-<h2>Appendix E: Syntactic Simplification</h2>
+<h2><a name="appe"></a>Appendix E: Syntactic Simplification</h2>
 
 <div class="live" id="appe" data-lib="appa appb">
 simplify Null(nil);

@@ -12,4 +12,4 @@ cat extra.txt out.txt >script.txt
 
 cd make
 
-./GETFOL <../script.txt
+./GETFOL <../script.txt | tail -n +15

@@ -11,9 +11,9 @@ In addition, it strives to reproduce the results of the [Prolegomena](tst/proleg
 - `(load "install.lsp")`
 - `(MAKE-GETFOL)`
 - `(SYSBOOT)`
-- `fetch ../tst/TEST`
-- `fetch ../tst/LONGTEST`
-- `fetch ../tst/prolegomena/RUN`
+- `fetch ../tst/TEST;`
+- `fetch ../tst/LONGTEST;`
+- `fetch ../tst/prolegomena/RUN;`
 
 ## Creating an executable
 

@@ -1,6 +1,6 @@
 # Prolegomena
 
-Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](https://apps.dtic.mil/dtic/tr/fulltext/u2/a065698.pdf)).
+Examples inspired from Weyhrauch's _Prolegomena_ ([PDF](Weyhrauch_Prolegomena.pdf)).
 
 # ToC
 

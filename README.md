@@ -7,6 +7,7 @@ In addition, it strives to reproduce the results of the [Prolegomena](tst/proleg
 ## How to run
 
 - `mkdir -p o` from project directory
+- set `%HOME-DIR%` variable to this project's absolute root directory in [make/host.lsp](make/host.lsp#L86) 
 - open `alisp` or `sbcl` from [make](make) directory
 - `(load "install.lsp")`
 - `(MAKE-GETFOL)`

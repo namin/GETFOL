@@ -1,0 +1,207 @@
+{% extends "base_livecode.html" %}
+
+{% block title %}Tutorial on Proof by Reflection in the seminal FOL{% endblock %}
+
+{% block content %}
+<script>
+function livecode_process_data(id, data) {
+  var i = data.indexOf("Hi!")
+  if (i == -1) return data;
+  var j = data.indexOf("Hi!", i+1)
+  if (j == -1) j=i;
+  return data.substring(j);
+}
+</script>
+
+<div class="live norun hidden" id="header">
+probe all;
+echo % Hi! I am GETFOL - a Fantastically Overrated Logician %
+</div>
+
+<p>This tutorial demonstrates <strong>computational proof by reflection</strong> in GETFOL, implementing Weyhrauch's slogan: <em>"Change theorem proving in the theory into evaluation in the metatheory"</em>.</p>
+
+<p>Instead of proving that numbers are even through logical deduction, we'll <strong>compute</strong> their evenness and automatically convert valid computations into theorems.</p>
+
+<p><a href="../GETFOL">← Back to main FOL Software Archaeology</a></p>
+
+<h2>What We'll Build</h2>
+
+<p>A system that:</p>
+<ul>
+  <li>Takes claims like <code>even(suc(suc(suc(suc(zro)))))</code> (4 is even)</li>
+  <li><strong>Parses the mathematical structure</strong> to extract the number</li>
+  <li><strong>Computes whether it's actually even</strong> using <code>(= (MOD n 2) 0)</code></li>
+  <li><strong>Automatically generates theorems</strong> for computationally valid claims</li>
+  <li><strong>Rejects invalid claims</strong> (odd numbers)</li>
+</ul>
+
+<h2>Step 1: Object-Level Setup</h2>
+
+<p>First, we establish the basic even predicate and its computational semantics:</p>
+
+<div class="live" id="step1" data-lib="header">
+fetch ../tst/prolegomena/appa.tst;
+
+comment | Define even predicate axiomatically |
+declare predconst even 1;
+axiom EVEN0: even(zro);
+axiom EVEN: forall n.(even(suc(suc(n))) iff even(n));
+
+comment | Attach computational semantics |
+deflam evenp(x) (= (MOD x 2) 0);
+attach even to [NATNUM] evenp;
+
+comment | Create test claims |
+axiom CLAIM_EVEN0: even(zro);                           comment | 0 is even - TRUE |
+axiom CLAIM_EVEN2: even(suc(suc(zro)));                 comment | 2 is even - TRUE |
+axiom CLAIM_EVEN4: even(suc(suc(suc(suc(zro)))));       comment | 4 is even - TRUE |
+axiom CLAIM_EVEN1: even(suc(zro));                      comment | 1 is even - FALSE |
+</div>
+
+<h2>Step 2: Meta-Level Context</h2>
+
+<p>Now we create the meta-level context where we'll analyze WFF structure:</p>
+
+<div class="live" id="step2" data-lib="header step1">
+comment | Set up meta-level reasoning |
+NAMECONTEXT OBJ;
+MAKECONTEXT META;
+SWITCHCONTEXT META;
+
+DECLARE PREDCONST THEOREM 1;
+DECLARE SORT WFF FACT TERM PREDSYM FUNSYM;
+DECREP WFF FACT TERM PREDSYM FUNSYM;
+REPRESENT {WFF} AS WFF;
+REPRESENT {FACT} AS FACT;
+REPRESENT {TERM} AS TERM;
+REPRESENT {PREDSYM} AS PREDSYM;
+REPRESENT {FUNSYM} AS FUNSYM;
+
+DECLARE FUNCONST wffof (FACT)=WFF;
+ATTACH wffof TO [FACT=WFF] fact\-get\-wff;
+</div>
+
+<h2>Step 3: WFF Structure Analysis</h2>
+
+<p>We need functions to parse WFF structure and extract predicate information:</p>
+
+<div class="live" id="step3" data-lib="header step1 step2">
+comment | Parse predicate symbols from WFFs |
+DECLARE FUNCONST mainpred (WFF)=PREDSYM;
+DECLARE INDCONST evenPRED [PREDSYM];
+MATTACH evenPRED dar [PREDSYM] OBJ::PREDCONST:even;
+DEFLAM mainpred (X) (AND (PREDAPPL X) (predappl\-get\-pred X));
+ATTACH mainpred to [WFF=PREDSYM] mainpred;
+
+comment | Extract arguments from predicate applications |
+DECLARE FUNCONST arg (WFF)=TERM;
+ATTACH arg TO [WFF=TERM] predappl1\-get\-arg;
+</div>
+
+<h2>Step 4: Numeral Recognition and Conversion</h2>
+
+<p>We need to recognize natural number terms and convert them to integers:</p>
+
+<div class="live" id="step4" data-lib="header step1 step 2 step3">
+comment | Recognize numeral patterns |
+DECLARE PREDCONST NUMERAL 1;
+DECLARE PREDCONST numeral 3;
+DECLARE INDCONST zro [TERM];
+DECLARE INDCONST suc [FUNSYM];
+MATTACH zro dar [TERM] OBJ::INDCONST:zro;
+MATTACH suc dar [FUNSYM] OBJ::FUNCONST:suc;
+DEFLAM numeral (X zro suc) (OR (EQ X zro) (AND (FUNAPPL X) (EQ (funappl\-get\-fun X) suc) (numeral (funappl1\-get\-arg X) zro suc)));
+ATTACH numeral TO [TERM,TERM,FUNSYM] numeral;
+DECLARE indvar x [TERM];
+AXIOM AX_NUMERAL: forall x.(NUMERAL(x) iff numeral(x,zro,suc));
+
+comment | Convert terms to numbers |
+KNOW natnums;
+declare indvar n [NATNUMSORT];
+DECLARE FUNCONST mknum (TERM)=NATNUMSORT;
+DEFLAM mknum (X) (IF (FUNAPPL X) (ADD1 (mknum (funappl1\-get\-arg X))) 0);
+ATTACH mknum TO [TERM=NATNUMREP] mknum;
+</div>
+
+<h2>Step 5: Even Claim Recognition</h2>
+
+<p>Define what constitutes a valid even claim:</p>
+
+<div class="live" id="step5" data-lib="header step1 step2 step3 step4">
+comment | Define even claims |
+DECLARE PREDCONST EVENCLAIM 1;
+DECLARE indvar w [WFF];
+AXIOM AX_EVENCLAIM: forall w.(EVENCLAIM(w) iff (
+  mainpred(w)=evenPRED and NUMERAL(arg(w))));
+</div>
+
+<h2>Step 6: Computational Validation</h2>
+
+<p>The heart of the system - computational even checking:</p>
+
+<div class="live" id="step6" data-lib="header step1 step2 step3 step4 step5">
+comment | Computational even checker |
+DECLARE PREDCONST COMPUTEEVEN 1;
+DEFLAM computeeven (t) (= (MOD (mknum t) 2) 0);
+ATTACH COMPUTEEVEN TO [TERM] computeeven;
+</div>
+
+<h2>Step 7: Reflection Principle</h2>
+
+<p>The key axiom that bridges computation and proof:</p>
+
+<div class="live" id="step7" data-lib="header step1 step2 step3 step4 step5 step6">
+comment | Reflection principle |
+DECLARE indvar vl [FACT];
+AXIOM EVENREFLECT: forall vl.(EVENCLAIM(wffof(vl)) and COMPUTEEVEN(arg(wffof(vl))) imp THEOREM(wffof(vl)));
+
+comment | Essential: Enable computational evaluation |
+SETBASICSIMP meta\-axioms at facts {AX_EVENCLAIM,AX_NUMERAL};
+SETCOMPSIMP EVALSS AT LOGICTREE uni meta\-axioms;
+</div>
+
+<h2>Step 8: Testing Computational Reflection</h2>
+
+<p>Now let's test our reflection system:</p>
+
+<p>First, we switch back to the object context.</p>
+<div class="live" id="step8" data-lib="header step1 step2 step3 step4 step5 step6 step7">
+SWITCHCONTEXT OBJ;
+</div>
+
+<div class="live" id="step9" data-lib="header step1 step2 step3 step4 step5 step6 step7 step8">
+comment | Test reflection on even numbers |
+reflect EVENREFLECT CLAIM_EVEN0;
+theorem THM_EVEN0 1;
+
+reflect EVENREFLECT CLAIM_EVEN2;
+theorem THM_EVEN2 2;
+
+reflect EVENREFLECT CLAIM_EVEN4;
+theorem THM_EVEN4 3;
+
+show axiom;
+</div>
+
+<h2>How It Works</h2>
+
+<p>When <code>reflect EVENREFLECT CLAIM_EVEN4</code> executes:</p>
+
+<ol>
+  <li><strong>Parse WFF</strong>: <code>mainpred(wffof(FACT)) = evenPRED</code> ✓</li>
+  <li><strong>Extract argument</strong>: <code>arg(wffof(FACT))</code> → <code>suc(suc(suc(suc(zro))))</code></li>
+  <li><strong>Convert to number</strong>: <code>mknum(arg(...))</code> → 4</li>
+  <li><strong>Compute evenness</strong>: <code>(= (MOD 4 2) 0)</code> → TRUE ✓</li>
+  <li><strong>Create theorem</strong>: Reflection succeeds, generates <code>THM_EVEN4</code></li>
+</ol>
+
+<p>For odd numbers, step 4 returns FALSE, so reflection fails with "Sorry!! Simplified result was not of the form THEOREM(---)".</p>
+
+<div class="live" id="step9_fail" data-lib="header step1 step2 step3 step4 step5 step6 step7 step8">
+comment | This should fail - 1 is odd |
+reflect EVENREFLECT CLAIM_EVEN1;
+</div>
+
+<p><a href="../GETFOL">← Back to main GETFOL tutorial</a></p>
+
+{% endblock %}
